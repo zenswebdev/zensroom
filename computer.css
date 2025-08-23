@@ -69,20 +69,20 @@ body {
   cursor: pointer;
 }
 /* default icons */
-.icon.music    { background-image: url("/assets/cd_audio_cd_a-4.png"); }
-.icon.calendar { background-image: url("/assets/calendar-0.png"); }
-.icon.joystick { background-image: url("/assets/joystick-5.png"); }
-.icon.recycle  { background-image: url("/assets/recycle_bin_empty-4.png"); }
-.icon.notepad  { background-image: url("/assets/notepad-5.png"); }
-.icon.paint    { background-image: url("/assets/paint_file-5.png"); }
+.icon.music    { background-image: url("assets/cd_audio_cd_a-4.png"); }
+.icon.calendar { background-image: url("assets/calendar-0.png"); }
+.icon.joystick { background-image: url("assets/joystick-5.png"); }
+.icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
+.icon.notepad  { background-image: url("assets/notepad-5.png"); }
+.icon.paint    { background-image: url("assets/paint_file-5.png"); }
 
 /* hover icons */
-.icon.music:hover    { background-image: url("/assets/cd_audio_cd_a-3.png"); }
-.icon.calendar:hover { background-image: url("/assets/calendar-1.png"); }
-.icon.joystick:hover { background-image: url("/assets/joystick-4.png"); }
-.icon.recycle:hover  { background-image: url("/assets/recycle_bin_empty-5.png"); }
-.icon.notepad:hover  { background-image: url("/assets/notepad-2.png"); }
-.icon.paint:hover    { background-image: url("/assets/paint_file-4.png"); }
+.icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
+.icon.calendar:hover { background-image: url("assets/calendar-1.png"); }
+.icon.joystick:hover { background-image: url("assets/joystick-4.png"); }
+.icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
+.icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
+.icon.paint:hover    { background-image: url("assets/paint_file-4.png"); }
 
 /* Popup base */
 .popup {
