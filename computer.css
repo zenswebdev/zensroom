@@ -4,7 +4,7 @@ body {
   background-color: #317377; /* teal fill behind */
   display: flex;
   position: relative;
-  overflow:auto;
+  overflow: hidden;
 }
 
 /* Screen container for overlays and scan bar */
