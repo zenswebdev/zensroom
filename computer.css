@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #317377; /* teal fill behind */
+  display: flex;
+  position: relative;
+  overflow:auto;
+}
+
+/* Screen container for overlays and scan bar */
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at center,
+    rgba(255,255,255,0.07) 0%,
+    rgba(0,0,0,0) 70%
+  );
+  z-index: 2;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 45px rgba(0, 255, 100, 0.1);
+}
+
+/* Static scanlines */
+.screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.12) 0px,rgba(0,0,0,0.12) 1px, transparent 2px,transparent 4px);
+  background-size: 100% 4px;
+  z-index: 3;
+}
+.apps {
+  padding-top: 50px;
+    gap: 20px;
+    display:grid;
+    grid-template-columns: repeat(4, 100px);
+    justify-content: center;
+}
+
+@media (max-width: 450px) {
+  .apps {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+  }
+}
+/* shared icon styles */
+.icon {
+  width: 80px;  /* adjust to match your PNG size */
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+/* default icons */
+.icon.music    { background-image: url("/assets/cd_audio_cd_a-4.png"); }
+.icon.calendar { background-image: url("/assets/calendar-0.png"); }
+.icon.joystick { background-image: url("/assets/joystick-5.png"); }
+.icon.recycle  { background-image: url("/assets/recycle_bin_empty-4.png"); }
+.icon.notepad  { background-image: url("/assets/notepad-5.png"); }
+.icon.paint    { background-image: url("/assets/paint_file-5.png"); }
+
+/* hover icons */
+.icon.music:hover    { background-image: url("/assets/cd_audio_cd_a-3.png"); }
+.icon.calendar:hover { background-image: url("/assets/calendar-1.png"); }
+.icon.joystick:hover { background-image: url("/assets/joystick-4.png"); }
+.icon.recycle:hover  { background-image: url("/assets/recycle_bin_empty-5.png"); }
+.icon.notepad:hover  { background-image: url("/assets/notepad-2.png"); }
+.icon.paint:hover    { background-image: url("/assets/paint_file-4.png"); }
+
+/* Popup base */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 4px 4px #404040;
+  display: none;
+}
+
+/* Header bar */
+.popup-header {
+  background: #000080;
+  color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Popup body */
+.popup-body {
+  padding: 15px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+/* Button */
+.popup-header button {
+  background: #c0c0c0;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: #c0c0c0;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;  
+  align-items: flex-start;
+  padding-top: 10px;
+  gap: 5px;                
+  border-top: 3px solid #ffffff; 
+  box-shadow: inset 0 4px #c0c0c0; 
+  overflow-y: auto;
+}
+
+/* Buttons */
+.taskbar button {
+  flex: 1 1 80px;   
+  max-width: 80px;  
+  height: 80px;
+  background: #c0c0c0;
+  border: none;
+  box-sizing: border-box;
+  box-shadow:
+    inset -2px -2px #808080,  
+    inset 2px 2px #ffffff,  
+    inset -4px -4px #404040,  
+    inset 4px 4px #dcdcdc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 2px;  
+  font-size: 12px;
+}
+
+/* Button press effect */
+.taskbar button:active {
+  box-shadow:
+    inset 2px 2px #808080,
+    inset -2px -2px #ffffff,
+    inset 4px 4px #404040,
+    inset -4px -4px #dcdcdc;
+}
+
+/* Icon inside button */
+.taskbar button img {
+  width: 65px; 
+  height: 65px;
+  display: block;
+  pointer-events: none; 
+}
+.btn img.pressed {
+  display: none;
+}
+
+.btn:active img.normal {
+  display: none;
+}
+
+.btn:active img.pressed {
+  display: block;
+}

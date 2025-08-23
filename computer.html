@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer</title>
+  <link rel="stylesheet" href="/computer.css">
+  </head>
+  <body>
+  <div class="screen">
+    <div class="apps">
+      <div class="icon music"    aria-label="music"></div>
+      <div class="icon calendar" aria-label="calendar"></div>
+      <div class="icon joystick" aria-label="joystick"></div>
+      <div class="icon recycle"  aria-label="trashbin"></div>
+      <div class="icon notepad"  aria-label="notepad"></div>
+      <div class="icon paint"    aria-label="paint"></div>
+    </div>
+  
+
+    <div id="popup" class="popup">
+     <div class="popup-header">
+      <span>Fuck you</span>
+      <button onclick="closePopup()">X</button>
+     </div>
+     <div class="popup-body">
+      <h1>IM BUTTACOMMMEEE!</h1>
+     </div>
+    </div>
+
+   <!--taskbar-->
+   <div class="taskbar">
+      <button onclick="togglePopup()" class="btn">
+        <img src="/assets/msg_information-0.png" alt="Info" class="normal">
+        <img src="/assets/msg_information-1.png" alt="Info" class="pressed">
+      </button>
+      <button class="btn">
+        <img src="/assets/msagent-3.png" alt="Profile" class="normal">
+        <img src="/assets/msagent-2.png" alt="Profile" class="pressed">
+      </button>
+      <button class="btn">
+        <img src="/assets/directory_open_file_mydocs-4.png" alt="Projects" class="normal">
+        <img src="/assets/directory_open_file_mydocs-5.png" alt="Projects" class="pressed">
+      </button>
+      <button class="btn">
+        <img src="/assets/modem-5.png" alt="Contact" class="normal">
+        <img src="/assets/modem-4.png" alt="Contact" class="pressed">
+      </button>
+    </div>
+    <script src="/computer.js"></script>
+  </body>
+</html>

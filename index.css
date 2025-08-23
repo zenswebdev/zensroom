@@ -1,0 +1,320 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to bottom right,#a1a18a, #7c7b2b);
+}
+
+.macintosh {
+  --size: 1.8; /* change this to resize: 1 = original, 0.5 = half, 2 = double */
+  display: block;
+  width: calc(340px * var(--size));
+  height: calc(475px * var(--size));
+  margin: calc(125px * var(--size)) auto;
+  position: relative;
+  box-shadow: 0 calc(80px * var(--size)) calc(60px * var(--size)) calc(-60px * var(--size)) rgba(0,0,0,0.4);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.monitor {
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: calc(410px * var(--size));
+  border-radius: calc(15px * var(--size));
+  background-color: #DDDBC2;
+  position: absolute;
+  background-image: linear-gradient(#DDDBC2, #DFDAC4);
+  background-image: conic-gradient(
+    #DDDBC2 0 10.5%, #ECECD5 11% 11.5%, #CECDAF 12% 38%, #C8C4A7 39% 61.5%, #C7C3A6 62% 88%, #DFDAC4 88.5% 89%, #DDDBC2 89.25%
+  );
+  box-shadow: 0 calc(60px * var(--size)) calc(20px * var(--size)) calc(-20px * var(--size)) rgba(142,137,97,0.5);
+}
+
+.monitor-inner {
+  display: block;
+  width: calc(320px * var(--size));
+  height: calc(360px * var(--size));
+  background-image: linear-gradient(#CAC6A9, #CFCEB0);
+  margin: auto;
+  position: absolute;
+  top: calc(22px * var(--size));
+  left: 0;
+  right: 0;
+  border-radius: calc(5px * var(--size));
+}
+
+.screen-cutout {
+  display: block;
+  width: calc(280px * var(--size));
+  height: calc(225px * var(--size));
+  background-color: #DDDBC2;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(20px * var(--size));
+  border-radius: calc(5px * var(--size));
+  background-image: conic-gradient(
+    #938F6A 12.5%, #B5B293 15.5% 33%, #E0DFC3 34% 65.5%, #C2C1A2 66.5% 83.5%, #938F6A 86.5%
+  ); 
+}
+
+.screen {
+  display: block;
+  width: calc(260px * var(--size));
+  height: calc(195px * var(--size));
+  background-color: #317377;
+  background-image: radial-gradient(#317377, #276366);
+  margin: auto;
+  position: absolute;
+  top: calc(10px * var(--size));
+  left: 0;
+  right: 0;
+  border-radius: calc(5px * var(--size));
+  box-shadow: 0 0 calc(20px * var(--size)) calc(5px * var(--size)) #2B3030 inset;
+  overflow: hidden; /* so child layers stay inside */
+}
+.screen-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+}
+.welcome-text {
+  font-family: monospace;
+  font-size: calc(18px * var(--size));
+  color: #ffffff;
+
+}
+
+.signin-btn {
+  width: 150px;
+  height: 150px;
+  background: #c0c0c0;
+  border: none;
+  box-sizing: border-box;
+  box-shadow:
+    inset -2px -2px #808080,  
+    inset 2px 2px #ffffff,  
+    inset -4px -4px #404040,  
+    inset 4px 4px #dcdcdc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 5px;  
+  font-size: 22px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;  /* makes it circular */
+  object-fit: cover;   /* ensures the image fills the circle */
+  border: 1px solid #fff; /* optional border */
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* subtle shadow */
+}
+
+.signin-btn:hover {
+  box-shadow:
+    inset -1px -1px #808080,
+    inset 1px 1px #ffffff,
+    inset -3px -3px #404040,
+    inset 3px 3px #dcdcdc;
+}
+
+.screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.12) 0px,
+    rgba(0,0,0,0.12) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  background-size: 100% 4px;
+  z-index: 3;
+}
+
+.screen-off {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #292929; /* dark screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: calc(14px * var(--size));
+  color: #707070;
+  z-index: 2; 
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0s linear;
+}
+
+.screen-off.active {
+  opacity: 1;
+  transition: opacity 0.1s ease;
+  pointer-events: all;
+}
+
+.screen-off::after {
+  content: "POWER OFF";
+}
+
+
+.button {
+  position: absolute;
+  left: calc(37px * var(--size));
+  bottom: calc(34px * var(--size));
+  width: calc(60px * var(--size));  /* size of the button */
+  height: calc(60px * var(--size));
+}
+
+.power-btn {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(145deg, #DDDBC2 0%, #DFDAC4 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3),
+              inset 0 3px 2px rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.05s ease-out;
+  padding: 0;
+}
+
+.power-btn:hover {
+  box-shadow: 0 calc(3px * var(--size)) calc(6px * var(--size)) rgba(0,0,0,0.4),
+              inset 0 calc(2px * var(--size)) calc(3px * var(--size)) rgba(255,255,255,0.7);
+}
+
+.power-btn:active {
+  background: linear-gradient(145deg, #b6b49f 0%, #DFDAC4 100%);
+  box-shadow: 0 calc(1px * var(--size)) calc(2px * var(--size)) rgba(0,0,0,0.2),
+              inset 0 calc(2px * var(--size)) calc(1px * var(--size)) rgba(0,0,0,0.2);
+  transform: scale(0.95);
+}
+
+.power-symbol {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  pointer-events: none;
+  transition: all 0.05s ease-out;
+}
+.opening {
+  display: block;
+  width: calc(155px * var(--size));
+  height: calc(15px * var(--size));
+  background-image: conic-gradient(
+    #BEBB9C 0% 23.5%, #C7C2A2 24.5% 25%, #DCD8BD 26% 73.5%, #CAC8A7 74.5% 75.5%, #BEBB9C 76.5%
+  );
+  position: absolute;
+  bottom: calc(55px * var(--size));
+  right: calc(21px * var(--size));
+  border-radius: calc(4px * var(--size));
+}
+
+.opening-inner {
+  display: block;
+  width: calc(126px * var(--size));
+  height: calc(8px * var(--size));
+  background-color: #181914;
+  border-radius: calc(2px * var(--size));
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(3.5px * var(--size));
+}
+
+.foot {
+  display: block;
+  width: 100%;
+  height: calc(85px * var(--size));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: calc(7px * var(--size));
+  background-image: linear-gradient(#BBB497, #C1BE9F);
+  box-shadow: calc(14px * var(--size)) 0 calc(3px * var(--size)) calc(-7px * var(--size)) #CCCAB1 inset,
+              calc(-14px * var(--size)) 0 calc(3px * var(--size)) calc(-7px * var(--size)) #CECDB1 inset,
+              0 calc(32px * var(--size)) calc(3px * var(--size)) calc(-7px * var(--size)) #C1BE9F inset,
+              0 calc(-6px * var(--size)) calc(3px * var(--size)) calc(-4px * var(--size)) #AEAA87 inset;
+}
+
+.inset {
+  display: inline;
+  width: calc(16px * var(--size));
+  height: calc(16px * var(--size));
+  background-color: #C3BEA0;
+  position: absolute;
+  bottom: calc(20px * var(--size));
+  left: calc(35px * var(--size));
+  border-radius: calc(2px * var(--size));
+  box-shadow: 0 0 calc(2px * var(--size)) #C9C3A3 inset,
+              0 0 calc(2px * var(--size)) calc(1px * var(--size)) #BCB694;
+}
+
+.cable-container {
+  display: block;
+  width: calc(60px * var(--size));
+  height: calc(30px * var(--size));
+  background-color: #C3BEA0;
+  position: absolute;
+  right: calc(30px * var(--size));
+  bottom: calc(15px * var(--size));
+  border-radius: calc(3px * var(--size));
+  box-shadow: 0 calc(2px * var(--size)) calc(1px * var(--size)) calc(-1px * var(--size)) #D0CBAE inset,
+              calc(4px * var(--size)) 0 calc(1px * var(--size)) calc(-1px * var(--size)) #BAB492 inset,
+              calc(-5px * var(--size)) 0 calc(2px * var(--size)) calc(-2px * var(--size)) #A8A281 inset,
+              0 calc(-4px * var(--size)) calc(2px * var(--size)) calc(-3px * var(--size)) #ADA88B inset;
+}
+
+.cable-hole {
+  display: block;
+  width: calc(18px * var(--size));
+  height: calc(20px * var(--size));
+  background-color: #848580;
+  position: absolute;
+  top: calc(5px * var(--size));
+  right: calc(7px * var(--size));
+  border-radius: calc(3px * var(--size));
+  box-shadow: 
+    0 calc(-4px * var(--size)) calc(2px * var(--size)) calc(-2px * var(--size)) rgba(25,25,25,0.2) inset,
+    calc(-2px * var(--size)) 0 calc(2px * var(--size)) calc(-2px * var(--size)) rgba(25,25,25,0.2) inset,
+    calc(2px * var(--size)) 0 calc(2px * var(--size)) calc(-2px * var(--size)) rgba(25,25,25,0.5) inset;
+  background-image: linear-gradient(
+    #848580 20%,
+    transparent 20% 80%,
+    #848580 80%
+  ), linear-gradient(
+    90deg,
+    transparent 30%,
+    #181914 30% 70%,
+    transparent 70%
+  );
+}
