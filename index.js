@@ -25,5 +25,5 @@ powerBtn.addEventListener("mouseup", () => {
 
 const loginBtn = document.getElementById("signinBtn");
   loginBtn.addEventListener("click", () => {
-    window.location.href = "computer.html";
+    window.location.href = "./computer.html";
 });
