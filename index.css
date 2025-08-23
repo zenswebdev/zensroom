@@ -16,7 +16,7 @@ body {
 
   width: calc(340px * var(--size));
   height: calc(475px * var(--size));
-  margin: 10vh 10vw;
+  margin: 5vh 10vw;
   position: relative;
   box-shadow: 0 calc(80px * var(--size)) calc(60px * var(--size))
     calc(-60px * var(--size)) rgba(0, 0, 0, 0.4);
@@ -31,7 +31,7 @@ body {
 
   @media (max-width: 520px) {
     --size: 1;
-    margin: 5vh 5vw;
+    margin-inline: 5vw;
   }
   @media (max-width: 377px) {
     --size: 0.95;
