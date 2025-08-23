@@ -10,7 +10,9 @@ body {
 
 .macintosh {
   --size: 1.8; /* change this to resize: 1 = original, 0.5 = half, 2 = double */
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: calc(340px * var(--size));
   height: calc(475px * var(--size));
   margin: calc(125px * var(--size)) auto;
@@ -24,6 +26,7 @@ body {
   z-index: 2;
   display: block;
   width: 100%;
+  max-width: 100vw;
   height: calc(410px * var(--size));
   border-radius: calc(15px * var(--size));
   background-color: #DDDBC2;
