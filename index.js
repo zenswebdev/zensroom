@@ -6,12 +6,12 @@ powerBtn.addEventListener("click", () => {
   if (powerBtn.classList.contains("active")) {
     // Turn OFF
     powerBtn.classList.remove("active");
-    img.src = "/assets/power_inactive.png";
+    img.src = "assets/power_inactive.png";
     screenOff.classList.add("active");
   } else {
     // Turn ON
     powerBtn.classList.add("active");
-    img.src = "/assets/power_active.png";
+    img.src = "assets/power_active.png";
     screenOff.classList.remove("active");
   }
 });
@@ -19,11 +19,11 @@ powerBtn.addEventListener("click", () => {
 // keep correct image after mouse release
 powerBtn.addEventListener("mouseup", () => {
   img.src = powerBtn.classList.contains("active")
-            ? "/assets/power_active.png"
-            : "/assets/power_inactive.png";
+            ? "assets/power_active.png"
+            : "assets/power_inactive.png";
 });
 
 const loginBtn = document.getElementById("signinBtn");
   loginBtn.addEventListener("click", () => {
-    window.location.href = "/computer.html";
+    window.location.href = "computer.html";
 });
