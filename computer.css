@@ -75,6 +75,7 @@ body {
 .icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
 .icon.notepad  { background-image: url("assets/notepad-5.png"); }
 .icon.paint    { background-image: url("assets/paint_file-5.png"); }
+.icon.apple    { background-image: url("assets/bad_apple-1.png"); }
 
 /* hover icons */
 .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
@@ -83,21 +84,39 @@ body {
 .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
 .icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
 .icon.paint:hover    { background-image: url("assets/paint_file-4.png"); }
+.icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
 
-/* Popup base */
 .popup {
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
   background: #c0c0c0;
   border: 2px solid #000;
-  box-shadow: 4px 4px #404040;
+  box-shadow: 5px 5px #404040;
   display: none;
 }
 
-/* Header bar */
+.popup-profile{
+  width: 600px;
+  height: 500px;
+  background: #fff8dc; /* light beige */
+
+}
+  
+
+/*Applies to all popup*/
+.popup-body {
+  padding: 15px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.popup-header button {
+  background: #c0c0c0;
+  border: 1px solid #000;
+  cursor: pointer;
+}
 .popup-header {
   background: #000080;
   color: white;
@@ -106,20 +125,6 @@ body {
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-}
-
-/* Popup body */
-.popup-body {
-  padding: 15px;
-  font-family: sans-serif;
-  font-size: 14px;
-}
-
-/* Button */
-.popup-header button {
-  background: #c0c0c0;
-  border: 1px solid #000;
-  cursor: pointer;
 }
 
 .taskbar {

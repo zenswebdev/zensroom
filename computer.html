@@ -15,36 +15,78 @@
       <div class="icon recycle"  aria-label="trashbin"></div>
       <div class="icon notepad"  aria-label="notepad"></div>
       <div class="icon paint"    aria-label="paint"></div>
+      <a href="bad-apple.html">
+      <div class="icon apple" aria-label="apple"></div>
+      </a>
     </div>
   
+    <!--popups-->
+    <div id="infoPopup" class="popup popup-info">
+      <div class="popup-header">
+        <span>Info</span>
+        <button onclick="closePopup('infoPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>IM BUTTACOMMMEEE!</h1>
+      </div>
+    </div>
 
-    <div id="popup" class="popup">
-     <div class="popup-header">
-      <span>Fuck you</span>
-      <button onclick="closePopup()">X</button>
-     </div>
-     <div class="popup-body">
-      <h1>IM BUTTACOMMMEEE!</h1>
-     </div>
+    <div id="profilePopup" class="popup popup-profile">
+      <div class="popup-header">
+        <span>Profile</span>
+        <button onclick="closePopup('profilePopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>Hello, Welcome to Zen's Internet Domain!</h1>
+        <p>Hi there 👋, thanks for visiting. Here's a quick guide to get you started:</p>
+        <ul>
+          <li>Check your profile info</li>
+          <li>Explore apps on your virtual desktop</li>
+          <li>Customize your settings</li>
+        </ul>
+        
+      </div>
+    </div>
+    <div id="projectsPopup" class="popup popup-projects">
+      <div class="popup-header">
+        <span>Projcts</span>
+        <button onclick="closePopup('projectsPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>Projects</h1>
+      </div>
+    </div>
+
+        <div id="contactPopup" class="popup popup-contact">
+      <div class="popup-header">
+        <span>Contact</span>
+        <button onclick="closePopup('contactPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>Call me if you get lost</h1>
+      </div>
     </div>
 
    <!--taskbar-->
    <div class="taskbar">
-      <button onclick="togglePopup()" class="btn">
+      <button onclick="togglePopup('infoPopup')" class="btn">
         <img src="assets/msg_information-0.png" alt="Info" class="normal">
         <img src="assets/msg_information-1.png" alt="Info" class="pressed">
       </button>
-      <button class="btn">
+
+      <button onclick="togglePopup('profilePopup')" class="btn">
         <img src="assets/msagent-3.png" alt="Profile" class="normal">
         <img src="assets/msagent-2.png" alt="Profile" class="pressed">
       </button>
-      <button class="btn">
+
+      <button onclick="togglePopup('projectsPopup')" class="btn">
         <img src="assets/directory_open_file_mydocs-4.png" alt="Projects" class="normal">
         <img src="assets/directory_open_file_mydocs-5.png" alt="Projects" class="pressed">
       </button>
-      <button class="btn">
-        <img src="assets/modem-5.png" alt="Contact" class="normal">
-        <img src="assets/modem-4.png" alt="Contact" class="pressed">
+
+      <button onclick="togglePopup('contactPopup')"class="btn">
+        <img src="assets/mail-1.png" alt="Contact" class="normal">
+        <img src="assets/mail-2.png" alt="Contact" class="pressed">
       </button>
     </div>
     <script src="computer.js"></script>

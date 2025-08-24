@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bad Apple</title>
+<style>
+body {
+  margin: 0;
+  background-color: black; /* area outside video */
+  display: flex;
+  flex-direction: column;  /* stack video and button */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* cover entire screen */
+    z-index: -1; /* behind everything */
+  }
+
+  .volume-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: #00000080;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<video id="bgVideo" autoplay loop playsinline>
+  <source src="assets/Touhou-Bad_Apple.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<button class="volume-btn" id="volumeBtn">Mute</button>
+
+<script>
+const video = document.getElementById('bgVideo');
+const volBtn = document.getElementById('volumeBtn');
+
+// Start video at 50% volume
+video.volume = 0.5;
+
+volBtn.addEventListener('click', () => {
+  video.muted = !video.muted;
+  volBtn.textContent = video.muted ? 'Unmute' : 'Mute';
+});
+</script>
+
+</body>
+</html>
