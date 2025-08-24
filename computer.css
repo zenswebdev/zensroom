@@ -98,7 +98,7 @@ body {
 }
 
 .popup-profile{
-  width: 600px;
+  width: auto;
   height: 500px;
   background: #fff8dc; /* light beige */
 
