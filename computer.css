@@ -60,9 +60,9 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
   }
 }
-/* shared icon styles */
+
 .icon {
-  width: 80px;  /* adjust to match your PNG size */
+  width: 80px; 
   height: 80px;
   background-size: contain;
   background-repeat: no-repeat;
