@@ -88,24 +88,30 @@ body {
 
 .popup {
   position: fixed;
-  top: 40%;
+  top: 30%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -35%);
   background: #c0c0c0;
   border: 2px solid #000;
   box-shadow: 5px 5px #404040;
   display: none;
+  max-width: 90%;   /* prevent overflow on small screens */
+  max-height: 90vh; /* cap height on small screens */
+  overflow-y: auto; /* add scroll if content is too tall */
+  box-sizing: border-box;
 }
 
-.popup-profile{
-  width: 600px;
-  height: 500px;
-  background: #fff8dc; /* light beige */
-
+.popup-profile {
+  width: 500px;         /* default desktop size */
+  max-width: 100%;      /* shrink on smaller screens */
+  height: auto;         /* let height be flexible */
+  min-height: 350px;
+  max-height: 80vh;     /* cap height so it fits viewport */
+  background: #fff8dc;  /* light beige */
+  box-sizing: border-box;
 }
-  
 
-/*Applies to all popup*/
+/* Applies to all popup */
 .popup-body {
   padding: 15px;
   font-family: sans-serif;
