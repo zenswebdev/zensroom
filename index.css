@@ -5,36 +5,42 @@
 }
 
 body {
-  background-image: linear-gradient(to bottom right, #a7a781, #7c7b2b);
+  background-image: linear-gradient(to bottom right, #8a8a8a, #474747);
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding-bottom: 100px;
 }
 
 .macintosh {
-  --size: 1.8; /* change this to resize: 1 = original, 0.5 = half, 2 = double */
-
+  --size: 1.8; /* default */
   width: calc(340px * var(--size));
   height: calc(475px * var(--size));
-  margin: 5vh 10vw;
   position: relative;
   box-shadow: 0 calc(80px * var(--size)) calc(60px * var(--size))
     calc(-60px * var(--size)) rgba(0, 0, 0, 0.4);
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .macintosh {
     --size: 1.5;
   }
+}
 
-  @media (max-width: 640px) {
+@media (max-width: 640px) {
+  .macintosh {
     --size: 1.2;
+    margin-inline: 2vw;
   }
+}
 
-  @media (max-width: 520px) {
+@media (max-width: 520px) {
+  .macintosh {
     --size: 1;
-    margin-inline: 5vw;
   }
-  @media (max-width: 377px) {
+}
+
+@media (max-width: 377px) {
+  .macintosh {
     --size: 0.95;
   }
 }
@@ -112,46 +118,38 @@ body {
 }
 .screen-display {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* stack elements vertically */
+  align-items: center;    /* center horizontally */
+  justify-content: center;/* center vertically in screen */
   height: 100%;
-  gap: 10px;
-}
-.welcome-text {
-  font-family: monospace;
-  font-size: calc(18px * var(--size));
-  color: #ffffff;
+  gap: 10px;              /* space between picture and button */
 }
 
 .signin-btn {
   width: 150px;
-  height: 150px;
-  background: #c0c0c0;
+  height: 50px;  
+  color: rgb(0, 0, 0);
+  background: #7e7e7e;
   border: none;
-  box-sizing: border-box;
-  box-shadow: inset -2px -2px #808080, inset 2px 2px #ffffff,
-    inset -4px -4px #404040, inset 4px 4px #dcdcdc;
+  box-shadow: inset -2px -2px #808080, inset 2px 2px #fff,
+              inset -4px -4px #404040, inset 4px 4px #dcdcdc;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 22px;
-  font-family: "Segoe UI", sans-serif;
+  font-size: 25px;
+  font-weight: lighter;
+  font-family: "san-serif", sans-serif;
 }
 
 .profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; /* makes it circular */
-  object-fit: cover; /* ensures the image fills the circle */
-  border: 1px solid #fff; /* optional border */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* subtle shadow */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;     /* circular */
+  object-fit: cover;      /* fill circle */
+  border: 1px solid #1d1d1d; 
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .signin-btn:hover {
+  color:#ffffff;
   box-shadow: inset -1px -1px #808080, inset 1px 1px #ffffff,
     inset -3px -3px #404040, inset 3px 3px #dcdcdc;
 }
