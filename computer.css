@@ -68,7 +68,7 @@ body {
   background-repeat: no-repeat;
   cursor: pointer;
 }
-/* default icons */
+/* Normal state */
 .icon.music    { background-image: url("assets/cd_audio_cd_a-4.png"); }
 .icon.calendar { background-image: url("assets/calendar-0.png"); }
 .icon.joystick { background-image: url("assets/joystick-5.png"); }
@@ -77,14 +77,21 @@ body {
 .icon.paint    { background-image: url("assets/paint_file-5.png"); }
 .icon.apple    { background-image: url("assets/bad_apple-1.png"); }
 
-/* hover icons */
-.icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
-.icon.calendar:hover { background-image: url("assets/calendar-1.png"); }
-.icon.joystick:hover { background-image: url("assets/joystick-4.png"); }
-.icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
-.icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
-.icon.paint:hover    { background-image: url("assets/paint_file-4.png"); }
-.icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
+/* Hover state (desktop) */
+.icon.music:hover,
+.icon.music.tapped    { background-image: url("assets/cd_audio_cd_a-3.png"); }
+.icon.calendar:hover,
+.icon.calendar.tapped { background-image: url("assets/calendar-1.png"); }
+.icon.joystick:hover,
+.icon.joystick.tapped { background-image: url("assets/joystick-4.png"); }
+.icon.recycle:hover,
+.icon.recycle.tapped  { background-image: url("assets/recycle_bin_empty-5.png"); }
+.icon.notepad:hover,
+.icon.notepad.tapped  { background-image: url("assets/notepad-2.png"); }
+.icon.paint:hover,
+.icon.paint.tapped    { background-image: url("assets/paint_file-4.png"); }
+.icon.apple:hover,
+.icon.apple.tapped    { background-image: url("assets/bad_apple-2.png"); }
 
 .popup {
   position: fixed;
@@ -92,22 +99,23 @@ body {
   left: 50%;
   transform: translate(-50%, -35%);
   background: #c0c0c0;
-  border: 2px solid #000;
+  border: 1px solid #000;
   box-shadow: 5px 5px #404040;
   display: none;
-  max-width: 90%;   /* prevent overflow on small screens */
-  max-height: 90vh; /* cap height on small screens */
-  overflow-y: auto; /* add scroll if content is too tall */
+  max-width: calc(100% - 40px);
+  max-height: calc(100vh - 4px);
+  overflow-y: auto;
   box-sizing: border-box;
+}
+
+.popup-profile h1,h2{
+  color: #fffcea;
 }
 
 .popup-profile {
   width: 500px;         /* default desktop size */
-  max-width: 100%;      /* shrink on smaller screens */
-  height: auto;         /* let height be flexible */
   min-height: 350px;
-  max-height: 80vh;     /* cap height so it fits viewport */
-  background: #fff8dc;  /* light beige */
+  background: #615874;  /* light beige */
   box-sizing: border-box;
 }
 
@@ -117,12 +125,6 @@ body {
   font-family: sans-serif;
   font-size: 14px;
 }
-
-.popup-header button {
-  background: #c0c0c0;
-  border: 1px solid #000;
-  cursor: pointer;
-}
 .popup-header {
   background: #000080;
   color: white;
@@ -131,6 +133,11 @@ body {
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+}
+.popup-header button {
+  background: #c0c0c0;
+  border: 1px solid #000;
+  cursor: pointer;
 }
 
 .taskbar {
