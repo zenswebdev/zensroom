@@ -1,7 +1,7 @@
 // === Development Toggle ===
 // Set to true to force a specific popup open while editing
 const devEditMode = false;      
-const devPopupId = "profilePopup"; // ID of the popup to keep open
+const devPopupId = "contactPopup"; // ID of the popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- Development Mode ---
@@ -68,3 +68,5 @@ function closePopup(id) {
     localStorage.setItem("profilePopupClosed", "true");
   }
 }
+
+

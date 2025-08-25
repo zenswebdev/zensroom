@@ -74,24 +74,19 @@ body {
 .icon.joystick { background-image: url("assets/joystick-5.png"); }
 .icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
 .icon.notepad  { background-image: url("assets/notepad-5.png"); }
-.icon.paint    { background-image: url("assets/paint_file-5.png"); }
+.icon.paint    { background-image: url("assets/palette-1.png"); }
 .icon.apple    { background-image: url("assets/bad_apple-1.png"); }
 
-/* Hover state (desktop) */
-.icon.music:hover,
-.icon.music.tapped    { background-image: url("assets/cd_audio_cd_a-3.png"); }
-.icon.calendar:hover,
-.icon.calendar.tapped { background-image: url("assets/calendar-1.png"); }
-.icon.joystick:hover,
-.icon.joystick.tapped { background-image: url("assets/joystick-4.png"); }
-.icon.recycle:hover,
-.icon.recycle.tapped  { background-image: url("assets/recycle_bin_empty-5.png"); }
-.icon.notepad:hover,
-.icon.notepad.tapped  { background-image: url("assets/notepad-2.png"); }
-.icon.paint:hover,
-.icon.paint.tapped    { background-image: url("assets/paint_file-4.png"); }
-.icon.apple:hover,
-.icon.apple.tapped    { background-image: url("assets/bad_apple-2.png"); }
+/* Hover state (only applies on desktop / devices with a mouse) */
+@media (hover: hover) and (pointer: fine) {
+  .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
+  .icon.calendar:hover { background-image: url("assets/calendar-1.png"); }
+  .icon.joystick:hover { background-image: url("assets/joystick-4.png"); }
+  .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
+  .icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
+  .icon.paint:hover    { background-image: url("assets/palette-2.png"); }
+  .icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
+}
 
 .popup {
   position: fixed;
@@ -138,6 +133,54 @@ body {
   background: #c0c0c0;
   border: 1px solid #000;
   cursor: pointer;
+}
+
+/* Contact Popup */
+.popup-contact {
+  width: 500px;
+  height: auto;
+  background: #f0f0f0;
+  border: 2px solid #000080;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Labels */
+.popup-contact label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+/* Inputs and textarea */
+.popup-contact input,
+.popup-contact textarea {
+  resize:vertical;
+  width: 100%;
+  min-height: 25px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-size: 14px;
+  background: #fff;
+  box-shadow: inset 1px 1px #dcdcdc, inset -1px -1px #808080;
+}
+
+/* Submit button */
+.popup-contact button.submit-btn {
+  margin-top: 10px;
+  padding: 8px;
+  background: #7e7e7e;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset -2px -2px #808080, inset 2px 2px #fff,
+              inset -4px -4px #404040, inset 4px 4px #dcdcdc;
+}
+
+.popup-contact button.submit-btn:hover {
+  background: #9e9e9e;
 }
 
 .taskbar {
