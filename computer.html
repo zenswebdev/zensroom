@@ -15,22 +15,12 @@
       <div class="icon recycle"  aria-label="trashbin"></div>
       <div class="icon notepad"  aria-label="notepad"></div>
       <div class="icon paint"    aria-label="paint"></div>
-      <a href="bad-apple.html">
+      <a href="YouvebeenBadApple/html">
       <div class="icon apple" aria-label="apple"></div>
       </a>
     </div>
   
     <!--popups-->
-    <div id="infoPopup" class="popup popup-info">
-      <div class="popup-header">
-        <span>Info</span>
-        <button onclick="closePopup('infoPopup')">X</button>
-      </div>
-      <div class="popup-body">
-        <h1>IM BUTTACOMMMEEE!</h1>
-      </div>
-    </div>
-
     <div id="profilePopup" class="popup popup-profile">
       <div class="popup-header">
         <span>Profile</span>
@@ -38,6 +28,7 @@
       </div>
       <div class="popup-body">
         <h1>Welcome to Zen's Internet Domain!</h1>
+        <img src="assets/sonnyboy_profile-1.png">
         <h2>Hi, how are you, glad you can make it.</h2>
       </div>
     </div>
@@ -48,7 +39,8 @@
         <button onclick="closePopup('worksPopup')">X</button>
       </div>
       <div class="popup-body">
-        <h1>Works</h1>
+        <h1>I have NOTTTING</h1>
+        <img src="assets/sad-fade.gif">
       </div>
     </div>
 
@@ -60,16 +52,20 @@
       <div class="popup-body">
         <h1>Call me if you get lost</h1>
       </div>
+      
     </div>
+     <div id="infoPopup" class="popup popup-info">
+      <div class="popup-header">
+        <span>Info</span>
+        <button onclick="closePopup('infoPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>IM BUTTACOMMMEEE!</h1>
+      </div>
+     </div>
 
    <!--taskbar-->
    <div class="taskbar">
-      <button onclick="togglePopup('infoPopup')" class="btn">
-        
-        <img src="assets/msg_information-0.png" alt="Info" class="normal">
-        <img src="assets/msg_information-1.png" alt="Info" class="pressed">
-      </button>
-
       <button onclick="togglePopup('profilePopup')" class="btn">
         <img src="assets/msagent-3.png" alt="Profile" class="normal">
         <img src="assets/msagent-2.png" alt="Profile" class="pressed">
@@ -83,6 +79,11 @@
       <button onclick="togglePopup('contactPopup')"class="btn">
         <img src="assets/mail-1.png" alt="Contact" class="normal">
         <img src="assets/mail-2.png" alt="Contact" class="pressed">
+      </button>
+
+      <button onclick="togglePopup('infoPopup')" class="btn">
+        <img src="assets/msg_information-0.png" alt="Info" class="normal">
+        <img src="assets/msg_information-1.png" alt="Info" class="pressed">
       </button>
     </div>
     <script src="computer.js"></script>
