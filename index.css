@@ -15,25 +15,26 @@ body {
   --size: 1.8; /* default */
   width: calc(340px * var(--size));
   height: calc(475px * var(--size));
+  margin: 2vh 10vw 40vh 10vw; 
   position: relative;
   box-shadow: 0 calc(80px * var(--size)) calc(60px * var(--size))
     calc(-60px * var(--size)) rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .macintosh {
     --size: 1.5;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 570px) {
   .macintosh {
     --size: 1.2;
     margin-inline: 2vw;
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 415px) {
   .macintosh {
     --size: 1;
   }
@@ -146,6 +147,19 @@ body {
   object-fit: cover;      /* fill circle */
   border: 1px solid #1d1d1d; 
   box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 415px) {
+  .signin-btn {
+    width: 120px;        /* smaller width */
+    height: 40px;        /* smaller height */
+    font-size: 20px;     /* adjust text size */
+  }
+
+  .profile-pic {
+    width: 120px;        /* smaller circle */
+    height: 120px;
+  }
 }
 
 .signin-btn:hover {
