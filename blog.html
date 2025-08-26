@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog</title>
+<style>
+  body {
+    background: #fff;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    margin-top: 100px;
+  }
+
+.file {
+  width: 90%;             
+  max-width: 600px;       
+  min-width: 150px;        /* keeps your minimum safe size */
+  border: 2px solid #000;
+  border-radius: 15px;
+  position: relative;
+  padding: 20px 20px 20px; 
+  background: #fff;
+  box-sizing: border-box; 
+}
+
+  /* The tab/notch */
+.file .tab {
+  position: absolute;
+  top: -32px;
+  left: clamp(10px, 15%, 40px);
+  background: #fff;
+  border: 2px solid #000;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 15px;
+  font-weight: bold;
+  white-space: nowrap;
+  max-width: 65%;            /* prevent overflow */
+  overflow: hidden;
+  text-overflow: ellipsis;   /* add "…" if text too long */
+}
+@media (max-width: 345px) {
+  .file .tab {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.file .content p {
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.5;
+  overflow-wrap: break-word; 
+}
+</style>
+
+</head>
+<body>
+
+  <div class="file">
+    <div class="tab">CARABINERS</div>
+    <div class="content">
+        <p>so how about that airline food</p>
+    </div>
+  </div>
+
+</body>
+</html>

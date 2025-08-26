@@ -5,6 +5,7 @@ body {
   display: flex;
   position: relative;
   overflow: hidden;
+  background-image: url(assets/deepsea1.gif);
 }
 
 /* Screen container for overlays and scan bar */
@@ -70,18 +71,16 @@ body {
 }
 /* Normal state */
 .icon.music    { background-image: url("assets/cd_audio_cd_a-4.png"); }
-.icon.calendar { background-image: url("assets/calendar-0.png"); }
-.icon.joystick { background-image: url("assets/joystick-5.png"); }
+.icon.games    { background-image: url("assets/joystick-5.png"); }
 .icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
 .icon.notepad  { background-image: url("assets/notepad-5.png"); }
 .icon.paint    { background-image: url("assets/palette-1.png"); }
 .icon.apple    { background-image: url("assets/bad_apple-1.png"); }
-
+.icon.cat      { background-image: url("assets/cat-1.png"); }
 /* Hover state (only applies on desktop / devices with a mouse) */
 @media (hover: hover) and (pointer: fine) {
   .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
-  .icon.calendar:hover { background-image: url("assets/calendar-1.png"); }
-  .icon.joystick:hover { background-image: url("assets/joystick-4.png"); }
+  .icon.games:hover { background-image: url("assets/joystick-4.png"); }
   .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
   .icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
   .icon.paint:hover    { background-image: url("assets/palette-2.png"); }
@@ -102,21 +101,36 @@ body {
   overflow-y: auto;
   box-sizing: border-box;
 }
-
+.popup-profile .popup-body img {
+  width: 180px;     
+  height: 180px;  
+  object-fit: cover;      
+  display: block;         
+  margin: 0 275px; 
+}
+.popup-profile .popup-body .divider {
+  position: relative;
+  border: none;               
+  height: 5px;       
+  background-color: #ffffff;   
+  width: 455px;             
+  margin: auto;      
+}
 .popup-profile h1,h2{
   color: #fffcea;
+  text-align: center;
 }
 
 .popup-profile {
-  width: 500px;         /* default desktop size */
+  width: 510px;         
   min-height: 350px;
-  background: #615874;  /* light beige */
+  background: #615874; 
   box-sizing: border-box;
 }
 
 /* Applies to all popup */
 .popup-body {
-  padding: 15px;
+  padding: 5px 30px 30px 20px;
   font-family: sans-serif;
   font-size: 14px;
 }

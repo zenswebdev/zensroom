@@ -9,17 +9,37 @@
   <body>
   <div class="screen">
     <div class="apps">
-      <div class="icon music"    aria-label="music"></div>
-      <div class="icon calendar" aria-label="calendar"></div>
-      <div class="icon joystick" aria-label="joystick"></div>
-      <div class="icon recycle"  aria-label="trashbin"></div>
-      <div class="icon notepad"  aria-label="notepad"></div>
-      <div class="icon paint"    aria-label="paint"></div>
+      <a href="void" class="app trash">
+      <div class="icon recycle"  aria-label="trashbin"></div></a>
+      <div class="icon music"    aria-label="music"    onclick="togglePopup('musicPopup')"></div>
+      <div class="icon games"    aria-label="games"    onclick="togglePopup('gamesPopup')"></div>
       <a href="YouvebeenBadApple">
-      <div class="icon apple" aria-label="apple"></div>
-      </a>
+      <div class="icon apple"    aria-label="apple"></div></a>
+      <div class="icon notepad"  aria-label="notepad"  onclick="togglePopup('notepadPopup')"></div>
+      <div class="icon paint"    aria-label="paint"    onclick="togglePopup('paintPopup')"></div>
+      <div class="icon cat"      aria-label="cat"      onclick="togglePopup('catPopup')"></div>
+      <!-- Music Popup -->
+    <div id="musicPopup" class="popup popup-works">
+      <div class="popup-header">
+        Music
+        <button onclick="closePopup('musicPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <p>Your music app goes here.</p>
+      </div>
     </div>
-  
+
+    <!-- Notepad Popup -->
+    <div id="notepadPopup" class="popup popup-profile">
+      <div class="popup-header">
+        Notepad
+        <button onclick="closePopup('notepadPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <p>Write some notes...</p>
+      </div>
+    </div>
+    
     <!--popups-->
     <div id="profilePopup" class="popup popup-profile">
       <div class="popup-header">
@@ -27,8 +47,9 @@
         <button onclick="closePopup('profilePopup')">X</button>
       </div>
       <div class="popup-body">
+        <img src="assets/sonnyboy_profile-1.png" alt="Profile">
+        <hr class="divider">
         <h1>Welcome to Zen's Internet Domain</h1>
-        <img src="assets/sonnyboy_profile-1.png">
         <h2>Hi, how are you, so glad you can make it.</h2>
       </div>
     </div>
@@ -50,16 +71,20 @@
         <button onclick="closePopup('contactPopup')">X</button>
       </div>
       <div class="popup-body">
-        <h1>Gimme shelter</h1>
-        <form>
+        <h1>Gimme Shelter</h1>
+        <!-- Formspree setup -->
+        <form action="https://formspree.io/f/xjkevapo" method="POST">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name">
+          <input type="text" id="name" name="name" required>
 
           <label for="email">Email</label>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="_replyto" required>
 
           <label for="message">Message</label>
-          <textarea id="message" name="message"></textarea>
+          <textarea id="message" name="message" required></textarea>
+
+          <!-- Optional hidden field to prevent spam -->
+          <input type="text" name="_gotcha" style="display:none">
 
           <button type="submit" class="submit-btn">Send</button>
         </form>

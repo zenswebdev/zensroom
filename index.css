@@ -107,7 +107,7 @@ body {
   width: calc(260px * var(--size));
   height: calc(195px * var(--size));
   background-color: #317377;
-  background-image: radial-gradient(#317377, #276366);
+  background-image: url(assets/space2.gif),radial-gradient(#317377, #276366);
   margin: auto;
   position: absolute;
   top: calc(10px * var(--size));
@@ -133,10 +133,10 @@ body {
   background: #7e7e7e;
   border: none;
   box-shadow: inset -2px -2px #808080, inset 2px 2px #fff,
-              inset -4px -4px #404040, inset 4px 4px #dcdcdc;
+   inset -4px -4px #404040, inset 4px 4px #dcdcdc;
   cursor: pointer;
   font-size: 25px;
-  font-weight: lighter;
+ 
   font-family: "san-serif", sans-serif;
 }
 
