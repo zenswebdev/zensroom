@@ -87,6 +87,8 @@ body {
   .icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
 }
 
+
+/* === Base popup === */
 .popup {
   position: fixed;
   top: 30%;
@@ -101,39 +103,7 @@ body {
   overflow-y: auto;
   box-sizing: border-box;
 }
-.popup-profile .popup-body img {
-  width: 180px;     
-  height: 180px;  
-  object-fit: cover;      
-  display: block;         
-  margin: 0 275px; 
-}
-.popup-profile .popup-body .divider {
-  position: relative;
-  border: none;               
-  height: 5px;       
-  background-color: #ffffff;   
-  width: 455px;             
-  margin: auto;      
-}
-.popup-profile h1,h2{
-  color: #fffcea;
-  text-align: center;
-}
 
-.popup-profile {
-  width: 510px;         
-  min-height: 350px;
-  background: #615874; 
-  box-sizing: border-box;
-}
-
-/* Applies to all popup */
-.popup-body {
-  padding: 5px 30px 30px 20px;
-  font-family: sans-serif;
-  font-size: 14px;
-}
 .popup-header {
   background: #000080;
   color: white;
@@ -143,32 +113,83 @@ body {
   align-items: center;
   font-weight: bold;
 }
+
 .popup-header button {
   background: #c0c0c0;
   border: 1px solid #000;
   cursor: pointer;
 }
 
-/* Contact Popup */
-.popup-contact {
-  width: 500px;
-  height: auto;
-  background: #f0f0f0;
-  border: 2px solid #000080;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+.popup-body {
+  padding: 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
-/* Labels */
+
+/* === Profile popup === */
+.popup-profile {
+  width: 400px;   
+  max-width: 90%;
+  overflow:hidden;
+}
+.popup-profile .popup-body {
+  background-color: rgb(71, 55, 110);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Avatar */
+.popup-profile .popup-body img {
+  width: 180px;
+  height: 180px;
+  display: block;
+  margin: 0;   /* no gap at bottom */
+}
+
+/* Email sits right above divider */
+.email {
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  margin: 4px 0;       /* small gap from image */
+  width: 100%;
+  text-align: right;   /* flush right */
+}
+
+.popup-profile .popup-body .divider {
+  border: none;
+  height: 4px;
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0 0 15px 0; 
+}
+
+.popup-profile h1,
+.popup-profile h2 {
+  color: #ffffff;
+  text-align: center;
+  width: 100%;         
+  margin: 10px auto 10px;   
+}
+
+/* === Contact popup === */
+.popup-contact {
+  width: 500px;
+  background: #f0f0f0;
+}
+
 .popup-contact label {
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 3px;
 }
 
-/* Inputs and textarea */
 .popup-contact input,
 .popup-contact textarea {
-  resize:vertical;
+  resize: vertical;
   width: 100%;
   min-height: 25px;
   border: 1px solid #808080;
@@ -179,7 +200,6 @@ body {
   box-shadow: inset 1px 1px #dcdcdc, inset -1px -1px #808080;
 }
 
-/* Submit button */
 .popup-contact button.submit-btn {
   margin-top: 10px;
   padding: 8px;

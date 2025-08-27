@@ -1,6 +1,6 @@
 // === Development Toggle ===
 // Set to true to force a specific popup open while editing
-const devEditMode = true;      
+const devEditMode = false;      
 const devPopupId = "profilePopup"; // ID of the popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
