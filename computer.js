@@ -1,9 +1,23 @@
 // === Development Toggle ===
 // Set to true to force a specific popup open while editing
 const devEditMode = false;      
-const devPopupId = "profilePopup"; // ID of the popup to keep open
+const devPopupId = "worksPopup"; // ID of the popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Preload hover images ---
+  const hoverImages = [
+    "assets/cd_audio_cd_a-3.png",
+    "assets/joystick-4.png",
+    "assets/recycle_bin_empty-5.png",
+    "assets/notepad-2.png",
+    "assets/palette-2.png",
+    "assets/bad_apple-2.png"
+  ];
+  hoverImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+
   // --- Development Mode ---
   if (devEditMode) {
     keepPopupOpen(devPopupId);
@@ -68,5 +82,3 @@ function closePopup(id) {
     localStorage.setItem("profilePopupClosed", "true");
   }
 }
-
-

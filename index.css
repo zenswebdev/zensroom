@@ -106,7 +106,7 @@ body {
   display: block;
   width: calc(260px * var(--size));
   height: calc(195px * var(--size));
-  background-color: #317377;
+  background-color: #0f053c;
   background-image: url(assets/space2.gif),radial-gradient(#317377, #276366);
   margin: auto;
   position: absolute;
