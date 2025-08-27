@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Normal Behavior ---
-  if (!localStorage.getItem("profilePopupClosed")) {
-    togglePopup("profilePopup");
+  if (!localStorage.getItem("welcomePopupClosed")) {
+    togglePopup("welcomePopup");
   }
 
   // Handle icon "tapped" state
@@ -78,7 +78,7 @@ function closePopup(id) {
   popup.style.display = "none";
 
   // Remember if the profile popup was closed
-  if (id === "profilePopup") {
-    localStorage.setItem("profilePopupClosed", "true");
+  if (id === "welcomePopup") {
+    localStorage.setItem("welcomePopupClosed", "true");
   }
 }

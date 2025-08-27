@@ -42,19 +42,31 @@
     </div>
     
     <!--popups-->
-    <div id="profilePopup" class="popup popup-profile">
-       <div class="popup-header">
-        <span>Profile</span>
-        <button onclick="closePopup('profilePopup')">X</button>
+    <div id="welcomePopup" class="popup popup-welcome">
+      <div class="popup-header">
+        <span>Welcome</span>
+        <button onclick="closePopup('welcomePopup')">X</button>
       </div>
       <div class="popup-body">
-        <div class="top-row">
+         <div class="top-row">
           <img src="assets/sonnyboy_profile.gif" alt="Avatar">
-        </div>
+         </div>
           <div class="divider"><p class="email">zenworklee@gmail.com</p></div>
           <h1>LEE ZEN</h1>
           <div class="divider"></div>
           <h2>ANIMATOR | ARTIST | FRIENDO</h2>
+     </div>
+    </div>
+
+    <div id="profilePopup" class="popup popup-profile">
+      <div class="popup-header">
+        <span>Profile</span>
+        <button onclick="closePopup('profilePopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>Credits</h1>
+        <h3>Made possible by the seer will of an idiot</h3>
+        <h3>with help from amazing people</h3>
       </div>
     </div>
 
@@ -95,21 +107,14 @@
       </div>
     </div>
 
-    </div>
-     <div id="infoPopup" class="popup popup-info">
-      <div class="popup-header">
-        <span>Info</span>
-        <button onclick="closePopup('infoPopup')">X</button>
-      </div>
-      <div class="popup-body">
-        <h1>Credits</h1>
-        <h3>Made possible by the seer will of an idiot</h3>
-        <h3>with help from amazing people</h3>
-      </div>
-     </div>
 
    <!--taskbar-->
    <div class="taskbar">
+      <button onclick="togglePopup('welcomePopup')" class="btn">
+        <img src="assets/hi-2.png" alt="Info" class="normal">
+        <img src="assets/hi-1.png" alt="Welcome" class="pressed">
+      </button>
+
       <button onclick="togglePopup('profilePopup')" class="btn">
         <img src="assets/msagent-3.png" alt="Profile" class="normal">
         <img src="assets/msagent-2.png" alt="Profile" class="pressed">
@@ -125,10 +130,6 @@
         <img src="assets/mail-2.png" alt="Contact" class="pressed">
       </button>
 
-      <button onclick="togglePopup('infoPopup')" class="btn">
-        <img src="assets/msg_information-0.png" alt="Info" class="normal">
-        <img src="assets/msg_information-1.png" alt="Info" class="pressed">
-      </button>
     </div>
     <script src="computer.js"></script>
   </body>

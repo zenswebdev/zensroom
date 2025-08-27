@@ -1,7 +1,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background-color: #317377; /* teal fill behind */
+  background-color: #023442; 
   display: flex;
   position: relative;
   overflow: hidden;
@@ -71,7 +71,7 @@ body {
 }
 /* Normal state */
 .icon.music    { background-image: url("assets/cd_audio_cd_a-4.png"); }
-.icon.games    { background-image: url("assets/joystick-5.png"); }
+.icon.games    { background-image: url("assets/steam-1.png"); }
 .icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
 .icon.notepad  { background-image: url("assets/notepad-5.png"); }
 .icon.paint    { background-image: url("assets/palette-1.png"); }
@@ -80,7 +80,7 @@ body {
 /* Hover state (only applies on desktop / devices with a mouse) */
 @media (hover: hover) and (pointer: fine) {
   .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
-  .icon.games:hover { background-image: url("assets/joystick-4.png"); }
+  .icon.games:hover { background-image: url("assets/steam-2.png"); }
   .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
   .icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
   .icon.paint:hover    { background-image: url("assets/palette-2.png"); }
@@ -129,14 +129,14 @@ body {
   margin: 5px auto 30px; 
 }
 
-/* === Profile popup === */
-.popup-profile {
+/* === welcome popup === */
+.popup-welcome {
   width: 400px;
   max-width: 90%;
   overflow: hidden;
   margin: 20px auto; 
 }
-.popup-profile .popup-body {
+.popup-welcome .popup-body {
   background-color: rgb(71, 55, 110);
   display: flex;
   flex-direction: column;
@@ -144,7 +144,7 @@ body {
   padding: 20px;
 }
 
-.popup-profile .popup-body img {
+.popup-welcome .popup-body img {
   width: 180px;
   height: 180px;
   display: block;
@@ -158,7 +158,7 @@ body {
   width: 100%;
   text-align: right;   
 }
-.popup-profile .popup-body .divider {
+.popup-welcome .popup-body .divider {
   border: none;
   height: 4px;
   background-color: #ffffff;
@@ -166,8 +166,8 @@ body {
   margin: 0 0 15px 0; 
 }
 
-.popup-profile h1,
-.popup-profile h2 {
+.popup-welcome h1,
+.popup-welcome h2 {
   color: #ffffff;
   text-align: center;
   width: 100%;         
