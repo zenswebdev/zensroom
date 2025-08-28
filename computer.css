@@ -242,49 +242,74 @@ body {
 }
 
 /* Works Popup */
+.popup-works {
+  width: 90%;
+  max-width: 600px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 3px 3px #000;
+  margin: 0 auto;
+  max-height: calc(100vh - 150px); /* leaves 20px top & bottom */
+}
+
+/* Header always visible */
 .popup-works .popup-header {
   background: #000080;
   color: white;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  flex-shrink: 0;     
-}
-.popup-works {
-  width: 90%;
-  max-width: 600px;
-  max-height: 700px;
-  background: #1a1a1a;
-  border: 1px solid #000;
-  box-shadow: 5px 5px #404040;
-  display: none;
-  flex-direction: column;
-}
-.popup-works .popup-body {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  box-sizing: border-box;
-  overflow-y: auto;
+  flex-shrink: 0;
 }
 
+.popup-works .popup-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3x3 grid */
+  gap: 10px;
+  padding: 20px 0;       /* spacing top & bottom */
+  overflow-y: auto;    
+  box-sizing: border-box;
+  justify-items: center;
+}
+
+/* Individual work cards */
 .work-item {
-  max-width: 45%;
-  min-width: 140px;
-  background: #ffffff;
+  width: 100%;
+  max-width: 160px; /* controls card size */
   border: 2px solid #444;
-  padding: 2px;
+  padding: 4px;
   text-align: center;
+  box-shadow: 2px 2px #000;
   cursor: pointer;
   box-sizing: border-box;
 }
+
 .work-item img {
   width: 100%;
+  display: block;
+  border: 1px solid #000;
 }
 
+/* Responsive: adjust grid for small screens */
+@media (max-width: 480px) {
+  .popup-works .popup-body {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    padding: 20px; /* consistent top/bottom spacing */
+  }
+
+  .work-item {
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 320px) {
+  .popup-works .popup-body {
+    grid-template-columns: 1fr; /* 1 column on very small phones */
+  }
+}
 /* Mini Popup */
 .popup-mini {
   width: 90%;   /* responsive width */

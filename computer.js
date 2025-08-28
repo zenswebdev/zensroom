@@ -12,26 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
     "assets/palette-2.png",
     "assets/bad_apple-2.png"
   ];
-  hoverImages.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
+  hoverImages.forEach(src => { new Image().src = src; });
 
   // --- Handle dev mode ---
   if (devEditMode) {
     keepPopupOpen(devPopupId);
-  } else {
-    // Normal behavior: show welcome popup if not closed
-    if (!localStorage.getItem("welcomePopupClosed")) {
-      togglePopup("welcomePopup");
-    }
+  } else if (!localStorage.getItem("welcomePopupClosed")) {
+    togglePopup("welcomePopup");
   }
 
   // --- Icon tapped state ---
-  const appIcons = document.querySelectorAll(".icon");
-  appIcons.forEach(icon => {
+  document.querySelectorAll(".icon").forEach(icon => {
     icon.addEventListener("click", () => {
-      appIcons.forEach(i => i !== icon && i.classList.remove("tapped"));
+      document.querySelectorAll(".icon").forEach(i => i !== icon && i.classList.remove("tapped"));
       icon.classList.toggle("tapped");
     });
   });
@@ -39,18 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Update analog clock ---
   function updateAnalogClock() {
     const now = new Date();
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
-    const hours = now.getHours();
-    document.getElementById("secondHand").style.transform = `rotate(${seconds * 6}deg)`;
-    document.getElementById("minuteHand").style.transform = `rotate(${minutes * 6 + seconds * 0.1}deg)`;
-    document.getElementById("hourHand").style.transform = `rotate(${hours * 30 + minutes * 0.5}deg)`;
+    document.getElementById("secondHand").style.transform = `rotate(${now.getSeconds() * 6}deg)`;
+    document.getElementById("minuteHand").style.transform = `rotate(${now.getMinutes() * 6 + now.getSeconds() * 0.1}deg)`;
+    document.getElementById("hourHand").style.transform = `rotate(${now.getHours() * 30 + now.getMinutes() * 0.5}deg)`;
   }
   setInterval(updateAnalogClock, 1000);
   updateAnalogClock();
 
   // --- Works Popup ---
   const popupBody = document.querySelector('#worksPopup .popup-body');
+
   fetch('works.json')
     .then(res => res.json())
     .then(data => {
@@ -69,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const miniPopup = document.createElement('div');
         miniPopup.id = `workPopup${index}`;
         miniPopup.className = 'popup popup-mini';
-        miniPopup.style.display = 'none'; // hide initially
+        miniPopup.style.display = 'none';
         miniPopup.innerHTML = `
           <div class="popup-header">
             <button class="back-btn" onclick="backToWorks('workPopup${index}')">&larr; Back</button>
@@ -83,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         document.body.appendChild(miniPopup);
 
-        // Card click opens mini popup
+        // Click opens mini popup
         card.addEventListener('click', () => {
           document.getElementById('worksPopup').style.display = 'none';
           miniPopup.style.display = 'block';
@@ -112,9 +103,7 @@ function togglePopup(id) {
   const isOpen = getComputedStyle(popup).display !== 'none';
   document.querySelectorAll('.popup').forEach(p => (p.style.display = 'none'));
 
-  if (!isOpen) {
-    popup.style.display = popup.classList.contains('popup-works') ? 'flex' : 'block';
-  }
+  if (!isOpen) popup.style.display = popup.classList.contains('popup-works') ? 'flex' : 'block';
 }
 
 function closePopup(id) {
