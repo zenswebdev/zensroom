@@ -249,10 +249,8 @@ body {
   flex-direction: column;
   box-shadow: 3px 3px #000;
   margin: 0 auto;
-  max-height: calc(100vh - 150px); /* leaves 20px top & bottom */
+  max-height: calc(100% - 150px); /* leaves 20px top & bottom */
 }
-
-/* Header always visible */
 .popup-works .popup-header {
   background: #000080;
   color: white;
