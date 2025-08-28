@@ -96,7 +96,7 @@ body {
   box-shadow: 2px 2px #020202;
   border-radius: 50%;
   position: relative;
-  background: #0a4a5c;  /* clock background */
+  background: #0a4a5c;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,8 +210,6 @@ body {
   align-items: center;
   margin-bottom: 0;
 }
-
-/* Wave gif */
 .popup-welcome .top-row img.wave {
   position: absolute;
   width: 400px;
@@ -247,10 +245,9 @@ body {
 .popup-works {
   width: 90%;
   max-width: 600px;
-  height: 80vh;             /* fixed height so body can scroll */
-  background: #1a1a1a;
-  border: 2px solid #444;
-  box-shadow: 3px 3px #000;
+  height: 80vh;           
+  border: 1px solid #000;
+  box-shadow: 5px 5px #404040;
   display: none;            /* hide by default */
   flex-direction: column;   /* keep this; it will apply when shown as flex */
 }
@@ -269,7 +266,6 @@ body {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
   box-sizing: border-box;
   overflow: auto;
@@ -282,13 +278,11 @@ body {
   border: 2px solid #444;
   padding: 8px;
   text-align: center;
-  box-shadow: 2px 2px #000;
   cursor: pointer;
   box-sizing: border-box;
 }
 .work-item img {
   width: 100%;
-  border: 1px solid #000;
 }
 
 /* Mini Popup */

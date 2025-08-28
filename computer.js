@@ -1,7 +1,7 @@
 // === Development Toggle ===
 // Set to true to force a specific popup open while editing
-const devEditMode = false;      
-const devPopupId = "welcomePopup"; // ID of the popup to keep open
+const devEditMode = true;      
+const devPopupId = "worksPopup"; // ID of the popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- Preload hover images ---
@@ -106,12 +106,11 @@ function closePopup(id) {
 document.addEventListener("DOMContentLoaded", () => {
   const popupBody = document.querySelector('#worksPopup .popup-body');
 
-  // Fetch works.json
   fetch('works.json')
     .then(res => res.json())
     .then(data => {
       data.forEach((work, index) => {
-        // Create main work card
+        // Main work card
         const card = document.createElement('div');
         card.className = 'work-item';
         card.innerHTML = `
@@ -121,10 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         popupBody.appendChild(card);
 
-        // Create mini popup
+        // Mini popup
         const miniPopup = document.createElement('div');
         miniPopup.id = `workPopup${index}`;
         miniPopup.className = 'popup popup-mini';
+        miniPopup.style.display = 'none'; // hide initially
         miniPopup.innerHTML = `
           <div class="popup-header">
             <button class="back-btn" onclick="backToWorks('workPopup${index}')">&larr; Back</button>
@@ -141,28 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Click on card opens mini popup
         card.addEventListener('click', () => {
           document.getElementById('worksPopup').style.display = 'none';
-          document.getElementById(`workPopup${index}`).style.display = 'block';
+          miniPopup.style.display = 'block';
         });
       });
     })
     .catch(err => console.error("Failed to load works.json:", err));
 });
 
-// Back button + close button function
-function backToWorks(miniPopupId) {
-  const miniPopup = document.getElementById(miniPopupId);
-  if (miniPopup) miniPopup.style.display = 'none';
-  const worksPopup = document.getElementById('worksPopup');
-  if (worksPopup) worksPopup.style.display = 'block';
-}
-
-// When a card is clicked: hide works, show mini
-card.addEventListener('click', () => {
-  document.getElementById('worksPopup').style.display = 'none';
-  document.getElementById(`workPopup${index}`).style.display = 'block';
-});
-
-// Back button: hide mini, show works (with flex)
+// Back button function
 function backToWorks(miniPopupId) {
   const miniPopup = document.getElementById(miniPopupId);
   if (miniPopup) miniPopup.style.display = 'none';
