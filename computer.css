@@ -77,16 +77,76 @@ body {
 .icon.paint    { background-image: url("assets/palette-1.png"); }
 .icon.apple    { background-image: url("assets/bad_apple-1.png"); }
 .icon.cat      { background-image: url("assets/cat-1.png"); }
+.icon.credits  { background-image: url("assets/credits-1.png");}
+
 /* Hover state (only applies on desktop / devices with a mouse) */
 @media (hover: hover) and (pointer: fine) {
   .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
-  .icon.games:hover { background-image: url("assets/steam-2.png"); }
+  .icon.games:hover    { background-image: url("assets/steam-2.png"); }
   .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
   .icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
   .icon.paint:hover    { background-image: url("assets/palette-2.png"); }
   .icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
+  .icon.credits:hover  { background-image: url("assets/credits-2.png");}
 }
-
+  /*Clock*/
+.icon.clock {
+  width: 70px;
+  height: 70px;
+  box-shadow: 2px 2px #020202;
+  border-radius: 50%;
+  position: relative;
+  background: #0a4a5c;  /* clock background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  left:10px;
+}
+.clock-face {
+  position: absolute; /* instead of relative */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: #e3e3e3; 
+  box-shadow: 2px 2px #020202;
+}
+.hand {
+  position: absolute;
+  bottom: 50%;   /* pivot from center */
+  left: 50%;
+  transform-origin: bottom center;
+  transform: rotate(90deg);
+}
+.mark {
+  position: absolute;
+  width: 2px;
+  height: 7px;
+  background: #0a4a5c;
+  top: 40%;
+  left: 48%;
+  transform: rotate(calc(var(--i) * 30deg)) translateY(-25px);
+  transform-origin: center bottom;
+  image-rendering: pixelated;
+}
+.hand.hour {
+  width: 3px;
+  height: 20%;
+  background: #020202;
+}
+.hand.minute {
+  width: 2px;
+  height: 30%;
+  background: #222;
+}
+.hand.second {
+  width: 2px;
+  height: 35%;
+  background: rgb(165, 31, 31);
+}
 
 /* === Base popup === */
 .popup {
@@ -100,7 +160,7 @@ body {
   display: none;
   max-width: calc(100% - 40px);
   max-height: calc(100vh - 4px);
-  overflow-y: auto;
+  overflow-y: hidden;
   box-sizing: border-box;
 }
 .popup-header {
@@ -131,11 +191,12 @@ body {
 
 /* === welcome popup === */
 .popup-welcome {
-  width: 400px;
+  width: 500px;
   max-width: 90%;
   overflow: hidden;
   margin: 20px auto; 
 }
+
 .popup-welcome .popup-body {
   background-color: rgb(71, 55, 110);
   display: flex;
@@ -144,11 +205,20 @@ body {
   padding: 20px;
 }
 
-.popup-welcome .popup-body img {
-  width: 180px;
-  height: 180px;
-  display: block;
-  margin: 0;   
+.popup-welcome .top-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  z-index: 1;
+}
+
+/* Wave gif */
+.popup-welcome .top-row img.wave {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  z-index: 3;
 }
 .email {
   font-size: 12px;
@@ -158,6 +228,7 @@ body {
   width: 100%;
   text-align: right;   
 }
+
 .popup-welcome .popup-body .divider {
   border: none;
   height: 4px;
@@ -172,6 +243,88 @@ body {
   text-align: center;
   width: 100%;         
   margin: 10px auto 10px;   
+}
+
+/* Works Popup */
+.popup-works {
+  width: 90%;
+  max-width: 600px;
+  height: 80vh;             /* fixed height so body can scroll */
+  background: #1a1a1a;
+  border: 2px solid #444;
+  box-shadow: 3px 3px #000;
+  display: none;            /* hide by default */
+  flex-direction: column;   /* keep this; it will apply when shown as flex */
+}
+.popup-works .popup-header {
+  background: #000080;
+  color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  flex-shrink: 0;     
+}
+
+.popup-works .popup-body {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.work-item {
+  flex: 1 1 45%;
+  max-width: 45%;
+  min-width: 140px;
+  background: #1a1a1a;
+  border: 2px solid #444;
+  padding: 8px;
+  text-align: center;
+  box-shadow: 2px 2px #000;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.work-item img {
+  width: 100%;
+  border: 1px solid #000;
+}
+
+/* Mini Popup */
+.popup-mini {
+  width: 90%;   /* responsive width */
+  max-width: 400px; /* limit on large screens */
+}
+
+.popup-mini .popup-header {
+  background: #000080;
+  color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.popup-mini .popup-header .back-btn {
+  background: #444;
+  border: 1px solid #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.popup-mini .popup-body {
+  padding: 10px;
+}
+
+.popup-mini .popup-body img {
+  width: 100%;
+  image-rendering: pixelated;
+  margin-bottom: 8px;
 }
 
 /* === Contact popup === */
