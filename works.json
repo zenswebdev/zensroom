@@ -1,8 +1,8 @@
 [
   {
-    "title": "Testies",
-    "description": "A small pixel character I made for fun.",
-    "image": "assets/images/cap_hat.jpg"
+    "title": "Bro",
+    "description": "",
+    "image": "assets/images/bro.jpg"
   },
   {
     "title": "Retro Website Mockup",
@@ -12,22 +12,52 @@
   {
     "title": "Retro Website Mockup",
     "description": "A retro website concept with pixel art.",
-    "image": "assets/images/cap_hat.jpg"
+    "image": "assets/images/cat.jpg"
   },
   {
     "title": "Retro Website Mockup",
     "description": "A retro website concept with pixel art.",
-    "image": "assets/images/cap_hat.jpg"
+    "image": "assets/images/garbage.png"
+  },
+  {
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  {
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  {
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  {
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  {
+    "title": "",
+    "description": "",
+    "image": ""
   },
   {
     "title": "Retro Website Mockup",
     "description": "A retro website concept with pixel art.",
-    "image": "assets/images/cap_hat.jpg"
+    "image": "assets/images/garbage.png"
   },
   {
-    "title": "Retro Website Mockup",
-    "description": "A retro website concept with pixel art.",
-    "image": "assets/images/cap_hat.jpg"
+    "title": "",
+    "description": "",
+    "image": ""
+  },    
+  {
+    "title": "",
+    "description": "",
+    "image": ""
   }
 ]
 

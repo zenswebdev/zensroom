@@ -249,12 +249,12 @@ body {
   flex-direction: column;
   box-shadow: 3px 3px #000;
   margin: 0 auto;
-  max-height: calc(100% - 150px); /* leaves 20px top & bottom */
+  max-height: calc(100% - 140px); /* leaves 20px top & bottom */
 }
 .popup-works .popup-header {
   background: #000080;
   color: white;
-  padding: 10px;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -267,7 +267,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3x3 grid */
   gap: 10px;
-  padding: 20px 0;       /* spacing top & bottom */
+  padding: 20px 0;      
   overflow-y: auto;    
   box-sizing: border-box;
   justify-items: center;
@@ -276,7 +276,7 @@ body {
 /* Individual work cards */
 .work-item {
   width: 100%;
-  max-width: 160px; /* controls card size */
+  max-width: 200px; /* controls card size */
   border: 2px solid #444;
   padding: 4px;
   text-align: center;
@@ -285,61 +285,49 @@ body {
   box-sizing: border-box;
 }
 
+/* Works popup gallery */
+#worksPopup .popup-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 9px;
+  overflow-y: auto;
+  background-image: url(assets/sky2.gif);
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  background-color:#93a8c4;
+}
+
+/* Force square thumbnail */
 .work-item img {
   width: 100%;
-  display: block;
-  border: 1px solid #000;
+  aspect-ratio: 1 / 1;   /* Always a square */
+  object-fit: cover;     /* Crop without stretching */
+  border-radius: 6px;
 }
 
-/* Responsive: adjust grid for small screens */
-@media (max-width: 480px) {
-  .popup-works .popup-body {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-    padding: 20px; /* consistent top/bottom spacing */
-  }
-
-  .work-item {
-    max-width: 140px;
-  }
+/* Title & description (optional small text) */
+.work-item h3 {
+  margin: 6px 0 2px;
+  font-size: 18px;
 }
 
-@media (max-width: 320px) {
-  .popup-works .popup-body {
-    grid-template-columns: 1fr; /* 1 column on very small phones */
-  }
-}
-/* Mini Popup */
-.popup-mini {
-  width: 90%;   /* responsive width */
-  max-width: 400px; /* limit on large screens */
+.work-item p {
+  font-size: 20px;
+  color: #555;
 }
 
-.popup-mini .popup-header {
-  background: #000080;
-  color: white;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-}
-
-.popup-mini .popup-header .back-btn {
-  background: #444;
-  border: 1px solid #000;
-  color: #fff;
-  cursor: pointer;
-  padding: 2px 6px;
-}
-
-.popup-mini .popup-body {
-  padding: 10px;
-}
-
+/* Mini popup image: show full */
 .popup-mini .popup-body img {
   width: 100%;
-  image-rendering: pixelated;
-  margin-bottom: 8px;
+  height: auto;
+  object-fit: contain; /* Preserve natural ratio */
 }
 
 /* === Contact popup === */
