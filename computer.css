@@ -209,16 +209,14 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 0;
-  z-index: 1;
 }
 
 /* Wave gif */
 .popup-welcome .top-row img.wave {
   position: absolute;
   width: 400px;
-  height: 400px;
+  height: 200px;
   object-fit: contain;
-  z-index: 3;
 }
 .email {
   font-size: 12px;
