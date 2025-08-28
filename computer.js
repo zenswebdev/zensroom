@@ -1,7 +1,6 @@
 // === Development Toggle ===
-// Set to true to force a specific popup open while editing
-const devEditMode = true;      
-const devPopupId = "worksPopup"; // ID of the popup to keep open
+const devEditMode = true;
+const devPopupId = "worksPopup"; // ID of popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- Preload hover images ---
@@ -18,94 +17,40 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = src;
   });
 
-  // --- Development Mode ---
+  // --- Handle dev mode ---
   if (devEditMode) {
     keepPopupOpen(devPopupId);
-    return; // Skip normal behavior
+  } else {
+    // Normal behavior: show welcome popup if not closed
+    if (!localStorage.getItem("welcomePopupClosed")) {
+      togglePopup("welcomePopup");
+    }
   }
 
-  // --- Normal Behavior ---
-  if (!localStorage.getItem("welcomePopupClosed")) {
-    togglePopup("welcomePopup");
-  }
-
-  // Handle icon "tapped" state
+  // --- Icon tapped state ---
   const appIcons = document.querySelectorAll(".icon");
   appIcons.forEach(icon => {
     icon.addEventListener("click", () => {
-      appIcons.forEach(i => {
-        if (i !== icon) i.classList.remove("tapped");
-      });
+      appIcons.forEach(i => i !== icon && i.classList.remove("tapped"));
       icon.classList.toggle("tapped");
     });
   });
-});
 
-function updateAnalogClock() {
-  const now = new Date();
-
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours();
-
-  const secondDeg = seconds * 6;              // 360/60
-  const minuteDeg = minutes * 6 + seconds * 0.1;
-  const hourDeg = hours * 30 + minutes * 0.5; // 360/12
-
-  document.getElementById("secondHand").style.transform = `rotate(${secondDeg}deg)`;
-  document.getElementById("minuteHand").style.transform = `rotate(${minuteDeg}deg)`;
-  document.getElementById("hourHand").style.transform = `rotate(${hourDeg}deg)`;
-}
-
-// Update every second
-setInterval(updateAnalogClock, 1000);
-updateAnalogClock(); 
-
-/* ---------------------------
-   Popup Utility Functions
-----------------------------*/
-function keepPopupOpen(id) {
-  const popup = document.getElementById(id);
-  if (!popup) return;
-  // Works popup needs flex; others can be block
-  popup.style.display = popup.classList.contains('popup-works') ? 'flex' : 'block';
-}
-
-function togglePopup(id) {
-  if (devEditMode && id === devPopupId) {
-    keepPopupOpen(id);
-    return;
+  // --- Update analog clock ---
+  function updateAnalogClock() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+    document.getElementById("secondHand").style.transform = `rotate(${seconds * 6}deg)`;
+    document.getElementById("minuteHand").style.transform = `rotate(${minutes * 6 + seconds * 0.1}deg)`;
+    document.getElementById("hourHand").style.transform = `rotate(${hours * 30 + minutes * 0.5}deg)`;
   }
+  setInterval(updateAnalogClock, 1000);
+  updateAnalogClock();
 
-  const popup = document.getElementById(id);
-  if (!popup) return;
-
-  // Use computed style because some popups open with 'flex', not 'block'
-  const isOpen = getComputedStyle(popup).display !== 'none';
-
-  // Close all popups
-  document.querySelectorAll('.popup').forEach(p => (p.style.display = 'none'));
-
-  // Open this one if it wasn't open
-  if (!isOpen) {
-    popup.style.display = popup.classList.contains('popup-works') ? 'flex' : 'block';
-  }
-}
-
-function closePopup(id) {
-  const popup = document.getElementById(id);
-  if (!popup) return;
-  popup.style.display = 'none';
-
-  if (id === 'welcomePopup') {
-    localStorage.setItem('welcomePopupClosed', 'true');
-  }
-}
-
-// Works
-document.addEventListener("DOMContentLoaded", () => {
+  // --- Works Popup ---
   const popupBody = document.querySelector('#worksPopup .popup-body');
-
   fetch('works.json')
     .then(res => res.json())
     .then(data => {
@@ -138,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         document.body.appendChild(miniPopup);
 
-        // Click on card opens mini popup
+        // Card click opens mini popup
         card.addEventListener('click', () => {
           document.getElementById('worksPopup').style.display = 'none';
           miniPopup.style.display = 'block';
@@ -148,7 +93,37 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Failed to load works.json:", err));
 });
 
-// Back button function
+// --- Popup utility functions ---
+function keepPopupOpen(id) {
+  const popup = document.getElementById(id);
+  if (!popup) return;
+  popup.style.display = popup.classList.contains('popup-works') ? 'flex' : 'block';
+}
+
+function togglePopup(id) {
+  if (devEditMode && id === devPopupId) {
+    keepPopupOpen(id);
+    return;
+  }
+
+  const popup = document.getElementById(id);
+  if (!popup) return;
+
+  const isOpen = getComputedStyle(popup).display !== 'none';
+  document.querySelectorAll('.popup').forEach(p => (p.style.display = 'none'));
+
+  if (!isOpen) {
+    popup.style.display = popup.classList.contains('popup-works') ? 'flex' : 'block';
+  }
+}
+
+function closePopup(id) {
+  const popup = document.getElementById(id);
+  if (!popup) return;
+  popup.style.display = 'none';
+  if (id === 'welcomePopup') localStorage.setItem('welcomePopupClosed', 'true');
+}
+
 function backToWorks(miniPopupId) {
   const miniPopup = document.getElementById(miniPopupId);
   if (miniPopup) miniPopup.style.display = 'none';
