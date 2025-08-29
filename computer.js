@@ -1,16 +1,18 @@
 // === Development Toggle ===
-const devEditMode = false;
-const devPopupId = "worksPopup"; // ID of popup to keep open
+const devEditMode = true;
+const devPopupId = "profilePopup"; // ID of popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- Preload hover images ---
   const hoverImages = [
     "assets/cd_audio_cd_a-3.png",
-    "assets/joystick-4.png",
+    "assets/steam-2",
     "assets/recycle_bin_empty-5.png",
-    "assets/notepad-2.png",
+    "assets/notepad-5.png",
     "assets/palette-2.png",
-    "assets/bad_apple-2.png"
+    "assets/bad_apple-2.png",
+    "assets/cat-1.png",
+    "assets/credit-2.png"
   ];
   hoverImages.forEach(src => { new Image().src = src; });
 
@@ -30,66 +32,146 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Update analog clock ---
- function updateClock() {
-  const now = new Date();
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours();
+  function updateClock() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
 
-  const secondDeg = seconds * 6;              // 360 / 60
-  const minuteDeg = minutes * 6 + seconds * 0.1;
-  const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
+    const secondDeg = seconds * 6;              // 360 / 60
+    const minuteDeg = minutes * 6 + seconds * 0.1;
+    const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
 
-  document.querySelector(".hand.second").style.transform = `rotate(${secondDeg}deg)`;
-  document.querySelector(".hand.minute").style.transform = `rotate(${minuteDeg}deg)`;
-  document.querySelector(".hand.hour").style.transform   = `rotate(${hourDeg}deg)`;
-}
+    document.querySelector(".hand.second").style.transform = `rotate(${secondDeg}deg)`;
+    document.querySelector(".hand.minute").style.transform = `rotate(${minuteDeg}deg)`;
+    document.querySelector(".hand.hour").style.transform   = `rotate(${hourDeg}deg)`;
+  }
 
-setInterval(updateClock, 1000);
-updateClock();
+  setInterval(updateClock, 1000);
+  updateClock();
 
 // --- Works Popup ---
-  const popupBody = document.querySelector('#worksPopup .popup-body');
+const popupBody = document.querySelector('#worksPopup .popup-body');
+
+// Create a separate container for Animation videos
+const animationContainer = document.createElement('div');
+animationContainer.className = 'popup-animation';
+popupBody.parentNode.appendChild(animationContainer);
 
 fetch('works.json')
   .then(res => res.json())
   .then(data => {
-    data.forEach((work, index) => {
-      // Main work card (image only)
-      const card = document.createElement('div');
-      card.className = 'work-item';
-      card.innerHTML = `
-        <img src="${work.image}" alt="${work.title}">
-      `;
-      popupBody.appendChild(card);
- // Mini popup (with title + details)
-      const miniPopup = document.createElement('div');
-      miniPopup.id = `workPopup${index}`;
-      miniPopup.className = 'popup popup-mini';
-      miniPopup.style.display = 'none';
-      miniPopup.innerHTML = `
-        <div class="popup-header">
-          <button class="back-btn" onclick="backToWorks('workPopup${index}')">&larr; Back</button>
-          ${work.title}
-          <button class="close-btn" onclick="backToWorks('workPopup${index}')">X</button>
-        </div>
-        <div class="popup-body">
-          <img src="${work.image}" alt="${work.title}">
-          <p>${work.description}</p>
-        </div>
-      `;
-      document.body.appendChild(miniPopup);
+    Object.keys(data).forEach(category => {
+      // Divider
+      const divider = document.createElement('div');
+      divider.className = 'works-divider';
+      divider.textContent = category;
 
-      // Click opens mini popup
-      card.addEventListener('click', () => {
-        // hide main works popup
-        document.getElementById('worksPopup').style.display = 'none';
+      // Determine which container to use
+      const container = category === "Animation" ? animationContainer : popupBody;
+      container.appendChild(divider);
 
-        // close all other mini popups
-        document.querySelectorAll('.popup-mini').forEach(p => p.style.display = 'none');
+      // Work cards
+      data[category].forEach(work => {
+        const card = document.createElement('div');
+        card.className = 'work-item';
 
-        // show the one we clicked
-        miniPopup.style.display = 'block';
+        // --- Image works ---
+        if (work.image) {
+          const img = document.createElement('img');
+          img.src = work.image;
+          img.alt = work.title || "Untitled";
+          card.appendChild(img);
+
+          card.addEventListener('click', () => {
+            const worksPopup = document.getElementById('worksPopup');
+
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+
+            const bigImg = document.createElement('img');
+            bigImg.src = work.image;
+            bigImg.alt = work.title || "Untitled";
+            lightbox.appendChild(bigImg);
+
+            if (work.title || work.description) {
+              const caption = document.createElement('div');
+              caption.className = 'lightbox-caption';
+              if (work.title) {
+                const titleEl = document.createElement('h3');
+                titleEl.textContent = work.title;
+                caption.appendChild(titleEl);
+              }
+              if (work.description) {
+                const descEl = document.createElement('p');
+                descEl.textContent = work.description;
+                caption.appendChild(descEl);
+              }
+              lightbox.appendChild(caption);
+            }
+
+            document.body.appendChild(lightbox);
+            worksPopup.style.display = 'none';
+
+            // For IMAGES: close on *any* click
+            lightbox.addEventListener('click', () => {
+              lightbox.remove();
+              worksPopup.style.display = 'flex';
+            });
+          });
+
+        // --- Video works ---
+        } else if (work.video) {
+          const thumb = document.createElement('img');
+          thumb.src = work.thumbnail; // video thumbnail from works.json
+          thumb.alt = work.title || "Untitled";
+          card.appendChild(thumb);
+
+          card.addEventListener('click', () => {
+            const worksPopup = document.getElementById('worksPopup');
+
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+
+            const video = document.createElement('video');
+            video.src = work.video;
+            video.controls = true;
+            video.autoplay = true;
+            video.style.maxWidth = '95vw';
+            video.style.maxHeight = '95vh';
+            video.style.borderRadius = '6px';
+            lightbox.appendChild(video);
+
+            if (work.title || work.description) {
+              const caption = document.createElement('div');
+              caption.className = 'lightbox-caption';
+              if (work.title) {
+                const titleEl = document.createElement('h3');
+                titleEl.textContent = work.title;
+                caption.appendChild(titleEl);
+              }
+              if (work.description) {
+                const descEl = document.createElement('p');
+                descEl.textContent = work.description;
+                caption.appendChild(descEl);
+              }
+              lightbox.appendChild(caption);
+            }
+
+            document.body.appendChild(lightbox);
+            worksPopup.style.display = 'none';
+
+            // For VIDEOS: only close if clicking *outside* video
+            lightbox.addEventListener('click', e => {
+              if (e.target === lightbox) {
+                lightbox.remove();
+                worksPopup.style.display = 'flex';
+              }
+            });
+          });
+        }
+
+        container.appendChild(card);
       });
     });
   })
@@ -123,11 +205,4 @@ function closePopup(id) {
   if (!popup) return;
   popup.style.display = 'none';
   if (id === 'welcomePopup') localStorage.setItem('welcomePopupClosed', 'true');
-}
-
-function backToWorks(miniPopupId) {
-  const miniPopup = document.getElementById(miniPopupId);
-  if (miniPopup) miniPopup.style.display = 'none';
-  const worksPopup = document.getElementById('worksPopup');
-  if (worksPopup) worksPopup.style.display = 'flex';
 }

@@ -13,12 +13,8 @@
       <div class="icon recycle"  aria-label="trashbin"></div></a>
       <div class="icon music"    aria-label="music"    onclick="togglePopup('musicPopup')"></div>
       <div class="icon games"    aria-label="games"    onclick="togglePopup('gamesPopup')"></div>
-      <a href="YouvebeenBadApple">
-      <div class="icon apple"    aria-label="apple"></div></a>
-      <div class="icon notepad"  aria-label="notepad"  onclick="togglePopup('notepadPopup')"></div>
-      <div class="icon paint"    aria-label="paint"    onclick="togglePopup('paintPopup')"></div>
-      <div class="icon cat"      aria-label="cat"      onclick="togglePopup('catPopup')"></div>
-      <div class="icon credits" aria-label="credits" onclick="togglePopup('creditsPopup')"></div>
+    <!--<a href="YouvebeenBadApple">
+     <div class="icon apple"    aria-label="apple"></div></a>-->
       <div class="icon clock"    aria-label="clock">
         <div class="clock">
           <img src="assets/clock_body-1.png" alt="clock" class="clock-face" >
@@ -27,10 +23,15 @@
           <div class="hand second" id="secondHand"></div>
         </div>
       </div>
+      <div class="icon writings"  aria-label="writings"  onclick="togglePopup('writingsPopup')"></div>
+      <div class="icon paint"    aria-label="paint"    onclick="togglePopup('paintPopup')"></div>
+      <div class="icon cat"      aria-label="cat"      onclick="togglePopup('catPopup')"></div>
+      <div class="icon credits" aria-label="credits" onclick="togglePopup('creditsPopup')"></div>
+      <div class="icon films" aria-label="credits" onclick="togglePopup('filmsPopup')"></div>
 
     </div>
-    
-      <!-- Music Popup -->
+
+    <!-- Music Popup -->
     <div id="musicPopup" class="popup popup-credit">
       <div class="popup-header">
         Music
@@ -40,18 +41,38 @@
         <img src="assets/sad-fade.gif">
       </div>
     </div>
-
-    <!-- Notepad Popup -->
-    <div id="notepadPopup" class="popup popup-profile">
+    <!-- Games Popup -->
+    <div id="gamesPopup" class="popup popup-games">
       <div class="popup-header">
-        Notepad
-        <button onclick="closePopup('notepadPopup')">X</button>
+        Games
+        <button onclick="closePopup('gamesPopup')">X</button>
       </div>
-      <div class="popup-body">
-        <p>LOL :( </p>
+      <div class="popup-body"> 
+        <img src="assets/sad-fade.gif">
+         <h1>In Progress</h1>
       </div>
     </div>
-    
+   <!-- Writings Popup -->
+    <div id="writingsPopup" class="popup popup-writings">
+      <div class="popup-header">
+        Writings
+        <button onclick="closePopup('writingsPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>In Progress</h1>
+      </div>
+    </div>
+    <!-- Paint Popup -->
+    <div id="paintPopup" class="popup popup-paint">
+      <div class="popup-header">
+        Paint
+        <button onclick="closePopup('paintPopup')">X</button>
+      </div>
+      <div class="popup-body"> 
+        <img src="assets/sad-fade.gif">
+        <h1>In Progress</h1>
+      </div>
+    </div>
     <!-- Credits Popup -->
     <div id="creditsPopup" class="popup popup-profile">
       <div class="popup-header">
@@ -59,18 +80,28 @@
         <button onclick="closePopup('creditsPopup')">X</button>
       </div>
       <div class="popup-body">
-        <h1>Credits</h1>
+        <h1>All The <span style="text-decoration: line-through;">Lonely</span> Lovely People</h1>
         <h3>Made possible by the seer will of an idiot</h3>
         <h3>with help from amazing people</h3>
       </div>
     </div>
-    
-    <!--popups-->
+    <!-- Films Popup -->
+    <div id="filmsPopup" class="popup popup-films">
+      <div class="popup-header">
+         Films
+        <button onclick="closePopup('filmsPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <h1>In Progress</h1>
+      </div>
+    </div>
+
+<!--Welcome Popup-->
     <div id="welcomePopup" class="popup popup-welcome">
       <div class="popup-header">
         <span>Welcome</span>
-        <button onclick="closePopup('welcomePopup')">X</button>
-      </div>
+        <button onclick="closePopup('welcomePopup')">X</button></div>
+
       <div class="popup-body">
           <div class="top-row">
             <img src="assets/sonnyboy_profile.gif" alt="Avatar" class="avatar">
@@ -79,28 +110,70 @@
           <div class="divider"><p class="email">zenworklee@gmail.com</p></div>
           <h1>LEE ZEN</h1>
           <div class="divider"></div>
-          <h2>ANIMATOR | ARTIST | FRIENDO</h2>
+          <h2>IllUSTRATOR | ANIMATOR | FRIEND</h2>
      </div>
     </div>
 
-    <div id="profilePopup" class="popup popup-profile">
-      <div class="popup-header">
-        <span>Profile</span>
-        <button onclick="closePopup('profilePopup')">X</button>
-      </div>
-      <div class="popup-body">
-        <h1>I HAVE NOTTING</h1>
-        <img src="assets/sad-fade.gif">
+<!-- Profile Popup -->
+<div id="profilePopup" class="popup popup-profile">
+  <div class="popup-header">
+    <span>Profile</span>
+    <button onclick="closePopup('profilePopup')">X</button></div>
+  <div class="profile-scrollable">
+  <div class="popup-body">
+    <div class="profile-intro">
+      <img src="assets/profile_kid-1.png" alt="Profile Picture" class="profile-pic">
+      <div class="profile-info">
+        <h1>Hi, I'm Zen, and I do arts and stuff.</h1>
+          <h2>Animate, Illustrate and Flatulate. You name it!</h2>
       </div>
     </div>
-      <!--Works-->
+    <div class="profile-about">
+    <h1>About</h1>
+    <h3>I love daydreaming, which made me to draw my ideas out. That made me love to draw which led me to create. Then I realized, as an output, I love to create. Till this very day :) </h3>
+    </div>
+    <div class="education">
+      <h1>Education</h1>
+      <div class="education-progress">
+        <div class="qualifcation unlocked">
+          <h3>O-Levels (Completed)</h3></div>
+          <div class="qualifcation current">
+          <h3>Diploma In Digital Animation</h3>
+          <span>(Singapore Polytechnic 2023)</span></div>
+          <div class="qualifcation locked">
+          <h3>Bachelor's (Locked)</h3></div>
+      </div>
+    </div>
+      <div class="profile-interests">
+        <h1>Interests</h1>
+        <ul>
+          <li>Films and stuff</li>
+          <li>I love Music, check my playlist out</li>
+          <li>Gamers, knowwhatimsayin?</li>
+          <li>Cats! Give belly rubs to my cat Biscuit</li>
+        </ul>
+      </div>
+      <div class="profile-outlook">
+          <div class="title-row">
+          <h1>Output</h1>
+          <h2>310825</h2> </div>
+        <h3>
+          Currently imbuing myself into this website, with the help of online tool and friends assistance. 
+        </h3>
+        <h3>Tryout screenwriting as well, writing out an idea I had.</h3></div>
+        <div class="profile-about"><h1>Underwear</h1><spa class="emoji">🩲</span></div>
+  </div>
+ </div>
+</div>
+
+<!--Works-->
       <div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
       <div id="worksPopup" class="popup popup-works">
         <div class="popup-header">
           Works
           <button onclick="closePopup('worksPopup')">X</button>
         </div>
-        <div class="scrollable">
+        <div class="work-scrollable">
            <!-- Intro Section -->
           <div class="works-intro">
             <h2>My Works</h2>
@@ -112,7 +185,8 @@
           </div>
        </div>
       </div>
-    
+
+<!--Contact-->
     <div id="contactPopup" class="popup popup-contact">
       <div class="popup-header">
         <span>Contact</span>
@@ -140,7 +214,7 @@
     </div>
 
 
-   <!--taskbar-->
+<!--taskbar-->
    <div class="taskbar">
       <button onclick="togglePopup('welcomePopup')" class="btn">
         <img src="assets/hi-2.png" alt="Info" class="normal">

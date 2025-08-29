@@ -73,21 +73,23 @@ body {
 .icon.music    { background-image: url("assets/cd_audio_cd_a-4.png"); }
 .icon.games    { background-image: url("assets/steam-1.png"); }
 .icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
-.icon.notepad  { background-image: url("assets/notepad-5.png"); }
+.icon.writings  { background-image: url("assets/typewriter-2.png"); }
 .icon.paint    { background-image: url("assets/palette-1.png"); }
 .icon.apple    { background-image: url("assets/bad_apple-1.png"); }
 .icon.cat      { background-image: url("assets/cat-1.png"); }
 .icon.credits  { background-image: url("assets/credits-1.png");}
+.icon.films     { background-image: url("assets/film-1.png");}
 
 /* Hover state (only applies on desktop / devices with a mouse) */
 @media (hover: hover) and (pointer: fine) {
   .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
   .icon.games:hover    { background-image: url("assets/steam-2.png"); }
   .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
-  .icon.notepad:hover  { background-image: url("assets/notepad-2.png"); }
+  .icon.writings:hover  { background-image: url("assets/typewriter-1.png"); }
   .icon.paint:hover    { background-image: url("assets/palette-2.png"); }
   .icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
   .icon.credits:hover  { background-image: url("assets/credits-2.png");}
+  .icon.films:hover     { background-image: url("assets/film-2.png");}
 }
   /*Clock*/
 .clock {
@@ -96,13 +98,11 @@ body {
   height: 80px;
   image-rendering: pixelated;
 }
-
 .clock-face {
   width: 100%;
   height: 100%;
   display: block;
 }
-
 .hand {
   position: absolute;
   bottom: 50%;  /* pivot point at center */
@@ -110,25 +110,21 @@ body {
   transform-origin: bottom center;
   transform: rotate(90deg);
 }
-
 .hand.hour {
   width: 3px;
   height: 13px;
   background: black;
 }
-
 .hand.minute {
   width: 2px;
   height: 20px;
   background: black;
 }
-
 .hand.second {
   width: 2px;
   height: 20px;
   background: red;
 }
-
 /* === Base popup === */
 .popup {
   position: fixed;
@@ -170,6 +166,175 @@ body {
   margin: 5px auto 30px; 
 }
 
+/* Profile */
+.popup-profile {
+  width: 100%;         
+  max-width: 520px;        
+  max-height: 100vh;      
+  box-sizing: border-box;   
+}
+.profile-scrollable {
+  overflow-y: auto;       
+  overflow-x: hidden;    
+  flex: 1;    
+  max-height: calc(80vh - 40px);
+}
+.profile-intro {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  margin: 5px;
+}
+.profile-pic {
+  width: 180px;
+  height: 170px;
+  object-fit: cover;
+  border: 2px solid #000;
+  box-shadow: 2px 2px #404040;
+  border-radius: 50%;
+  flex-shrink: 0; /* prevents shrinking when flex wraps */
+}
+.profile-info h2 {
+  margin: auto;
+  font-size: 20px;
+}
+@media (max-width: 450px) {
+  .profile-intro {
+    flex-direction: column;   /* stack vertically */
+    align-items: center;      /* center align image + text */
+    text-align: center;       /* center text */
+  }
+  .profile-info {
+    margin-top: -10px;      
+  }
+}
+.profile-about {
+  margin-top: 20px;
+  padding: 10px 5px;
+  border-top: 2px solid #000;  
+}
+.profile-about h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.profile-about p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.education h1 {
+  margin-bottom: 10px; 
+  font-size: 25px;
+}
+.education-progress {
+  position: relative;
+  padding-left: 20px;       /* space for the gradient bar */
+}
+.education-progress::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;               /* thickness of the bar */
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,        /* fade top */
+    rgba(0, 0, 0, 0.842) 50%,       /* solid start */
+    rgba(0,0,0,0) 100%       /* fade bottom */
+  );
+}
+.qualifcation {
+  position: relative;
+  text-align: left;
+  margin: 10px 0;
+}
+.qualifcation h3 {
+  margin: 0;
+}
+.qualifcation span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.9em;
+  font-weight: 550;
+}
+.unlocked h3,
+.unlocked span,
+.locked h3,
+.locked span {
+  opacity: 0.3;
+  font-size: 15px;
+}
+.current h3{
+  font-size: 21px;
+}
+.current span {
+  font-size: 16px;
+}
+.profile-interests {
+  margin-top: 20px;
+  padding: 10px 5px;
+  border-top: 2px solid #000;  /* matches profile-about style */
+}
+.profile-interests h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.profile-interests ul {
+  list-style: none;              /* remove default bullets */
+  padding-left: 20px;            /* spacing for pseudo bullets */
+}
+.profile-interests li {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  padding-left: 20px;        
+  font-weight: 600;  
+}
+.profile-interests li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 3px dotted #000; 
+}
+.profile-outlook {
+  margin-top: 20px;
+  padding: 10px 5px;
+  border-top: 2px solid #000; 
+}
+.profile-outlook h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.profile-outlook ul {
+  list-style: none;           
+  padding-left: 20px;         
+}
+.title-row {
+  display: flex;              /* puts children in one row */
+  align-items: baseline;      /* align text neatly by baseline */
+  gap: 10px;                  /* space between h1 and h2 */
+}
+.title-row h1 {
+  font-size: 24px;
+  margin: 0;
+}
+.title-row h2 {
+  margin: 0;
+  opacity: 0.3;
+  font-size: 15px;     
+}
+.emoji{
+  font-size: 3em;   /* increase size relative to text */
+  margin-left: 25px;  /* spacing */
+}
 /* === welcome popup === */
 .popup-welcome {
   width: 500px;
@@ -177,7 +342,6 @@ body {
   overflow: hidden;
   margin: 20px auto; 
 }
-
 .popup-welcome .popup-body {
   background-color: rgb(71, 55, 110);
   display: flex;
@@ -185,7 +349,6 @@ body {
   align-items: flex-start;
   padding: 20px;
 }
-
 .popup-welcome .top-row {
   display: flex;
   align-items: center;
@@ -205,7 +368,6 @@ body {
   width: 100%;
   text-align: right;   
 }
-
 .popup-welcome .popup-body .divider {
   border: none;
   height: 4px;
@@ -213,7 +375,6 @@ body {
   width: 100%;
   margin: 0 0 15px 0; 
 }
-
 .popup-welcome h1,
 .popup-welcome h2 {
   color: #ffffff;
@@ -221,123 +382,178 @@ body {
   width: 100%;         
   margin: 10px auto 10px;   
 }
-
-/* Works Popup */
-.popup-works .popup-header {
-  background: #000080;
-  color: white;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  flex-shrink: 0;
-}
-.scrollable{
-  overflow-y: auto;
-}
+/* ===============================
+   Works Popup Base
+   =============================== */
 .popup-works {
   width: 90%;
   max-width: 600px;
   display: none;
   flex-direction: column;
-  box-shadow: 3px 3px #000;
   margin: 0 auto;
   max-height: calc(100% - 140px);
-  background-image: url(assets/sky2.gif);
+  box-shadow: 3px 3px #000;
+  background-image: url(assets/space3.gif);
+}
+.work-scrollable {
+  overflow-y: auto;
 }
 
 .works-intro {
- text-align: center;
+  text-align: center;
+  color: white;
 }
-.intro-img{
+
+.intro-img {
   width: 80%;
   height: 50px;
   object-fit: contain;
-
 }
 
-.popup-works .popup-body {
-  flex: 1;
+/* ===============================
+   Work Cards (Images)
+   =============================== */
+#worksPopup .popup-body {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3x3 grid */
-  gap: 10px;
-  padding: 20px 0;      
-  overflow-y: auto;    
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 9px;
   box-sizing: border-box;
   justify-items: center;
 }
-
-/* Individual work cards */
-.work-item {
-  width: 100%;
-  max-height: 300px;
-  max-width: 200px; /* controls card size */
-  border: 2px solid #444;
-  padding: 4px;
-  text-align: center;
-  box-shadow: 2px 2px #000;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-/* Works popup gallery */
-#worksPopup .popup-body {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 20px;
-  padding: 9px;
-}
-
 .work-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  cursor: pointer;
-  background-color:#93a8c4;
-}
-
-/* Force square thumbnail */
-.work-item img {
   width: 100%;
-  aspect-ratio: 1 / 1;   /* Always a square */
-  object-fit: cover;     /* Crop without stretching */
-  border-radius: 6px;
-}
-
-/* Title & description (optional small text) */
-.work-item h3 {
-  margin: 6px 0 2px;
-  font-size: 18px;
-}
-
-.work-item p {
-  font-size: 20px;
-  color: #555;
-}
-
-/* Mini popup container */
-.popup-mini {
-  max-width: 90vw;   /* use up to 90% of viewport width */
-  max-height: 90vh;  /* use up to 90% of viewport height */
-  width: auto;       /* adjust to image */
-  height: auto;      /* adjust to image */
-  margin: auto;      /* center it */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 200px;
+  max-height: 300px;
+  padding: 4px;
+  cursor: pointer;
   box-sizing: border-box;
 }
-
-/* Image inside mini popup */
-.popup-mini .popup-body img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+.work-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 2px 2px #1b3ba3;
+}
+/* ===============================
+   Animation Videos
+   =============================== */
+.popup-animation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+.popup-animation .work-item img {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2px 2px #000;
+}
+.popup-animation .work-item video {
+  width: 100%;
   height: auto;
-  object-fit: contain; /* maintain aspect ratio */
-  border-radius: 6px;  /* optional: rounded edges */
+  border-radius: 6px;
+}
+/* Responsive: 1 column for small screens */
+@media (max-width: 600px) {
+  .popup-animation {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===============================
+   Dividers
+   =============================== */
+.works-divider {
+  grid-column: 1 / -1;
+  font-size: 1.4em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px 0 20px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #444;
+  color: white;
+}
+/* ===============================
+   Lightbox (Images & Videos)
+   =============================== */
+/* Lightbox container */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  cursor: pointer;
+  padding: 10px; /* smaller padding helps prevent overflow */
+  overflow-x: hidden; /* prevent horizontal scroll */
+  overflow-y: auto;  /* allow vertical scrolling if needed */
+  color: #fff;
+  background: rgba(0,0,0,0.8);
+  box-sizing: border-box; /* ensure padding doesn't add to width */
+}
+.lightbox::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('assets/space4.gif') center/cover no-repeat;
+  opacity: 60%;  /* adjust opacity as needed */
+  z-index: -1;    /* behind the image */
+}
+/* Lightbox images & videos */
+.lightbox img,
+.lightbox video {
+  max-width: 100%;  /* limit width to container */
+  width: auto;
+  max-height: 80vh;
+  border-radius: 6px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.lightbox-caption {
+  max-width: 80%;
+  text-align: center;
+  color: #fff;
+}
+
+.lightbox-caption h3 {
+  margin: 0 0 10px;
+  font-size: 1.4em;
+}
+
+.lightbox-caption p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Back button */
+.lightbox-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  z-index: 1001;
 }
 /* === Contact popup === */
 .popup-contact {
