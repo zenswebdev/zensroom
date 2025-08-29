@@ -47,49 +47,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 setInterval(updateClock, 1000);
 updateClock();
-  // --- Works Popup ---
+
+// --- Works Popup ---
   const popupBody = document.querySelector('#worksPopup .popup-body');
 
-  fetch('works.json')
-    .then(res => res.json())
-    .then(data => {
-      data.forEach((work, index) => {
-        // Main work card
-        const card = document.createElement('div');
-        card.className = 'work-item';
-        card.innerHTML = `
+fetch('works.json')
+  .then(res => res.json())
+  .then(data => {
+    data.forEach((work, index) => {
+      // Main work card (image only)
+      const card = document.createElement('div');
+      card.className = 'work-item';
+      card.innerHTML = `
+        <img src="${work.image}" alt="${work.title}">
+      `;
+      popupBody.appendChild(card);
+ // Mini popup (with title + details)
+      const miniPopup = document.createElement('div');
+      miniPopup.id = `workPopup${index}`;
+      miniPopup.className = 'popup popup-mini';
+      miniPopup.style.display = 'none';
+      miniPopup.innerHTML = `
+        <div class="popup-header">
+          <button class="back-btn" onclick="backToWorks('workPopup${index}')">&larr; Back</button>
+          ${work.title}
+          <button class="close-btn" onclick="backToWorks('workPopup${index}')">X</button>
+        </div>
+        <div class="popup-body">
           <img src="${work.image}" alt="${work.title}">
-          <h3>${work.title}</h3>
           <p>${work.description}</p>
-        `;
-        popupBody.appendChild(card);
+        </div>
+      `;
+      document.body.appendChild(miniPopup);
 
-        // Mini popup
-        const miniPopup = document.createElement('div');
-        miniPopup.id = `workPopup${index}`;
-        miniPopup.className = 'popup popup-mini';
-        miniPopup.style.display = 'none';
-        miniPopup.innerHTML = `
-          <div class="popup-header">
-            <button class="back-btn" onclick="backToWorks('workPopup${index}')">&larr; Back</button>
-            ${work.title}
-            <button class="close-btn" onclick="backToWorks('workPopup${index}')">X</button>
-          </div>
-          <div class="popup-body">
-            <img src="${work.image}" alt="${work.title}">
-            <p>${work.details}</p>
-          </div>
-        `;
-        document.body.appendChild(miniPopup);
+      // Click opens mini popup
+      card.addEventListener('click', () => {
+        // hide main works popup
+        document.getElementById('worksPopup').style.display = 'none';
 
-        // Click opens mini popup
-        card.addEventListener('click', () => {
-          document.getElementById('worksPopup').style.display = 'none';
-          miniPopup.style.display = 'block';
-        });
+        // close all other mini popups
+        document.querySelectorAll('.popup-mini').forEach(p => p.style.display = 'none');
+
+        // show the one we clicked
+        miniPopup.style.display = 'block';
       });
-    })
-    .catch(err => console.error("Failed to load works.json:", err));
+    });
+  })
+  .catch(err => console.error("Failed to load works.json:", err));
 });
 
 // --- Popup utility functions ---

@@ -112,13 +112,13 @@ body {
 }
 
 .hand.hour {
-  width: 2px;
-  height: 14px;
+  width: 3px;
+  height: 13px;
   background: black;
 }
 
 .hand.minute {
-  width: 3px;
+  width: 2px;
   height: 20px;
   background: black;
 }
@@ -223,15 +223,6 @@ body {
 }
 
 /* Works Popup */
-.popup-works {
-  width: 90%;
-  max-width: 600px;
-  display: none;
-  flex-direction: column;
-  box-shadow: 3px 3px #000;
-  margin: 0 auto;
-  max-height: calc(100% - 140px); /* leaves 20px top & bottom */
-}
 .popup-works .popup-header {
   background: #000080;
   color: white;
@@ -241,6 +232,29 @@ body {
   align-items: center;
   font-weight: bold;
   flex-shrink: 0;
+}
+.scrollable{
+  overflow-y: auto;
+}
+.popup-works {
+  width: 90%;
+  max-width: 600px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 3px 3px #000;
+  margin: 0 auto;
+  max-height: calc(100% - 140px);
+  background-image: url(assets/sky2.gif);
+}
+
+.works-intro {
+ text-align: center;
+}
+.intro-img{
+  width: 80%;
+  height: 50px;
+  object-fit: contain;
+
 }
 
 .popup-works .popup-body {
@@ -257,6 +271,7 @@ body {
 /* Individual work cards */
 .work-item {
   width: 100%;
+  max-height: 300px;
   max-width: 200px; /* controls card size */
   border: 2px solid #444;
   padding: 4px;
@@ -272,8 +287,6 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 20px;
   padding: 9px;
-  overflow-y: auto;
-  background-image: url(assets/sky2.gif);
 }
 
 .work-item {

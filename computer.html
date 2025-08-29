@@ -31,13 +31,13 @@
     </div>
     
       <!-- Music Popup -->
-    <div id="musicPopup" class="popup popup-welcome">
+    <div id="musicPopup" class="popup popup-credit">
       <div class="popup-header">
         Music
         <button onclick="closePopup('musicPopup')">X</button>
       </div>
       <div class="popup-body"> 
-        <p>Your music app goes here.</p>
+        <img src="assets/my_jam-1.png">
       </div>
     </div>
 
@@ -48,7 +48,7 @@
         <button onclick="closePopup('notepadPopup')">X</button>
       </div>
       <div class="popup-body">
-        <p>Write some notes...</p>
+        <p>LOL :( </p>
       </div>
     </div>
     
@@ -94,17 +94,24 @@
       </div>
     </div>
       <!--Works-->
-    <div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
-
-    <div id="worksPopup" class="popup popup-works">
-      <div class="popup-header">
-        Works
-        <button onclick="closePopup('worksPopup')">X</button>
+      <div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
+      <div id="worksPopup" class="popup popup-works">
+        <div class="popup-header">
+          Works
+          <button onclick="closePopup('worksPopup')">X</button>
+        </div>
+        <div class="scrollable">
+           <!-- Intro Section -->
+          <div class="works-intro">
+            <h2>My Works</h2>
+            <p>Here’s a collection of my projects. Click on any project to view more details.</p>
+            <img src="assets/happy_mac-1.png" class="intro-img">
+          </div>
+          <div class="popup-body">
+            <!-- JS will insert work cards here -->
+          </div>
+       </div>
       </div>
-      <div class="popup-body">
-        <!-- JS will insert work cards here -->
-      </div>
-    </div>
     
     <div id="contactPopup" class="popup popup-contact">
       <div class="popup-header">
