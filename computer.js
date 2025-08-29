@@ -1,5 +1,5 @@
 // === Development Toggle ===
-const devEditMode = false;
+const devEditMode = true;
 const devPopupId = "worksPopup"; // ID of popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,70 +30,65 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Update analog clock ---
- function updateClock() {
-  const now = new Date();
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours();
+  function updateClock() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
 
-  const secondDeg = seconds * 6;              // 360 / 60
-  const minuteDeg = minutes * 6 + seconds * 0.1;
-  const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
+    const secondDeg = seconds * 6;              // 360 / 60
+    const minuteDeg = minutes * 6 + seconds * 0.1;
+    const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
 
-  document.querySelector(".hand.second").style.transform = `rotate(${secondDeg}deg)`;
-  document.querySelector(".hand.minute").style.transform = `rotate(${minuteDeg}deg)`;
-  document.querySelector(".hand.hour").style.transform   = `rotate(${hourDeg}deg)`;
-}
+    document.querySelector(".hand.second").style.transform = `rotate(${secondDeg}deg)`;
+    document.querySelector(".hand.minute").style.transform = `rotate(${minuteDeg}deg)`;
+    document.querySelector(".hand.hour").style.transform   = `rotate(${hourDeg}deg)`;
+  }
 
-setInterval(updateClock, 1000);
-updateClock();
+  setInterval(updateClock, 1000);
+  updateClock();
 
-// --- Works Popup ---
+  // --- Works Popup ---
   const popupBody = document.querySelector('#worksPopup .popup-body');
 
-fetch('works.json')
-  .then(res => res.json())
-  .then(data => {
-    data.forEach((work, index) => {
-      // Main work card (image only)
-      const card = document.createElement('div');
-      card.className = 'work-item';
-      card.innerHTML = `
-        <img src="${work.image}" alt="${work.title}">
-      `;
-      popupBody.appendChild(card);
- // Mini popup (with title + details)
-      const miniPopup = document.createElement('div');
-      miniPopup.id = `workPopup${index}`;
-      miniPopup.className = 'popup popup-mini';
-      miniPopup.style.display = 'none';
-      miniPopup.innerHTML = `
-        <div class="popup-header">
-          <button class="back-btn" onclick="backToWorks('workPopup${index}')">&larr; Back</button>
-          ${work.title}
-          <button class="close-btn" onclick="backToWorks('workPopup${index}')">X</button>
-        </div>
-        <div class="popup-body">
-          <img src="${work.image}" alt="${work.title}">
-          <p>${work.description}</p>
-        </div>
-      `;
-      document.body.appendChild(miniPopup);
+  fetch('works.json')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(work => {
+        // Create work card
+        const card = document.createElement('div');
+        card.className = 'work-item';
+        card.innerHTML = `<img src="${work.image}" alt="${work.title}">`;
+        popupBody.appendChild(card);
 
-      // Click opens mini popup
-      card.addEventListener('click', () => {
-        // hide main works popup
-        document.getElementById('worksPopup').style.display = 'none';
+        // Click opens lightbox
+        card.addEventListener('click', () => {
+          const worksPopup = document.getElementById('worksPopup');
 
-        // close all other mini popups
-        document.querySelectorAll('.popup-mini').forEach(p => p.style.display = 'none');
+          // Create lightbox overlay
+          const lightbox = document.createElement('div');
+          lightbox.className = 'lightbox';
 
-        // show the one we clicked
-        miniPopup.style.display = 'block';
+          // Image inside lightbox
+          const img = document.createElement('img');
+          img.src = work.image;
+          img.alt = work.title;
+          lightbox.appendChild(img);
+
+          document.body.appendChild(lightbox);
+
+          // Hide main works popup while lightbox is visible
+          worksPopup.style.display = 'none';
+
+          // Click anywhere closes lightbox and restores works popup
+          lightbox.addEventListener('click', () => {
+            lightbox.remove();
+            worksPopup.style.display = 'flex';
+          });
+        });
       });
-    });
-  })
-  .catch(err => console.error("Failed to load works.json:", err));
+    })
+    .catch(err => console.error("Failed to load works.json:", err));
 });
 
 // --- Popup utility functions ---
@@ -123,11 +118,4 @@ function closePopup(id) {
   if (!popup) return;
   popup.style.display = 'none';
   if (id === 'welcomePopup') localStorage.setItem('welcomePopupClosed', 'true');
-}
-
-function backToWorks(miniPopupId) {
-  const miniPopup = document.getElementById(miniPopupId);
-  if (miniPopup) miniPopup.style.display = 'none';
-  const worksPopup = document.getElementById('worksPopup');
-  if (worksPopup) worksPopup.style.display = 'flex';
 }
