@@ -1,5 +1,5 @@
 // === Development Toggle ===
-const devEditMode = true;
+const devEditMode = false;
 const devPopupId = "worksPopup"; // ID of popup to keep open
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,15 +30,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Update analog clock ---
-  function updateAnalogClock() {
-    const now = new Date();
-    document.getElementById("secondHand").style.transform = `rotate(${now.getSeconds() * 6}deg)`;
-    document.getElementById("minuteHand").style.transform = `rotate(${now.getMinutes() * 6 + now.getSeconds() * 0.1}deg)`;
-    document.getElementById("hourHand").style.transform = `rotate(${now.getHours() * 30 + now.getMinutes() * 0.5}deg)`;
-  }
-  setInterval(updateAnalogClock, 1000);
-  updateAnalogClock();
+ function updateClock() {
+  const now = new Date();
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours();
 
+  const secondDeg = seconds * 6;              // 360 / 60
+  const minuteDeg = minutes * 6 + seconds * 0.1;
+  const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
+
+  document.querySelector(".hand.second").style.transform = `rotate(${secondDeg}deg)`;
+  document.querySelector(".hand.minute").style.transform = `rotate(${minuteDeg}deg)`;
+  document.querySelector(".hand.hour").style.transform   = `rotate(${hourDeg}deg)`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
   // --- Works Popup ---
   const popupBody = document.querySelector('#worksPopup .popup-body');
 
