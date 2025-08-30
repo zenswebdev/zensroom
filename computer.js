@@ -1,6 +1,10 @@
 // === Development Toggle ===
 const devEditMode = true;
+<<<<<<< HEAD
 const devPopupId = "profilePopup"; // ID of popup to keep open
+=======
+const devPopupId = "worksPopup"; // ID of popup to keep open
+>>>>>>> 6e06759e99c187542818c410bee8628640d3939d
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- Preload hover images ---
@@ -50,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateClock, 1000);
   updateClock();
 
+<<<<<<< HEAD
 // --- Works Popup ---
 const popupBody = document.querySelector('#worksPopup .popup-body');
 
@@ -172,10 +177,49 @@ fetch('works.json')
         }
 
         container.appendChild(card);
+=======
+  // --- Works Popup ---
+  const popupBody = document.querySelector('#worksPopup .popup-body');
+
+  fetch('works.json')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(work => {
+        // Create work card
+        const card = document.createElement('div');
+        card.className = 'work-item';
+        card.innerHTML = `<img src="${work.image}" alt="${work.title}">`;
+        popupBody.appendChild(card);
+
+        // Click opens lightbox
+        card.addEventListener('click', () => {
+          const worksPopup = document.getElementById('worksPopup');
+
+          // Create lightbox overlay
+          const lightbox = document.createElement('div');
+          lightbox.className = 'lightbox';
+
+          // Image inside lightbox
+          const img = document.createElement('img');
+          img.src = work.image;
+          img.alt = work.title;
+          lightbox.appendChild(img);
+
+          document.body.appendChild(lightbox);
+
+          // Hide main works popup while lightbox is visible
+          worksPopup.style.display = 'none';
+
+          // Click anywhere closes lightbox and restores works popup
+          lightbox.addEventListener('click', () => {
+            lightbox.remove();
+            worksPopup.style.display = 'flex';
+          });
+        });
+>>>>>>> 6e06759e99c187542818c410bee8628640d3939d
       });
-    });
-  })
-  .catch(err => console.error("Failed to load works.json:", err));
+    })
+    .catch(err => console.error("Failed to load works.json:", err));
 });
 
 // --- Popup utility functions ---
