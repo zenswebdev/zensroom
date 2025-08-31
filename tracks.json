@@ -1,12 +1,27 @@
 [
   {
+    "title": "MF DOOM - Rapp Snitch Knishes",
+    "src": "assets/audio/Rapp Snitch Knishes.mp3",
+    "cover": "assets/mf_cover-1.jpg"
+  },
+  {
+    "title": "LCD Soundsystem - All I Want",
+    "src": "assets/audio/All I Want.mp3",
+    "cover": "assets/lcd_cover-1.jpg"
+  },
+  {
+    "title": "Beck - Debra",
+    "src": "assets/audio/Debra.mp3",
+    "cover": "assets/beck_cover-1.jpg"
+  },
+  {
     "title": "The Smiths - Frankly, Mr. Shankly",
     "src": "assets/audio/Frankly, Mr. Shankly.mp3",
     "cover": "assets/smiths_cover-1.jpg"
   },
   {
-    "title": "Sunset Rollercoaster - Let There Be Light Again",
-    "src": "assets/audio/Let There Be Light Again.mp3",
-    "cover": "assets/sonnyboy_cover-1.jpg"
+    "title": "Masayoshi Takanaka - Oh! Tengo Suerte",
+    "src": "assets/audio/Oh! Tengo Suerte.mp3",
+    "cover": "assets/takanaka_cover-1.jpg"
   }
 ]

@@ -45,6 +45,11 @@ body {
     --size: 0.95;
   }
 }
+@media (max-width: 300px) {
+  .warning {
+    display: none;
+  }
+}
 
 .monitor {
   z-index: 2;
@@ -107,7 +112,7 @@ body {
   width: calc(260px * var(--size));
   height: calc(195px * var(--size));
   background-color: #0f053c;
-  background-image: url(assets/space2.gif),radial-gradient(#317377, #276366);
+  background-image: url(assets/space2.gif);
   margin: auto;
   position: absolute;
   top: calc(10px * var(--size));

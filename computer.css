@@ -138,7 +138,13 @@ body {
   align-items: center;
   gap: 10px;
 }
-
+.taskbar-button {
+  font-size: 2rem; /* increase emoji size */
+  line-height: 1;  /* tighter spacing */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 .top-row {
   display: flex;
   gap: 10px;
@@ -183,7 +189,7 @@ body {
 .taskbar-button {
   width: 70px;
   height: 70px;
-  background: #c0c0c0;
+  background: none;
   border: none;
   box-sizing: border-box;
   box-shadow:
@@ -197,7 +203,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  font-size: 12px;
+  font-size: 1.5rem;
+  line-height: 1; 
   flex: none;
 }
 
@@ -233,9 +240,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding-bottom: 100px;
 }
 
-/* Track items */
+/* Tracklist */
 .track-item {
   padding: 10px 12px;
   font-size: 15px;
@@ -492,7 +500,6 @@ body {
 
 /* Outlook / Output */
 .profile-outlook {
-  margin-top: 20px;
   padding: 10px 5px;
   border-top: 2px solid #000;
 }
@@ -506,6 +513,7 @@ body {
   padding-left: 20px;
 }
 .title-row {
+  margin-top: 20px;
   display: flex;
   align-items: baseline;
   gap: 10px;

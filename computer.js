@@ -1,6 +1,6 @@
 // === Development Toggle ===
-const devEditMode = false;
-const devPopupId = "musicPopup"; // dev-only popup
+const devEditMode = true;
+const devPopupId = "profilePopup"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "assets/credit-2.png"
   ];
   hoverImages.forEach(src => new Image().src = src);
-
-  // --- Reset welcomePopupClosed for testing (optional) ---
-  // localStorage.removeItem("welcomePopupClosed");
 
   // --- Handle initial popup ---
   if (devEditMode) {
@@ -245,8 +242,8 @@ fetch('tracks.json')
     });
 
     // Load first track with 50% volume
-    musicPlayer.volume = 0.5;
-    previousVolume = 0.5;
+    musicPlayer.volume = 0.3;
+    previousVolume = 0.3;
     loadTrack(0);
   });
   // --- Auto next track when current ends ---
@@ -262,22 +259,29 @@ function loadTrack(index) {
   songImg.src = tracks[currentTrack].cover;
   highlightActiveTrack();
   if (isPlaying) musicPlayer.play();
-  playPauseBtn.innerHTML = isPlaying ? "⏸️<br>Pause" : "▶️<br>Play";
+
+  // Toggle emoji only
+  playPauseBtn.textContent = isPlaying ? "⏸️" : "▶️";
+  playPauseBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+  playPauseBtn.setAttribute("title", isPlaying ? "Pause" : "Play");
 }
 
 // --- Play/Pause ---
 playPauseBtn.addEventListener('click', () => {
   if (!isPlaying) {
     musicPlayer.play();
-    playPauseBtn.innerHTML = "⏸️<br>Pause";
+    playPauseBtn.textContent = "⏸️";
+    playPauseBtn.setAttribute("aria-label", "Pause");
+    playPauseBtn.setAttribute("title", "Pause");
     isPlaying = true;
   } else {
     musicPlayer.pause();
-    playPauseBtn.innerHTML = "▶️<br>Play";
+    playPauseBtn.textContent = "▶️";
+    playPauseBtn.setAttribute("aria-label", "Play");
+    playPauseBtn.setAttribute("title", "Play");
     isPlaying = false;
   }
 });
-
 // --- Volume controls ---
 volUpBtn.addEventListener('click', () => musicPlayer.volume = Math.min(1, musicPlayer.volume + 0.1));
 volDownBtn.addEventListener('click', () => musicPlayer.volume = Math.max(0, musicPlayer.volume - 0.1));
@@ -285,10 +289,10 @@ muteBtn.addEventListener('click', () => {
   if (musicPlayer.volume > 0) {
     previousVolume = musicPlayer.volume;
     musicPlayer.volume = 0;
-    muteBtn.innerHTML = "🔈<br>Unmute";
+    muteBtn.innerHTML = "🔈";
   } else {
     musicPlayer.volume = previousVolume || 0.5;
-    muteBtn.innerHTML = "🔇<br>Mute";
+    muteBtn.innerHTML = "🔇";
   }
 });
 
