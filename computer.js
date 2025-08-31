@@ -1,16 +1,12 @@
 // === Development Toggle ===
-const devEditMode = true;
-<<<<<<< HEAD
+const devEditMode = false;
 const devPopupId = "profilePopup"; // ID of popup to keep open
-=======
-const devPopupId = "worksPopup"; // ID of popup to keep open
->>>>>>> 6e06759e99c187542818c410bee8628640d3939d
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- Preload hover images ---
   const hoverImages = [
     "assets/cd_audio_cd_a-3.png",
-    "assets/steam-2",
+    "assets/steam-2.png", // fixed missing extension
     "assets/recycle_bin_empty-5.png",
     "assets/notepad-5.png",
     "assets/palette-2.png",
@@ -46,177 +42,141 @@ document.addEventListener("DOMContentLoaded", () => {
     const minuteDeg = minutes * 6 + seconds * 0.1;
     const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
 
-    document.querySelector(".hand.second").style.transform = `rotate(${secondDeg}deg)`;
-    document.querySelector(".hand.minute").style.transform = `rotate(${minuteDeg}deg)`;
-    document.querySelector(".hand.hour").style.transform   = `rotate(${hourDeg}deg)`;
+    const secHand = document.querySelector(".hand.second");
+    const minHand = document.querySelector(".hand.minute");
+    const hourHand = document.querySelector(".hand.hour");
+
+    if (secHand && minHand && hourHand) {
+      secHand.style.transform = `rotate(${secondDeg}deg)`;
+      minHand.style.transform = `rotate(${minuteDeg}deg)`;
+      hourHand.style.transform = `rotate(${hourDeg}deg)`;
+    }
   }
 
   setInterval(updateClock, 1000);
   updateClock();
 
-<<<<<<< HEAD
-// --- Works Popup ---
-const popupBody = document.querySelector('#worksPopup .popup-body');
-
-// Create a separate container for Animation videos
-const animationContainer = document.createElement('div');
-animationContainer.className = 'popup-animation';
-popupBody.parentNode.appendChild(animationContainer);
-
-fetch('works.json')
-  .then(res => res.json())
-  .then(data => {
-    Object.keys(data).forEach(category => {
-      // Divider
-      const divider = document.createElement('div');
-      divider.className = 'works-divider';
-      divider.textContent = category;
-
-      // Determine which container to use
-      const container = category === "Animation" ? animationContainer : popupBody;
-      container.appendChild(divider);
-
-      // Work cards
-      data[category].forEach(work => {
-        const card = document.createElement('div');
-        card.className = 'work-item';
-
-        // --- Image works ---
-        if (work.image) {
-          const img = document.createElement('img');
-          img.src = work.image;
-          img.alt = work.title || "Untitled";
-          card.appendChild(img);
-
-          card.addEventListener('click', () => {
-            const worksPopup = document.getElementById('worksPopup');
-
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-
-            const bigImg = document.createElement('img');
-            bigImg.src = work.image;
-            bigImg.alt = work.title || "Untitled";
-            lightbox.appendChild(bigImg);
-
-            if (work.title || work.description) {
-              const caption = document.createElement('div');
-              caption.className = 'lightbox-caption';
-              if (work.title) {
-                const titleEl = document.createElement('h3');
-                titleEl.textContent = work.title;
-                caption.appendChild(titleEl);
-              }
-              if (work.description) {
-                const descEl = document.createElement('p');
-                descEl.textContent = work.description;
-                caption.appendChild(descEl);
-              }
-              lightbox.appendChild(caption);
-            }
-
-            document.body.appendChild(lightbox);
-            worksPopup.style.display = 'none';
-
-            // For IMAGES: close on *any* click
-            lightbox.addEventListener('click', () => {
-              lightbox.remove();
-              worksPopup.style.display = 'flex';
-            });
-          });
-
-        // --- Video works ---
-        } else if (work.video) {
-          const thumb = document.createElement('img');
-          thumb.src = work.thumbnail; // video thumbnail from works.json
-          thumb.alt = work.title || "Untitled";
-          card.appendChild(thumb);
-
-          card.addEventListener('click', () => {
-            const worksPopup = document.getElementById('worksPopup');
-
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox';
-
-            const video = document.createElement('video');
-            video.src = work.video;
-            video.controls = true;
-            video.autoplay = true;
-            video.style.maxWidth = '95vw';
-            video.style.maxHeight = '95vh';
-            video.style.borderRadius = '6px';
-            lightbox.appendChild(video);
-
-            if (work.title || work.description) {
-              const caption = document.createElement('div');
-              caption.className = 'lightbox-caption';
-              if (work.title) {
-                const titleEl = document.createElement('h3');
-                titleEl.textContent = work.title;
-                caption.appendChild(titleEl);
-              }
-              if (work.description) {
-                const descEl = document.createElement('p');
-                descEl.textContent = work.description;
-                caption.appendChild(descEl);
-              }
-              lightbox.appendChild(caption);
-            }
-
-            document.body.appendChild(lightbox);
-            worksPopup.style.display = 'none';
-
-            // For VIDEOS: only close if clicking *outside* video
-            lightbox.addEventListener('click', e => {
-              if (e.target === lightbox) {
-                lightbox.remove();
-                worksPopup.style.display = 'flex';
-              }
-            });
-          });
-        }
-
-        container.appendChild(card);
-=======
   // --- Works Popup ---
   const popupBody = document.querySelector('#worksPopup .popup-body');
+  if (!popupBody) return;
+
+  // Separate container for animation works
+  const animationContainer = document.createElement('div');
+  animationContainer.className = 'popup-animation';
+  popupBody.parentNode.appendChild(animationContainer);
 
   fetch('works.json')
     .then(res => res.json())
     .then(data => {
-      data.forEach(work => {
-        // Create work card
-        const card = document.createElement('div');
-        card.className = 'work-item';
-        card.innerHTML = `<img src="${work.image}" alt="${work.title}">`;
-        popupBody.appendChild(card);
+      Object.keys(data).forEach(category => {
+        // Divider
+        const divider = document.createElement('div');
+        divider.className = 'works-divider';
+        divider.textContent = category;
 
-        // Click opens lightbox
-        card.addEventListener('click', () => {
-          const worksPopup = document.getElementById('worksPopup');
+        const container = category === "Animation" ? animationContainer : popupBody;
+        container.appendChild(divider);
 
-          // Create lightbox overlay
-          const lightbox = document.createElement('div');
-          lightbox.className = 'lightbox';
+        // Work cards
+        data[category].forEach(work => {
+          const card = document.createElement('div');
+          card.className = 'work-item';
 
-          // Image inside lightbox
-          const img = document.createElement('img');
-          img.src = work.image;
-          img.alt = work.title;
-          lightbox.appendChild(img);
+          if (work.image) {
+            // --- Image works ---
+            const img = document.createElement('img');
+            img.src = work.image;
+            img.alt = work.title || "Untitled";
+            card.appendChild(img);
 
-          document.body.appendChild(lightbox);
+            card.addEventListener('click', () => {
+              const worksPopup = document.getElementById('worksPopup');
 
-          // Hide main works popup while lightbox is visible
-          worksPopup.style.display = 'none';
+              const lightbox = document.createElement('div');
+              lightbox.className = 'lightbox';
 
-          // Click anywhere closes lightbox and restores works popup
-          lightbox.addEventListener('click', () => {
-            lightbox.remove();
-            worksPopup.style.display = 'flex';
-          });
+              const bigImg = document.createElement('img');
+              bigImg.src = work.image;
+              bigImg.alt = work.title || "Untitled";
+              lightbox.appendChild(bigImg);
+
+              if (work.title || work.description) {
+                const caption = document.createElement('div');
+                caption.className = 'lightbox-caption';
+                if (work.title) {
+                  const titleEl = document.createElement('h3');
+                  titleEl.textContent = work.title;
+                  caption.appendChild(titleEl);
+                }
+                if (work.description) {
+                  const descEl = document.createElement('p');
+                  descEl.textContent = work.description;
+                  caption.appendChild(descEl);
+                }
+                lightbox.appendChild(caption);
+              }
+
+              document.body.appendChild(lightbox);
+              worksPopup.style.display = 'none';
+
+              lightbox.addEventListener('click', () => {
+                lightbox.remove();
+                worksPopup.style.display = 'flex';
+              });
+            });
+
+          } else if (work.video) {
+            // --- Video works ---
+            const thumb = document.createElement('img');
+            thumb.src = work.thumbnail;
+            thumb.alt = work.title || "Untitled";
+            card.appendChild(thumb);
+
+            card.addEventListener('click', () => {
+              const worksPopup = document.getElementById('worksPopup');
+
+              const lightbox = document.createElement('div');
+              lightbox.className = 'lightbox';
+
+              const video = document.createElement('video');
+              video.src = work.video;
+              video.controls = true;
+              video.autoplay = true;
+              video.style.maxWidth = '95vw';
+              video.style.maxHeight = '95vh';
+              video.style.borderRadius = '6px';
+              lightbox.appendChild(video);
+
+              if (work.title || work.description) {
+                const caption = document.createElement('div');
+                caption.className = 'lightbox-caption';
+                if (work.title) {
+                  const titleEl = document.createElement('h3');
+                  titleEl.textContent = work.title;
+                  caption.appendChild(titleEl);
+                }
+                if (work.description) {
+                  const descEl = document.createElement('p');
+                  descEl.textContent = work.description;
+                  caption.appendChild(descEl);
+                }
+                lightbox.appendChild(caption);
+              }
+
+              document.body.appendChild(lightbox);
+              worksPopup.style.display = 'none';
+
+              lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) {
+                  lightbox.remove();
+                  worksPopup.style.display = 'flex';
+                }
+              });
+            });
+          }
+
+          container.appendChild(card);
         });
->>>>>>> 6e06759e99c187542818c410bee8628640d3939d
       });
     })
     .catch(err => console.error("Failed to load works.json:", err));
