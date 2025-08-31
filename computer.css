@@ -166,27 +166,30 @@ body {
   margin: 5px auto 30px; 
 }
 
-/* Profile */
-.popup-profile {
-  width: 90%;                 
-  max-width: 600px;         
-  display: none;              
-  flex-direction: column;   
-  margin: 0 auto;                   
-  max-height: 100%;
-  box-shadow: 3px 3px #000;      
-  box-sizing: border-box;
-}
+/* Profile Popup Container */
 
-/* Scrollable content area */
+.popup-profile {
+  width: 90%;
+  max-width: 520px;
+  max-height: calc(100% - 140px);
+  display: flex;          
+  flex-direction: column;
+  margin: 0 auto;
+  box-shadow: 3px 3px #000;
+  background-image: url(assets/snow1.gif);
+  box-sizing: border-box;
+  font-family: sans-serif; 
+
+}
 .profile-scrollable {
+  flex: 1 1 auto;       
+  min-height: 0;     
   overflow-y: auto;
   overflow-x: hidden;
-  flex: 1;
-  max-height: 70vh; /* can keep, ensures content fits */
-}
+  padding: 0 20px 20px 20px;
+  font-family: sans-serif;
 
-/* Intro section inside profile */
+}
 .profile-intro {
   display: flex;
   gap: 30px;
@@ -195,12 +198,13 @@ body {
 }
 .profile-pic {
   width: 180px;
-  height: 170px;
+  height: 180px;
   object-fit: cover;
   border: 2px solid #000;
   box-shadow: 2px 2px #404040;
   border-radius: 50%;
-  flex-shrink: 0; /* prevents shrinking when flex wraps */
+  flex-shrink: 0;
+  margin-top: 10px;
 }
 .profile-info h2 {
   margin: auto;
@@ -208,18 +212,19 @@ body {
 }
 @media (max-width: 450px) {
   .profile-intro {
-    flex-direction: column;   /* stack vertically */
-    align-items: center;      /* center align image + text */
-    text-align: center;       /* center text */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   .profile-info {
-    margin-top: -10px;      
+    margin-top: -10px;
   }
 }
+/* About Section */
 .profile-about {
   margin-top: 20px;
   padding: 10px 5px;
-  border-top: 2px solid #000;  
+  border-top: 2px solid #000;
 }
 .profile-about h1 {
   font-size: 25px;
@@ -229,26 +234,28 @@ body {
   font-size: 14px;
   line-height: 1.5;
 }
+
+/* Education */
 .education h1 {
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   font-size: 25px;
 }
 .education-progress {
   position: relative;
-  padding-left: 20px;       /* space for the gradient bar */
+  padding-left: 20px;
 }
 .education-progress::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 6px;               /* thickness of the bar */
+  width: 6px;
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0) 0%,        /* fade top */
-    rgba(0, 0, 0, 0.842) 50%,       /* solid start */
-    rgba(0,0,0,0) 100%       /* fade bottom */
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.842) 50%,
+    rgba(0,0,0,0) 100%
   );
 }
 .qualifcation {
@@ -272,16 +279,18 @@ body {
   opacity: 0.3;
   font-size: 15px;
 }
-.current h3{
+.current h3 {
   font-size: 21px;
 }
 .current span {
   font-size: 16px;
 }
+
+/* Interests */
 .profile-interests {
   margin-top: 20px;
   padding: 10px 5px;
-  border-top: 2px solid #000; 
+  border-top: 2px solid #000;
 }
 .profile-interests h1 {
   font-size: 24px;
@@ -289,16 +298,16 @@ body {
   font-weight: bold;
 }
 .profile-interests ul {
-  list-style: none;          
-  padding-left: 20px;           
+  list-style: none;
+  padding-left: 20px;
 }
 .profile-interests li {
   position: relative;
   margin-bottom: 10px;
   font-size: 16px;
   line-height: 1.4;
-  padding-left: 20px;        
-  font-weight: 600;  
+  padding-left: 20px;
+  font-weight: 600;
 }
 .profile-interests li::before {
   content: "";
@@ -309,12 +318,14 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  border: 3px dotted #000; 
+  border: 3px dotted #000;
 }
+
+/* Outlook / Output */
 .profile-outlook {
   margin-top: 20px;
   padding: 10px 5px;
-  border-top: 2px solid #000; 
+  border-top: 2px solid #000;
 }
 .profile-outlook h1 {
   font-size: 24px;
@@ -322,13 +333,13 @@ body {
   font-weight: bold;
 }
 .profile-outlook ul {
-  list-style: none;           
-  padding-left: 20px;         
+  list-style: none;
+  padding-left: 20px;
 }
 .title-row {
-  display: flex;           
-  align-items: baseline;    
-  gap: 10px;                 
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 .title-row h1 {
   font-size: 24px;
@@ -337,11 +348,12 @@ body {
 .title-row h2 {
   margin: 0;
   opacity: 0.3;
-  font-size: 15px;     
+  font-size: 15px;
 }
-.emoji{
-  font-size: 3em;   
-  margin-left: 25px; 
+
+.emoji {
+  font-size: 3em;
+  margin-left: 25px;
 }
 /* === welcome popup === */
 .popup-welcome {
@@ -406,18 +418,15 @@ body {
 .work-scrollable {
   overflow-y: auto;
 }
-
 .works-intro {
   text-align: center;
   color: white;
 }
-
 .intro-img {
   width: 80%;
   height: 50px;
   object-fit: contain;
 }
-
 /* ===============================
    Work Cards (Images)
    =============================== */
@@ -478,9 +487,6 @@ body {
     grid-template-columns: 1fr;
   }
 }
-/* ===============================
-   Dividers
-   =============================== */
 .works-divider {
   grid-column: 1 / -1;
   font-size: 1.4em;
@@ -495,7 +501,6 @@ body {
 /* ===============================
    Lightbox (Images & Videos)
    =============================== */
-/* Lightbox container */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -517,7 +522,7 @@ body {
   position: absolute;
   inset: 0;
   background: url('assets/space4.gif') center/cover no-repeat;
-  opacity: 60%;  /* adjust opacity as needed */
+  opacity: 40%;  /* adjust opacity as needed */
   z-index: -1;    /* behind the image */
 }
 /* Lightbox images & videos */
