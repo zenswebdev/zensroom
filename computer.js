@@ -1,8 +1,9 @@
 // === Development Toggle ===
 const devEditMode = false;
-const devPopupId = "profilePopup"; // ID of popup to keep open
+const devPopupId = "musicPopup"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
+
   // --- Preload hover images ---
   const hoverImages = [
     "assets/cd_audio_cd_a-3.png",
@@ -16,9 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   hoverImages.forEach(src => new Image().src = src);
 
-  // --- Handle dev mode ---
-  if (devEditMode) keepPopupOpen(devPopupId);
-  else if (!localStorage.getItem("welcomePopupClosed")) togglePopup("welcomePopup");
+  // --- Reset welcomePopupClosed for testing (optional) ---
+  // localStorage.removeItem("welcomePopupClosed");
+
+  // --- Handle initial popup ---
+  if (devEditMode) {
+    keepPopupOpen(devPopupId); // dev opens profile popup
+  } else if (!localStorage.getItem("welcomePopupClosed")) {
+    togglePopup("welcomePopup"); // first visit opens welcome popup
+  }
 
   // --- Icon tapped state ---
   document.querySelectorAll(".icon").forEach(icon => {
@@ -140,7 +147,6 @@ function openLightbox(work, popupId, isVideo = false) {
     if (!isVideo || e.target === lightbox) {
       lightbox.remove();
       popup.style.display = 'flex';
-      // restore scrollable if needed
       restoreScrollable(popup);
     }
   });
@@ -187,4 +193,114 @@ function restoreScrollable(popup) {
   scrollable.style.overflowY = 'hidden';
   scrollable.offsetHeight; // trigger reflow
   scrollable.style.overflowY = 'auto';
+}
+const musicPlayer = document.getElementById('musicPlayer');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const volUpBtn = document.getElementById('volUpBtn');
+const volDownBtn = document.getElementById('volDownBtn');
+const muteBtn = document.getElementById('muteBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const musicList = document.querySelector('.music-list');
+const scrubber = document.getElementById('scrubber');
+const songImg = document.querySelector('.song-img img');
+
+let tracks = [];
+let trackItems = [];
+let currentTrack = 0;
+let isPlaying = false;
+let previousVolume = 0.5;
+
+fetch('tracks.json')
+  .then(res => res.json())
+  .then(data => {
+    tracks = data;
+
+    // Populate tracklist
+    musicList.innerHTML = '';
+    tracks.forEach((track, index) => {
+      const div = document.createElement('div');
+      div.className = 'track-item';
+      div.dataset.index = index;
+      div.textContent = track.title;
+      musicList.appendChild(div);
+    });
+
+    trackItems = document.querySelectorAll('.track-item');
+
+    // Track click
+    trackItems.forEach(item => {
+      item.addEventListener('click', () => loadTrack(Number(item.dataset.index)));
+    });
+
+    // Prev/Next buttons
+    nextBtn.addEventListener('click', () => {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      loadTrack(currentTrack);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+      loadTrack(currentTrack);
+    });
+
+    // Load first track with 50% volume
+    musicPlayer.volume = 0.5;
+    previousVolume = 0.5;
+    loadTrack(0);
+  });
+  // --- Auto next track when current ends ---
+musicPlayer.addEventListener('ended', () => {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+  if (isPlaying) musicPlayer.play(); // continue playing automatically
+});
+// --- Load Track ---
+function loadTrack(index) {
+  currentTrack = index;
+  musicPlayer.src = tracks[currentTrack].src;
+  songImg.src = tracks[currentTrack].cover;
+  highlightActiveTrack();
+  if (isPlaying) musicPlayer.play();
+  playPauseBtn.innerHTML = isPlaying ? "⏸️<br>Pause" : "▶️<br>Play";
+}
+
+// --- Play/Pause ---
+playPauseBtn.addEventListener('click', () => {
+  if (!isPlaying) {
+    musicPlayer.play();
+    playPauseBtn.innerHTML = "⏸️<br>Pause";
+    isPlaying = true;
+  } else {
+    musicPlayer.pause();
+    playPauseBtn.innerHTML = "▶️<br>Play";
+    isPlaying = false;
+  }
+});
+
+// --- Volume controls ---
+volUpBtn.addEventListener('click', () => musicPlayer.volume = Math.min(1, musicPlayer.volume + 0.1));
+volDownBtn.addEventListener('click', () => musicPlayer.volume = Math.max(0, musicPlayer.volume - 0.1));
+muteBtn.addEventListener('click', () => {
+  if (musicPlayer.volume > 0) {
+    previousVolume = musicPlayer.volume;
+    musicPlayer.volume = 0;
+    muteBtn.innerHTML = "🔈<br>Unmute";
+  } else {
+    musicPlayer.volume = previousVolume || 0.5;
+    muteBtn.innerHTML = "🔇<br>Mute";
+  }
+});
+
+// --- Scrubber ---
+musicPlayer.addEventListener('timeupdate', () => {
+  if (musicPlayer.duration) scrubber.value = (musicPlayer.currentTime / musicPlayer.duration) * 100;
+});
+scrubber.addEventListener('input', () => {
+  if (musicPlayer.duration) musicPlayer.currentTime = (scrubber.value / 100) * musicPlayer.duration;
+});
+
+// --- Highlight active track ---
+function highlightActiveTrack() {
+  trackItems.forEach((item, index) => item.classList.toggle('active', index === currentTrack));
 }

@@ -8,39 +8,73 @@
   </head>
   <body>
   <div class="screen">
-    <div class="apps">
-      <a href="void" class="app trash">
-      <div class="icon recycle"  aria-label="trashbin"></div></a>
-      <div class="icon music"    aria-label="music"    onclick="togglePopup('musicPopup')"></div>
-      <div class="icon games"    aria-label="games"    onclick="togglePopup('gamesPopup')"></div>
-    <!--<a href="YouvebeenBadApple">
-     <div class="icon apple"    aria-label="apple"></div></a>-->
-      <div class="icon clock"    aria-label="clock">
-        <div class="clock">
-          <img src="assets/clock_body-1.png" alt="clock" class="clock-face" >
-          <div class="hand hour" id="hourHand"></div>
-          <div class="hand minute" id="minuteHand"></div>
-          <div class="hand second" id="secondHand"></div>
+    <div class="apps-scrollable">
+      <div class="apps">
+        <a href="void" class="app trash">
+        <div class="icon recycle"  aria-label="trashbin"></div></a>
+        <div class="icon music"    aria-label="music"    onclick="togglePopup('musicPopup')"></div>
+        <div class="icon games"    aria-label="games"    onclick="togglePopup('gamesPopup')"></div>
+      <!--<a href="YouvebeenBadApple">
+      <div class="icon apple"    aria-label="apple"></div></a>-->
+        <div class="icon clock"    aria-label="clock">
+          <div class="clock">
+            <img src="assets/clock_body-1.png" alt="clock" class="clock-face" >
+            <div class="hand hour" id="hourHand"></div>
+            <div class="hand minute" id="minuteHand"></div>
+            <div class="hand second" id="secondHand"></div>
+          </div>
         </div>
+        <div class="icon writings"  aria-label="writings"  onclick="togglePopup('writingsPopup')"></div>
+        <div class="icon paint"    aria-label="paint"    onclick="togglePopup('paintPopup')"></div>
+        <div class="icon cat"      aria-label="cat"      onclick="togglePopup('catPopup')"></div>
+        <div class="icon credits" aria-label="credits" onclick="togglePopup('creditsPopup')"></div>
+        <div class="icon films" aria-label="credits" onclick="togglePopup('filmsPopup')"></div>
       </div>
-      <div class="icon writings"  aria-label="writings"  onclick="togglePopup('writingsPopup')"></div>
-      <div class="icon paint"    aria-label="paint"    onclick="togglePopup('paintPopup')"></div>
-      <div class="icon cat"      aria-label="cat"      onclick="togglePopup('catPopup')"></div>
-      <div class="icon credits" aria-label="credits" onclick="togglePopup('creditsPopup')"></div>
-      <div class="icon films" aria-label="credits" onclick="togglePopup('filmsPopup')"></div>
-
-    </div>
-
+   </div>
     <!-- Music Popup -->
     <div id="musicPopup" class="popup popup-credit">
       <div class="popup-header">
         Music
         <button onclick="closePopup('musicPopup')">X</button>
       </div>
-      <div class="popup-body"> 
-        <img src="assets/sad-fade.gif">
+
+  <div class="popup-body"> 
+    <div class="music-player">
+      <!-- Top row: album cover + volume -->
+      <div class="top-row">
+        <div class="song-img">
+          <!-- Start with placeholder or empty src; will update via JS -->
+          <img src="" alt="Album Cover">
+        </div>
+        <div class="volume-controls">
+          <button class="taskbar-button" id="volUpBtn">🔊<br>+</button>
+          <button class="taskbar-button" id="volDownBtn">🔉<br>-</button>
+          <button class="taskbar-button" id="muteBtn">🔇<br>Mute</button>
+        </div>
+      </div>
+
+      <!-- Playback controls -->
+      <div class="controls">
+        <button class="taskbar-button" id="prevBtn">⏮️<br>Prev</button>
+        <button class="taskbar-button" id="playPauseBtn">▶️<br>Play</button>
+        <button class="taskbar-button" id="nextBtn">⏭️<br>Next</button>
+      </div>
+
+      <!-- Scrubber / progress bar -->
+      <div class="scrubber-container">
+        <input type="range" id="scrubber" min="0" max="100" value="0">
       </div>
     </div>
+
+    <!-- Tracklist container (will be populated dynamically) -->
+    <div class="music-scrollable">
+      <div class="music-list"></div>
+    </div>
+
+    <!-- Audio element (no src here, set via JS) -->
+    <audio id="musicPlayer"></audio>
+  </div>
+</div>
     <!-- Games Popup -->
     <div id="gamesPopup" class="popup popup-games">
       <div class="popup-header">
@@ -114,68 +148,68 @@
      </div>
     </div>
 
-<!-- Profile Popup -->
-<div id="profilePopup" class="popup popup-profile">
-  <div class="popup-header">
-    <span>Profile</span>
-    <button onclick="closePopup('profilePopup')">X</button>
-  </div>
-  <div class="profile-scrollable">
-    <!-- Intro Section -->
-    <div class="profile-intro">
-      <img src="assets/profile_kid-1.png" alt="Profile Picture" class="profile-pic">
-      <div class="profile-info">
-        <h1>Hi, I'm Zen, and I do arts and stuff.</h1>
-        <h2>Animate, Illustrate and Flatulate. You name it!</h2>
+    <!-- Profile Popup -->
+    <div id="profilePopup" class="popup popup-profile">
+      <div class="popup-header">
+        <span>Profile</span>
+        <button onclick="closePopup('profilePopup')">X</button>
+      </div>
+      <div class="profile-scrollable">
+        <!-- Intro Section -->
+        <div class="profile-intro">
+          <img src="assets/profile_kid-1.png" alt="Profile Picture" class="profile-pic">
+          <div class="profile-info">
+            <h1>Hi, I'm Zen, and I do arts and stuff.</h1>
+            <h2>Animate, Illustrate and Flatulate. You name it!</h2>
+          </div>
+        </div>
+        <!-- About Section -->
+        <div class="profile-about">
+          <h1>About</h1>
+          <h3>I love daydreaming, which made me draw my ideas out. That made me love to draw which led me to create. Then I realized, as an output, I love to create. Till this very day :)</h3>
+        </div>
+        <!-- Education Section -->
+        <div class="education">
+          <h1>Education</h1>
+          <div class="education-progress">
+            <div class="qualifcation unlocked">
+              <h3>O-Levels (Completed)</h3>
+            </div>
+            <div class="qualifcation current">
+              <h3>Diploma In Digital Animation</h3>
+              <span>(Singapore Polytechnic 2023)</span>
+            </div>
+            <div class="qualifcation locked">
+              <h3>Bachelor's (Locked)</h3>
+            </div>
+          </div>
+        </div>
+        <!-- Interests -->
+        <div class="profile-interests">
+          <h1>Interests</h1>
+          <ul>
+            <li>Films and stuff</li>
+            <li>I love Music, check my playlist out</li>
+            <li>Gamers, knowwhatimsayin?</li>
+            <li>Cats! Give belly rubs to my cat Biscuit</li>
+          </ul>
+        </div>
+        <!-- Outlook / Output -->
+        <div class="profile-outlook">
+          <div class="title-row">
+            <h1>Output</h1>
+            <h2>310825</h2>
+          </div>
+          <h3>Currently imbuing myself into this website, with the help of online tools and friends assistance.</h3>
+          <h3>Tryout screenwriting as well, writing out an idea I had.</h3>
+        </div>
+        <!-- Fun section -->
+        <div class="profile-about">
+          <h1>Underwear</h1>
+          <span class="emoji">🩲</span>
+        </div>
       </div>
     </div>
-    <!-- About Section -->
-    <div class="profile-about">
-      <h1>About</h1>
-      <h3>I love daydreaming, which made me draw my ideas out. That made me love to draw which led me to create. Then I realized, as an output, I love to create. Till this very day :)</h3>
-    </div>
-    <!-- Education Section -->
-    <div class="education">
-      <h1>Education</h1>
-      <div class="education-progress">
-        <div class="qualifcation unlocked">
-          <h3>O-Levels (Completed)</h3>
-        </div>
-        <div class="qualifcation current">
-          <h3>Diploma In Digital Animation</h3>
-          <span>(Singapore Polytechnic 2023)</span>
-        </div>
-        <div class="qualifcation locked">
-          <h3>Bachelor's (Locked)</h3>
-        </div>
-      </div>
-    </div>
-    <!-- Interests -->
-    <div class="profile-interests">
-      <h1>Interests</h1>
-      <ul>
-        <li>Films and stuff</li>
-        <li>I love Music, check my playlist out</li>
-        <li>Gamers, knowwhatimsayin?</li>
-        <li>Cats! Give belly rubs to my cat Biscuit</li>
-      </ul>
-    </div>
-    <!-- Outlook / Output -->
-    <div class="profile-outlook">
-      <div class="title-row">
-        <h1>Output</h1>
-        <h2>310825</h2>
-      </div>
-      <h3>Currently imbuing myself into this website, with the help of online tools and friends assistance.</h3>
-      <h3>Tryout screenwriting as well, writing out an idea I had.</h3>
-    </div>
-    <!-- Fun section -->
-    <div class="profile-about">
-      <h1>Underwear</h1>
-      <span class="emoji">🩲</span>
-    </div>
-  </div>
-</div>
 
 <!--Works-->
       <div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
@@ -250,5 +284,6 @@
     </div>
     <script src="computer.js"></script>
     <script src="works.js"></script>
+  </div>
   </body>
 </html>

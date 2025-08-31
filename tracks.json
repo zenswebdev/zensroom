@@ -1,0 +1,12 @@
+[
+  {
+    "title": "The Smiths - Frankly, Mr. Shankly",
+    "src": "assets/audio/Frankly, Mr. Shankly.mp3",
+    "cover": "assets/smiths_cover-1.jpg"
+  },
+  {
+    "title": "Sunset Rollercoaster - Let There Be Light Again",
+    "src": "assets/audio/Let There Be Light Again.mp3",
+    "cover": "assets/sonnyboy_cover-1.jpg"
+  }
+]
