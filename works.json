@@ -1,14 +1,14 @@
 {
     "Animation": [
-    { "title": "CNY 2024", "description": "", "video": "assets/videos/CNY_2024.mp4", "thumbnail": "assets/thumbnails/CNY_Final_Part1.png" },
-    { "title": "Walk Cycle", "description": "Smooth walking animation.", "video": "assets/videos/walk.mp4", "thumbnail": "assets/thumbnails/animation1.jpg" }
+    { "title": "CNY 2024", "description": "CNY Promo for my internship", "video": "assets/videos/CNY_2024.mp4", "thumbnail": "assets/thumbnails/CNY2023_thumbnail.png" },
+    { "title": "Cat Jump", "description": "An Exercise", "image": "assets/images/Jump_Cat.gif" }
   ],
-  "Digital": [
+  "Digital Art": [
     { "title": "cock", "description": "Lmao look at this dude", "image": "assets/images/bro.jpg" },
     { "title": "", "description": "", "image": "assets/images/cap_hat.jpg" },
     { "title": "", "description": "", "image": "assets/images/cat.jpg" }
   ],
-  "Sketches": [
+  "Traditional/Pencil": [
     { "title": "", "description": "", "image": "assets/images/magician-1.webp" },
     { "title": "", "description": "", "image": "assets/images/thom-1.jpg" },
     { "title": "", "description": "", "image": "assets/images/thom-2.jpg" },

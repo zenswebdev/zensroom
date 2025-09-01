@@ -100,7 +100,7 @@ const worksPopupBody = document.querySelector('#worksPopup .popup-body');
 if (worksPopupBody) {
   const animationContainer = document.createElement('div');
   animationContainer.className = 'popup-animation';
-  worksPopupBody.parentNode.insertBefore(animationContainer, worksPopupBody); // place animation container above
+  worksPopupBody.parentNode.insertBefore(animationContainer, worksPopupBody); 
 
   fetch('works.json')
     .then(res => res.json())
@@ -122,13 +122,16 @@ if (worksPopupBody) {
           card.className = 'work-item';
 
           if (work.image) {
+            // Covers jpg, png, gif, etc.
             const img = document.createElement('img');
             img.src = work.image;
             img.alt = work.title || "Untitled";
             card.appendChild(img);
 
             card.addEventListener('click', () => openLightbox(work, 'worksPopup'));
-          } else if (work.video) {
+          } 
+          else if (work.video) {
+            // Still supports mp4 with thumbnail
             const thumb = document.createElement('img');
             thumb.src = work.thumbnail;
             thumb.alt = work.title || "Untitled";
@@ -158,8 +161,8 @@ function openLightbox(work, popupId, isVideo = false) {
     video.src = work.video;
     video.controls = true;
     video.autoplay = true;
-    video.style.maxWidth = '95vw';
-    video.style.maxHeight = '95vh';
+    video.style.maxWidth = '90vw';
+    video.style.maxHeight = '90vh';
     video.style.borderRadius = '6px';
     lightbox.appendChild(video);
   } else {
