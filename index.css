@@ -73,7 +73,14 @@ body {
   box-shadow: 0 calc(60px * var(--size)) calc(20px * var(--size))
     calc(-20px * var(--size)) rgba(142, 137, 97, 0.5);
 }
-
+.warning {
+  width: 50%;
+  position: absolute;
+  bottom: -7%;
+  right: 7%;
+  z-index: 1;
+  transform: rotate(-10deg);
+}
 .monitor-inner {
   display: block;
   width: calc(320px * var(--size));

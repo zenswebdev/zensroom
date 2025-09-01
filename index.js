@@ -1,3 +1,25 @@
+// --- Preloader ---
+const assetsToPreload = [
+  "assets/warning-1.png",  
+  "assets/DJK.jpg",       
+  "assets/power_active.png",
+  "assets/space2.gif"      
+];
+
+let loaded = 0;
+assetsToPreload.forEach(src => {
+  const img = new Image();
+  img.src = src;
+  img.onload = img.onerror = () => {
+    loaded++;
+    if (loaded === assetsToPreload.length) {
+      // Hide preloader when everything is loaded
+      const preloader = document.getElementById("preloader");
+      if (preloader) preloader.style.display = "none";
+      document.body.style.overflow = "auto"; // unlock scroll
+    }
+  };
+});
 const powerBtn = document.getElementById("powerButton");
 const img = powerBtn.querySelector(".power-symbol");
 const screenOff = document.getElementById("screenOff");

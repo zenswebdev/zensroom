@@ -1,4 +1,8 @@
 {
+    "Animation": [
+    { "title": "CNY 2024", "description": "", "video": "assets/videos/CNY_2024.mp4", "thumbnail": "assets/thumbnails/CNY_Final_Part1.png" },
+    { "title": "Walk Cycle", "description": "Smooth walking animation.", "video": "assets/videos/walk.mp4", "thumbnail": "assets/thumbnails/animation1.jpg" }
+  ],
   "Digital": [
     { "title": "cock", "description": "Lmao look at this dude", "image": "assets/images/bro.jpg" },
     { "title": "", "description": "", "image": "assets/images/cap_hat.jpg" },
@@ -11,9 +15,5 @@
     { "title": "", "description": "", "image": "assets/images/thom-3.jpg" },
     { "title": "", "description": "", "image": "assets/images/thom-4.jpg" },
     { "title": "", "description": "", "image": "assets/images/osaka-1.webp" }
-  ],
-  "Animation": [
-    { "title": "CNY 2024", "description": "", "video": "assets/videos/CNY_2024.mp4", "thumbnail": "assets/thumbnails/CNY_Final_Part1.png" },
-    { "title": "Walk Cycle", "description": "Smooth walking animation.", "video": "assets/videos/walk.mp4", "thumbnail": "assets/thumbnails/animation1.jpg" }
   ]
 }

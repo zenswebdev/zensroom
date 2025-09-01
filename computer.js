@@ -1,22 +1,66 @@
 // === Development Toggle ===
-const devEditMode = true;
+const devEditMode = false;
 const devPopupId = "worksPopup"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // --- Preload hover images ---
-  const hoverImages = [
+  // --- Preload hover images and other assets ---
+  const assetsToPreload = [
+    // App icons normal
+    "assets/cd_audio_cd_a-4.png",
+    "assets/steam-1.png",
+    "assets/recycle_bin_empty-4.png",
+    "assets/typewriter-2.png",
+    "assets/palette-1.png",
+    "assets/bad_apple-1.png",
+    "assets/cat-1.png",
+    "assets/credits-1.png",
+    "assets/film-1.png",
+
+    // App icons hover
     "assets/cd_audio_cd_a-3.png",
     "assets/steam-2.png",
     "assets/recycle_bin_empty-5.png",
-    "assets/notepad-5.png",
+    "assets/typewriter-1.png",
     "assets/palette-2.png",
     "assets/bad_apple-2.png",
-    "assets/cat-1.png",
-    "assets/credit-2.png",
-    "assets/film-2.png"
+    "assets/credits-2.png",
+    "assets/film-2.png",
+
+    // Clock images
+    "assets/clock_body-1.png",
+
+    // Welcome popup assets
+    "assets/sonnyboy_profile.gif",
+    "assets/wave-1.gif",
+
+    // Profile popup assets
+    "assets/profile_kid-1.png",
+    "assets/snow1.gif",
+
+    // Works popup assets
+    "assets/juggle-2.gif",
+    "assets/space3.gif",
+
+    // Lightbox background
+    "assets/space4.gif",
+
+    // Taskbar images
+    "assets/hi-1.png",
+    "assets/hi-2.png",
+    "assets/msagent-2.png",
+    "assets/msagent-3.png",
+    "assets/directory_open_file_mydocs-4.png",
+    "assets/directory_open_file_mydocs-5.png",
+    "assets/mail-1.png",
+    "assets/mail-2.png"
   ];
-  hoverImages.forEach(src => new Image().src = src);
+
+  // Preload all assets
+  assetsToPreload.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 
   // --- Handle initial popup ---
   if (devEditMode) {
@@ -32,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.classList.toggle("tapped");
     });
   });
-
   // --- Analog clock ---
   function updateClock() {
     const now = new Date();
@@ -52,50 +95,54 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // --- Works Popup ---
-  const worksPopupBody = document.querySelector('#worksPopup .popup-body');
-  if (worksPopupBody) {
-    const animationContainer = document.createElement('div');
-    animationContainer.className = 'popup-animation';
-    worksPopupBody.parentNode.appendChild(animationContainer);
+// --- Works Popup ---
+const worksPopupBody = document.querySelector('#worksPopup .popup-body');
+if (worksPopupBody) {
+  const animationContainer = document.createElement('div');
+  animationContainer.className = 'popup-animation';
+  worksPopupBody.parentNode.insertBefore(animationContainer, worksPopupBody); // place animation container above
 
-    fetch('works.json')
-      .then(res => res.json())
-      .then(data => {
-        Object.keys(data).forEach(category => {
-          const divider = document.createElement('div');
-          divider.className = 'works-divider';
-          divider.textContent = category;
+  fetch('works.json')
+    .then(res => res.json())
+    .then(data => {
+      // Reorder: Animation first, then all others
+      const categories = ["Animation", ...Object.keys(data).filter(c => c !== "Animation")];
 
-          const container = category === "Animation" ? animationContainer : worksPopupBody;
-          container.appendChild(divider);
+      categories.forEach(category => {
+        const divider = document.createElement('div');
+        divider.className = 'works-divider';
+        divider.textContent = category;
 
-          data[category].forEach(work => {
-            const card = document.createElement('div');
-            card.className = 'work-item';
+        // Decide container
+        const container = category === "Animation" ? animationContainer : worksPopupBody;
+        container.appendChild(divider);
 
-            if (work.image) {
-              const img = document.createElement('img');
-              img.src = work.image;
-              img.alt = work.title || "Untitled";
-              card.appendChild(img);
+        data[category].forEach(work => {
+          const card = document.createElement('div');
+          card.className = 'work-item';
 
-              card.addEventListener('click', () => openLightbox(work, 'worksPopup'));
-            } else if (work.video) {
-              const thumb = document.createElement('img');
-              thumb.src = work.thumbnail;
-              thumb.alt = work.title || "Untitled";
-              card.appendChild(thumb);
+          if (work.image) {
+            const img = document.createElement('img');
+            img.src = work.image;
+            img.alt = work.title || "Untitled";
+            card.appendChild(img);
 
-              card.addEventListener('click', () => openLightbox(work, 'worksPopup', true));
-            }
+            card.addEventListener('click', () => openLightbox(work, 'worksPopup'));
+          } else if (work.video) {
+            const thumb = document.createElement('img');
+            thumb.src = work.thumbnail;
+            thumb.alt = work.title || "Untitled";
+            card.appendChild(thumb);
 
-            container.appendChild(card);
-          });
+            card.addEventListener('click', () => openLightbox(work, 'worksPopup', true));
+          }
+
+          container.appendChild(card);
         });
-      })
-      .catch(err => console.error("Failed to load works.json:", err));
-  }
+      });
+    })
+    .catch(err => console.error("Failed to load works.json:", err));
+}
 });
 
 // --- Lightbox helper ---
