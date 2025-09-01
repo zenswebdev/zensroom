@@ -554,9 +554,9 @@ body {
   color: white;
 }
 .intro-img {
-  width: 80%;
-  height: 50px;
-  object-fit: contain;
+  position: relative;
+  width: 300px;
+  height: 265px;
 }
 /* ===============================
    Work Cards (Images)
@@ -575,8 +575,8 @@ body {
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 200px;
-  max-height: 300px;
+  max-width: 300px;
+  max-height: 225px;
   padding: 4px;
   cursor: pointer;
   box-sizing: border-box;

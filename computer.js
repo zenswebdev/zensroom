@@ -1,6 +1,6 @@
 // === Development Toggle ===
 const devEditMode = true;
-const devPopupId = "profilePopup"; // dev-only popup
+const devPopupId = "worksPopup"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "assets/palette-2.png",
     "assets/bad_apple-2.png",
     "assets/cat-1.png",
-    "assets/credit-2.png"
+    "assets/credit-2.png",
+    "assets/film-2.png"
   ];
   hoverImages.forEach(src => new Image().src = src);
 
