@@ -357,7 +357,6 @@ body {
   box-shadow: 3px 3px #000;
   background-image: url(assets/snow1.gif);
   box-sizing: border-box;
-  font-family: sans-serif; 
 }
 .profile-scrollable {
   flex: 1 1 auto;       
@@ -545,18 +544,21 @@ body {
   max-height: calc(100% - 140px);
   box-shadow: 3px 3px #000;
   background-image: url(assets/space3.gif);
+  
 }
 .work-scrollable {
   overflow-y: auto;
 }
 .works-intro {
+  font-size: 1.4em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
   color: white;
 }
 .intro-img {
   position: relative;
   width: 300px;
-  height: 265px;
+  height: 225px;
 }
 /* ===============================
    Work Cards (Images)
@@ -620,7 +622,7 @@ body {
 }
 .works-divider {
   grid-column: 1 / -1;
-  font-size: 1.4em;
+  font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;
   text-align: center;
@@ -641,67 +643,48 @@ body {
   justify-content: center;
   z-index: 2000;
   cursor: pointer;
-  padding: 10px; /* smaller padding helps prevent overflow */
-  overflow-x: hidden; /* prevent horizontal scroll */
-  overflow-y: auto;  /* allow vertical scrolling if needed */
+  padding: 10px; 
+  overflow-x: hidden; 
+  overflow-y: auto;  
   color: #fff;
   background: rgba(0,0,0,0.8);
-  box-sizing: border-box; /* ensure padding doesn't add to width */
+  box-sizing: border-box; 
 }
 .lightbox::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('assets/space4.gif') center/cover no-repeat;
-  opacity: 40%;  /* adjust opacity as needed */
-  z-index: -1;    /* behind the image */
+  opacity: 40%;  
+  z-index: -1;    
 }
-/* Lightbox images & videos */
 .lightbox img,
 .lightbox video {
-  max-width: 100%;  /* limit width to container */
+  max-width: 100%;  
   width: auto;
   max-height: 80vh;
   border-radius: 6px;
   object-fit: contain;
   margin-bottom: 20px;
 }
-
 .lightbox-caption {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
   max-width: 80%;
   text-align: center;
   color: #fff;
 }
-
 .lightbox-caption h3 {
   margin: 0 0 10px;
   font-size: 1.4em;
 }
-
 .lightbox-caption p {
   margin: 0;
   font-size: 1em;
   line-height: 1.4;
   opacity: 0.9;
 }
-
-/* Back button */
-.lightbox-back {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
-  z-index: 1001;
-  cursor: pointer;
-  background-color: #000;
-}
-
 /* Force square thumbnail */
 .work-item img {
   width: 100%;
@@ -709,7 +692,6 @@ body {
   object-fit: cover;     /* Crop without stretching */
   border-radius: 6px;
 }
-
 /* Lightbox overlay */
 .lightbox {
   position: fixed;
@@ -724,11 +706,9 @@ body {
   z-index: 9999;
   cursor: pointer;
 }
-
-/* Lightbox image */
 .lightbox img {
-  max-width: 95vw;
-  max-height: 95vh;
+  max-width: 75vw;
+  max-height: 75vh;
   width: auto;
   height: auto;
   object-fit: contain;

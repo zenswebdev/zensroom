@@ -105,7 +105,6 @@ if (worksPopupBody) {
   fetch('works.json')
     .then(res => res.json())
     .then(data => {
-      // Reorder: Animation first, then all others
       const categories = ["Animation", ...Object.keys(data).filter(c => c !== "Animation")];
 
       categories.forEach(category => {
