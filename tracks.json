@@ -2,26 +2,26 @@
   {
     "title": "MF DOOM - Rapp Snitch Knishes",
     "src": "assets/audio/Rapp Snitch Knishes.mp3",
-    "cover": "assets/mf_cover-1.jpg"
+    "cover": "assets/mf_cover-1.webp"
   },
   {
     "title": "LCD Soundsystem - All I Want",
     "src": "assets/audio/All I Want.mp3",
-    "cover": "assets/lcd_cover-1.jpg"
+    "cover": "assets/lcd_cover-1.webp"
   },
   {
     "title": "Beck - Debra",
     "src": "assets/audio/Debra.mp3",
-    "cover": "assets/beck_cover-1.jpg"
+    "cover": "assets/beck_cover-1.webp"
   },
   {
     "title": "The Smiths - Frankly, Mr. Shankly",
     "src": "assets/audio/Frankly, Mr. Shankly.mp3",
-    "cover": "assets/smiths_cover-1.jpg"
+    "cover": "assets/smiths_cover-1.webp"
   },
   {
     "title": "Masayoshi Takanaka - Oh! Tengo Suerte",
     "src": "assets/audio/Oh! Tengo Suerte.mp3",
-    "cover": "assets/takanaka_cover-1.jpg"
+    "cover": "assets/takanaka_cover-1.webp"
   }
 ]

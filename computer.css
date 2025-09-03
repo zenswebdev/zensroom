@@ -76,26 +76,26 @@ body {
   cursor: pointer;
 }
 /* Normal state */
-.icon.music    { background-image: url("assets/cd_audio_cd_a-4.png"); }
-.icon.games    { background-image: url("assets/steam-1.png"); }
-.icon.recycle  { background-image: url("assets/recycle_bin_empty-4.png"); }
-.icon.writings  { background-image: url("assets/typewriter-2.png"); }
-.icon.paint    { background-image: url("assets/palette-1.png"); }
-.icon.apple    { background-image: url("assets/bad_apple-1.png"); }
-.icon.cat      { background-image: url("assets/cat-1.png"); }
-.icon.credits  { background-image: url("assets/credits-1.png");}
-.icon.films     { background-image: url("assets/film-1.png");}
+.icon.music    { background-image: url("assets/cd_audio_cd_a-4.webp"); }
+.icon.games    { background-image: url("assets/steam-1.webp"); }
+.icon.recycle  { background-image: url("assets/recycle_bin_empty-4.webp"); }
+.icon.writings  { background-image: url("assets/typewriter-2.webp"); }
+.icon.paint    { background-image: url("assets/palette-1.webp"); }
+.icon.apple    { background-image: url("assets/bad_apple-1.webp"); }
+.icon.cat      { background-image: url("assets/cat-1.webp"); }
+.icon.credits  { background-image: url("assets/credits-1.webp");}
+.icon.films     { background-image: url("assets/film-1.webp");}
 
 /* Hover state (only applies on desktop / devices with a mouse) */
 @media (hover: hover) and (pointer: fine) {
-  .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.png"); }
-  .icon.games:hover    { background-image: url("assets/steam-2.png"); }
-  .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.png"); }
-  .icon.writings:hover  { background-image: url("assets/typewriter-1.png"); }
-  .icon.paint:hover    { background-image: url("assets/palette-2.png"); }
-  .icon.apple:hover    { background-image: url("assets/bad_apple-2.png"); }
-  .icon.credits:hover  { background-image: url("assets/credits-2.png");}
-  .icon.films:hover     { background-image: url("assets/film-2.png");}
+  .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.webp"); }
+  .icon.games:hover    { background-image: url("assets/steam-2.webp"); }
+  .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.webp"); }
+  .icon.writings:hover  { background-image: url("assets/typewriter-1.webp"); }
+  .icon.paint:hover    { background-image: url("assets/palette-2.webp"); }
+  .icon.apple:hover    { background-image: url("assets/bad_apple-2.webp"); }
+  .icon.credits:hover  { background-image: url("assets/credits-2.webp");}
+  .icon.films:hover     { background-image: url("assets/film-2.webp");}
 }
   /*Clock*/
 .clock {

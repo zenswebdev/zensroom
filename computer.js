@@ -7,35 +7,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Preload hover images and other assets ---
   const assetsToPreload = [
     // App icons normal
-    "assets/cd_audio_cd_a-4.png",
-    "assets/steam-1.png",
-    "assets/recycle_bin_empty-4.png",
-    "assets/typewriter-2.png",
-    "assets/palette-1.png",
-    "assets/bad_apple-1.png",
-    "assets/cat-1.png",
-    "assets/credits-1.png",
-    "assets/film-1.png",
+    "assets/cd_audio_cd_a-4.webp",
+    "assets/steam-1.webp",
+    "assets/recycle_bin_empty-4.webp",
+    "assets/typewriter-2.webp",
+    "assets/palette-1.webp",
+    "assets/bad_apple-1.webp",
+    "assets/cat-1.webp",
+    "assets/credits-1.webp",
+    "assets/film-1.webp",
 
     // App icons hover
-    "assets/cd_audio_cd_a-3.png",
-    "assets/steam-2.png",
-    "assets/recycle_bin_empty-5.png",
-    "assets/typewriter-1.png",
-    "assets/palette-2.png",
-    "assets/bad_apple-2.png",
-    "assets/credits-2.png",
-    "assets/film-2.png",
+    "assets/cd_audio_cd_a-3.webp",
+    "assets/steam-2.webp",
+    "assets/recycle_bin_empty-5.webp",
+    "assets/typewriter-1.webp",
+    "assets/palette-2.webp",
+    "assets/bad_apple-2.webp",
+    "assets/credits-2.webp",
+    "assets/film-2.webp",
 
     // Clock images
-    "assets/clock_body-1.png",
+    "assets/clock_body-1.webp",
 
     // Welcome popup assets
     "assets/sonnyboy_profile.gif",
     "assets/wave-1.gif",
 
     // Profile popup assets
-    "assets/profile_kid-1.png",
+    "assets/profile_kid-1.webp",
     "assets/snow1.gif",
 
     // Works popup assets
@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
     "assets/space4.gif",
 
     // Taskbar images
-    "assets/hi-1.png",
-    "assets/hi-2.png",
-    "assets/msagent-2.png",
-    "assets/msagent-3.png",
-    "assets/directory_open_file_mydocs-4.png",
-    "assets/directory_open_file_mydocs-5.png",
-    "assets/mail-1.png",
-    "assets/mail-2.png"
+    "assets/hi-1.webp",
+    "assets/hi-2.webp",
+    "assets/msagent-2.webp",
+    "assets/msagent-3.webp",
+    "assets/directory_open_file_mydocs-4.webp",
+    "assets/directory_open_file_mydocs-5.webp",
+    "assets/mail-1.webp",
+    "assets/mail-2.webp"
   ];
 
   // Preload all assets
@@ -121,7 +121,7 @@ if (worksPopupBody) {
           card.className = 'work-item';
 
           if (work.image) {
-            // Covers jpg, png, gif, etc.
+            // Covers jpg, webp, gif, etc.
             const img = document.createElement('img');
             img.src = work.image;
             img.alt = work.title || "Untitled";
