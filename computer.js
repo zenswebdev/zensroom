@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "assets/recycle_bin_empty-4.webp",
     "assets/typewriter-2.webp",
     "assets/palette-1.webp",
-    "assets/bad_apple-1.webp",
     "assets/cat-1.webp",
     "assets/credits-1.webp",
     "assets/film-1.webp",
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "assets/recycle_bin_empty-5.webp",
     "assets/typewriter-1.webp",
     "assets/palette-2.webp",
-    "assets/bad_apple-2.webp",
     "assets/credits-2.webp",
     "assets/film-2.webp",
 

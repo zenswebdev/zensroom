@@ -1,11 +1,7 @@
 {
   "Animation": [
     { "title": "CNY 2023", "description": "CNY Promo for my internship", "video": "assets/videos/CNY_2023.mp4", "thumbnail": "assets/thumbnails/CNY2023_thumbnail.webp" },
-    { "title": "Gradutation", "description": "My 2022 Final Year Project ", "video": "assets/videos/Graduation_2022.mp4", "thumbnail": "assets/thumbnails/Graduation2022_thumbnail.webp" },
-    { "title": "Cat Jump", "description": "An Exercise", "image": "assets/images/Jump_Cat.gif" }
-  ],
-  "Ani Misc": [
-    { "title": "cock", "description": "Lmao look at this dude", "image": "assets/images/bro.jpg" },
+    { "title": "Graduation (Zen's Edition)", "description": "Just scenes I did for my FYP", "video": "assets/videos/Graduation_2022.mp4", "thumbnail": "assets/thumbnails/Graduation2022_thumbnail.webp" },
     { "title": "Cat Jump", "description": "An Exercise", "image": "assets/images/Jump_Cat.gif" }
   ],
   "Digital Art": [
@@ -13,15 +9,18 @@
     { "title": "", "description": "", "image": "assets/images/cap_hat.jpg" },
     { "title": "", "description": "", "image": "assets/images/cat.jpg" }
   ],
-  "Pencil": [
+  "Drawings": [
     { "title": "Solar", "description": "", "image": "assets/images/Solar.webp" },
     { "title": "Reflection", "description": "", "image": "assets/images/Reflection.webp" },
     { "title": "Nights", "description": "", "image": "assets/images/Nights.webp" },
-    { "title": "Self Portrait", "description": "", "image": "assets/images/Self_Portrait-1.webp" },
+    { "title": "Mannami", "description": "", "image": "assets/images/Mannami.webp" },
     { "title": "Stanczyk", "description": "", "image": "assets/images/Stanczyk.webp" },
     { "title": "Motola", "description": "", "image": "assets/images/Motola.webp" },
-    { "title": "Food Impressions", "description": "", "image": "assets/images/Food_Impressions.webp" },
     { "title": "Petals", "description": "", "image": "assets/images/Petals.webp" },
+    { "title": "Ride On Time", "description": "", "image": "assets/images/RideOnTime.webp" },
+    { "title": "Self Portrait", "description": "", "image": "assets/images/Self_Portrait-1.webp" },
+    { "title": "Food Impressions", "description": "", "image": "assets/images/Food_Impressions.webp" },
+     { "title": "Gambinos", "description": "", "image": "assets/images/Gambinos.webp" },
     { "title": "Gazing", "description": "", "image": "assets/images/Gazing.webp" }
   ]
 }

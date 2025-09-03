@@ -16,7 +16,7 @@
         <div class="icon games"    aria-label="games"    onclick="togglePopup('gamesPopup')"></div>
       <!--<a href="YouvebeenBadApple">
       <div class="icon apple"    aria-label="apple"></div></a>-->
-        <div class="icon clock"    aria-label="clock">
+        <div class="icon clock" aria-label="clock"       onclick="togglePopup('clockPopup')">
           <div class="clock">
             <img src="assets/clock_body-1.webp" alt="clock" class="clock-face" >
             <div class="hand hour" id="hourHand"></div>
@@ -32,7 +32,7 @@
       </div>
    </div>
     <!-- Music Popup -->
-    <div id="musicPopup" class="popup popup-credit">
+  <div id="musicPopup" class="popup popup-credit">
       <div class="popup-header">
         Music
         <button onclick="closePopup('musicPopup')">X</button>
@@ -76,7 +76,7 @@
   </div>
 </div>
     <!-- Games Popup -->
-    <div id="gamesPopup" class="popup popup-games">
+  <div id="gamesPopup" class="popup popup-games">
       <div class="popup-header">
         Games
         <button onclick="closePopup('gamesPopup')">X</button>
@@ -85,7 +85,20 @@
         <img src="assets/sad-fade.gif">
          <h1>In Progress</h1>
       </div>
-    </div>
+  </div>
+      <!-- Clock Popup -->
+  <div id="clockPopup" class="popup popup-contact">
+      <div class="popup-header">
+        The Time?
+        <button onclick="closePopup('clockPopup')">X</button>
+      </div>
+      <div class="popup-body"> 
+        <img src="assets/sad-fade.gif">
+         <h1>When It Is Time, No One Comes</h1>
+         <h1>When You Have Time, It Is Up</h1>
+      </div>
+  </div>
+  
    <!-- Writings Popup -->
     <div id="writingsPopup" class="popup popup-writings">
       <div class="popup-header">
