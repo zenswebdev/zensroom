@@ -30,7 +30,7 @@
       </div>
    </div>
     <!-- Music Popup -->
-  <div id="musicPopup" class="popup popup-credit">
+  <div id="musicPopup" class="popup popup-music">
       <div class="popup-header">
         Music
         <button onclick="closePopup('musicPopup')">X</button>
@@ -84,7 +84,7 @@
          <h1>In Progress</h1>
       </div>
   </div>
-      <!-- Clock Popup -->
+    <!-- Clock Popup -->
   <div id="clockPopup" class="popup popup-contact">
       <div class="popup-header">
         The Time?
@@ -96,7 +96,7 @@
          <h1>When You Have Time, It Is Up</h1>
       </div>
   </div>
-   <!-- Writings Popup -->
+    <!-- Writings Popup -->
     <div id="writingsPopup" class="popup popup-writings">
       <div class="popup-header">
         Writings
@@ -117,6 +117,16 @@
         <h1>In Progress</h1>
       </div>
     </div>
+        <!-- Cat Popup -->
+    <div id="catPopup" class="popup popup-works">
+      <div class="popup-header">
+        Cat!
+        <button onclick="closePopup('catPopup')">X</button>
+      </div>
+      <div class="popup-body">
+        <img src="assets/cat_swing.gif">
+      </div>
+    </div>
     <!-- Credits Popup -->
     <div id="creditsPopup" class="popup popup-contact">
       <div class="popup-header">
@@ -124,7 +134,7 @@
         <button onclick="closePopup('creditsPopup')">X</button>
       </div>
       <div class="popup-body">
-        <h1>All The <span style="text-decoration: line-through;">Lonely</span> Lovely People</h1>
+        <h1>All The Lovely People</h1>
         <h3>Made possible by the seer will of an idiot</h3>
         <h3>with help from amazing people</h3>
         <h3>Album pixel art by 8bitalbumcovers</h3>
@@ -141,7 +151,7 @@
       </div>
     </div>
 
-<!--Welcome Popup-->
+    <!--Welcome Popup-->
     <div id="welcomePopup" class="popup popup-welcome">
       <div class="popup-header">
         <span>Welcome</span>
@@ -158,7 +168,6 @@
           <h2>ANIMATOR | ARTISTE | FRIEND</h2>
      </div>
     </div>
-
     <!-- Profile Popup -->
     <div id="profilePopup" class="popup popup-profile">
       <div class="popup-header">
@@ -221,8 +230,7 @@
         </div>
       </div>
     </div>
-
-<!--Works-->
+    <!--Works-->
       <div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
       <div id="worksPopup" class="popup popup-works">
         <div class="popup-header">
@@ -235,14 +243,14 @@
             <h2>My Works</h2>
             <p>I juggle these Softwares to create. Literally!</p>
             <img src="assets/juggle-2.gif" class="intro-img">
+          
           </div>
           <div class="popup-body">
             <!-- JS will insert work cards here -->
           </div>
        </div>
       </div>
-
-<!--Contact-->
+    <!--Contact-->
     <div id="contactPopup" class="popup popup-contact">
       <div class="popup-header">
         <span>Contact</span>
@@ -268,7 +276,7 @@
         </form>
       </div>
     </div>
-<!--taskbar-->
+    <!--taskbar-->
    <div class="taskbar">
       <button onclick="togglePopup('welcomePopup')" class="btn">
         <img src="assets/hi-2.webp" alt="Info" class="normal">

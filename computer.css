@@ -132,7 +132,7 @@ body {
 
 /* Cat */
 .icon.cat::before  { background-image: url("assets/cat-1.webp"); }
-/* no hover variant provided */
+.icon.cat::after  { background-image: url("assets/cat-2.webp"); }
 
 /* Credits */
 .icon.credits::before  { background-image: url("assets/credits-1.webp"); }
@@ -898,7 +898,7 @@ body {
   font-size: 13px;
   color: #000000;
   pointer-events: none;
-  bottom: 0; /* default: sits at the base */
+  bottom: 2px; /* default: sits at the base */
 }
 
 /* When screen height is small, move it above taskbar */
