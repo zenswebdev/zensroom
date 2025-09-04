@@ -67,36 +67,80 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
   }
 }
-
 .icon {
-  width: 80px; 
+  position: relative;
+  width: 80px;
   height: 80px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: none; /* remove old background-image usage */
   cursor: pointer;
 }
-/* Normal state */
-.icon.music    { background-image: url("assets/cd_audio_cd_a-4.webp"); }
-.icon.games    { background-image: url("assets/steam-1.webp"); }
-.icon.recycle  { background-image: url("assets/recycle_bin_empty-4.webp"); }
-.icon.writings  { background-image: url("assets/typewriter-2.webp"); }
-.icon.paint    { background-image: url("assets/palette-1.webp"); }
-.icon.apple    { background-image: url("assets/bad_apple-1.webp"); }
-.icon.cat      { background-image: url("assets/cat-1.webp"); }
-.icon.credits  { background-image: url("assets/credits-1.webp");}
-.icon.films     { background-image: url("assets/film-1.webp");}
 
-/* Hover state (only applies on desktop / devices with a mouse) */
-@media (hover: hover) and (pointer: fine) {
-  .icon.music:hover    { background-image: url("assets/cd_audio_cd_a-3.webp"); }
-  .icon.games:hover    { background-image: url("assets/steam-2.webp"); }
-  .icon.recycle:hover  { background-image: url("assets/recycle_bin_empty-5.webp"); }
-  .icon.writings:hover  { background-image: url("assets/typewriter-1.webp"); }
-  .icon.paint:hover    { background-image: url("assets/palette-2.webp"); }
-  .icon.apple:hover    { background-image: url("assets/bad_apple-2.webp"); }
-  .icon.credits:hover  { background-image: url("assets/credits-2.webp");}
-  .icon.films:hover     { background-image: url("assets/film-2.webp");}
+/* shared pseudo-elements for normal + hover states */
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: none;
 }
+
+/* normal state visible */
+.icon::before {
+  opacity: 1;
+}
+
+/* hover state hidden */
+.icon::after {
+  opacity: 0;
+}
+
+/* swap on hover */
+.icon:hover::before {
+  opacity: 0;
+}
+.icon:hover::after {
+  opacity: 1;
+}
+
+/* Per-icon assignments */
+
+/* Music */
+.icon.music::before  { background-image: url("assets/cd_audio_cd_a-4.webp"); }
+.icon.music::after   { background-image: url("assets/cd_audio_cd_a-3.webp"); }
+
+/* Games */
+.icon.games::before  { background-image: url("assets/steam-1.webp"); }
+.icon.games::after   { background-image: url("assets/steam-2.webp"); }
+
+/* Recycle */
+.icon.recycle::before { background-image: url("assets/recycle_bin_empty-4.webp"); }
+.icon.recycle::after  { background-image: url("assets/recycle_bin_empty-5.webp"); }
+
+/* Writings */
+.icon.writings::before { background-image: url("assets/typewriter-2.webp"); }
+.icon.writings::after  { background-image: url("assets/typewriter-1.webp"); }
+
+/* Paint */
+.icon.paint::before  { background-image: url("assets/palette-1.webp"); }
+.icon.paint::after   { background-image: url("assets/palette-2.webp"); }
+
+/* Apple (if enabled) */
+.icon.apple::before  { background-image: url("assets/bad_apple-1.webp"); }
+.icon.apple::after   { background-image: url("assets/bad_apple-2.webp"); }
+
+/* Cat */
+.icon.cat::before  { background-image: url("assets/cat-1.webp"); }
+/* no hover variant provided */
+
+/* Credits */
+.icon.credits::before  { background-image: url("assets/credits-1.webp"); }
+.icon.credits::after   { background-image: url("assets/credits-2.webp"); }
+
+/* Films */
+.icon.films::before  { background-image: url("assets/film-1.webp"); }
+.icon.films::after   { background-image: url("assets/film-2.webp"); }
   /*Clock*/
 .clock {
   position: relative;
