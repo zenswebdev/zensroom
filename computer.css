@@ -686,13 +686,15 @@ body {
 }
 .works-divider {
   grid-column: 1 / -1;
+  max-width: 150px; /* divider won’t grow past this */
+  width: 100%;       /* but can shrink on smaller screens */
+  margin: 40px auto 20px;
+  text-align: center;
+  border-bottom: 2px solid #444;
   font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bold;
-  text-align: center;
-  margin: 40px 0 20px;
   padding-bottom: 5px;
-  border-bottom: 2px solid #444;
   color: white;
 }
 /* ===============================
@@ -886,4 +888,23 @@ body {
 
 .btn:active img.pressed {
   display: block;
+}
+
+.copyright {
+  font-family: sans-serif;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  font-size: 13px;
+  color: #000000;
+  pointer-events: none;
+  bottom: 0; /* default: sits at the base */
+}
+
+/* When screen height is small, move it above taskbar */
+@media (max-width: 331px) {
+  .copyright {
+    bottom: 110px; 
+    color: #ffffff;
+  }
 }

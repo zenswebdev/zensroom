@@ -1,5 +1,5 @@
 // === Development Toggle ===
-const devEditMode = false;
+const devEditMode = true;
 const devPopupId = "worksPopup"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
