@@ -300,12 +300,15 @@ body {
   background: #c0c0c0;
   border: 1px solid #000;
   box-shadow: 5px 5px #404040;
-  display: none; /* hide all popups initially */
+  display: none;           /* hide all popups initially */
   max-width: calc(100% - 40px);
   max-height: calc(100vh - 4px);
-  overflow-y: hidden;
+  overflow: hidden;        /* scroll handled by child */
   box-sizing: border-box;
+  flex-direction: column;  /* default flex layout for header + content */
 }
+
+/* === Header === */
 .popup-header {
   background: #000080;
   color: white;
@@ -314,12 +317,15 @@ body {
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
 }
 .popup-header button {
   background: #c0c0c0;
   border: 1px solid #000;
   cursor: pointer;
 }
+
+/* === Body === */
 .popup-body {
   font-family: sans-serif;
   font-size: 14px;
@@ -330,6 +336,130 @@ body {
 .popup-body h2,
 .popup-body p {
   margin: 5px auto 30px; 
+}
+
+/* === Scrollable containers for various popups === */
+.work-scrollable,
+.profile-scrollable,
+.cat-scrollable,
+.popup-scrollable {
+  flex: 1;                  /* take remaining height */
+  overflow-y: auto;         /* enable vertical scroll */
+  min-height: 0;            /* needed for flexbox scroll to work */
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+/* General Popup Base */
+.popup-general {
+  width: 90%;
+  max-width: 450px;
+  max-height: calc(100% - 140px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-y: auto;
+  text-align: center; /* center text */
+  display: none; /* keep hidden by default */
+}
+
+/* Content wrapper inside general popup */
+.popup-general .popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center images and content horizontally */
+  gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Responsive images */
+.popup-general .popup-body img {
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+  margin: 0 auto;
+}
+/* === cat popup === */
+.popup-cat {
+  width: 90%;
+  max-width: 600px;
+  flex-direction: column;
+  margin: 0 auto;
+  max-height: calc(100% - 140px);  
+  box-shadow: 3px 3px #000;
+  background-image: url(assets/space3.gif);
+  display: none;  /* keep hidden by default */
+}
+
+/* Make the intro section centered */
+.cat-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* center horizontally */
+  text-align: center;   /* center text */
+  padding: 1rem;
+}
+
+.cat-intro h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5rem;
+  font-family: sans-serif; 
+  color: white;
+}
+
+.cat-intro p {
+  font-size: 1em;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+/* Centered and responsive image */
+.cat-intro-img {
+  max-width: 100%;  /* make image responsive */
+  height: auto;
+  border-radius: 8px; 
+  margin-bottom: 1.5rem;
+}
+
+.cat-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.cat-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+
+.contributors {
+  display: flex;
+  gap: 20px;             /* spacing between pictures */
+  justify-content: center;
+}
+.contributor {
+  text-align: center;
+}
+.contributors img {
+  width: 120px;          /* uniform size */
+  height: 120px;
+  object-fit: cover;     /* keeps image centered inside */
+  border-radius: 50%;    /* makes it circular */
+  border: 2px solid #ccc; 
+  background-image: url(assets/space3.gif);
+  box-shadow: 2px 2px #404040;
+}
+.contributor p {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color:rgb(0, 0, 0);
+}
+#creditsPopup .popup-body h3 {
+  margin: 4px 0;   /* adjust to taste */
+  line-height: 1.3; /* tighter vertical spacing */
 }
 /* === welcome popup === */
 .popup-welcome {
@@ -388,14 +518,6 @@ body {
   box-shadow: 3px 3px #000;
   background-image: url(assets/snow1.gif);
   box-sizing: border-box;
-}
-.profile-scrollable {
-  flex: 1 1 auto;       
-  min-height: 0;     
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0 20px 20px 20px;
-  font-family: sans-serif;
 }
 .profile-intro {
   display: flex;
@@ -523,6 +645,17 @@ body {
   border-radius: 50%;
   border: 3px dotted #000;
 }
+
+/* === Link styling inside interests === */
+.profile-interests a {
+  color: #000080;       
+  text-decoration: none; 
+  font-weight: bold;   
+  cursor: pointer;      
+}
+.profile-interests a:hover {
+  text-decoration: underline; /* subtle hover feedback */
+}
 .profile-outlook {
   padding: 10px 5px;
   border-top: 2px solid #000;
@@ -568,10 +701,6 @@ body {
   max-height: calc(100% - 140px);
   box-shadow: 3px 3px #000;
   background-image: url(assets/space3.gif);
-  
-}
-.work-scrollable {
-  overflow-y: auto;
 }
 .works-intro {
   font-size: 1.2em; /* slightly smaller base size */
@@ -593,6 +722,7 @@ body {
   height: auto;      /* keep aspect ratio */
   border-radius: 8px;
 }
+
 /* ===============================
    Work Cards (Images)
    =============================== */
@@ -601,7 +731,6 @@ body {
   gap: 12px;              /* keep your spacing (or 20px if you prefer) */
   padding: 9px;
   box-sizing: border-box;
-  /* Default: 2 columns — never collapse to 1 */
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 /* Grow to 3 columns when there's room */
