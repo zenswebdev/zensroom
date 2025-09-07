@@ -353,11 +353,7 @@ body {
 /* General Popup Base */
 .popup-general {
   width: 90%;
-<<<<<<< HEAD
-  max-width: 450px;
-=======
   max-width: 300px;
->>>>>>> f92f83c622f562d0e8be6e280aee55a0c7daf982
   max-height: calc(100% - 140px);
   margin: 0 auto;
   box-sizing: border-box;
@@ -380,10 +376,7 @@ body {
 .popup-general .popup-body img {
   max-width: 100%; 
   height: auto; 
-<<<<<<< HEAD
-=======
   border-radius: 6px; 
->>>>>>> f92f83c622f562d0e8be6e280aee55a0c7daf982
   display: block;
   margin: 0 auto;
 }

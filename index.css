@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
+  overflow-x: hidden;
 }
 
 .macintosh {
@@ -381,28 +382,52 @@ body {
     linear-gradient(90deg, transparent 30%, #181914 30% 70%, transparent 70%);
 }
 
-.keyboard {
-  position: relative;
-  top: 20%;
-  overflow-x: hidden;
+.keyboard-wrapper {
+  position: absolute; /* make it attach relative to the Mac */
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 999;
+  --kb-bottom: -430px; 
 }
 
 .keyboard img {
-  width: 100%;
-  height: auto;
+  --kb-size: 1; /* default scale */
+  width: calc(1100px * var(--kb-size));
   display: block;
+  position: relative;
+  bottom: var(--kb-bottom);
 }
 
-@media (max-width: 500px){
+@media (max-width: 700px) {
   .keyboard img {
-    width: 140%;
-    height: auto;
-    display: block;
-    overflow-x: hidden;
+    --kb-size: 0.75;
+    --kb-bottom: -350px;
   }
+}
 
-  body{
-    overflow-x: hidden; /* Prevent horizontal scrolling as well */
+@media (max-width: 570px) {
+  .keyboard img {
+    --kb-size: 0.6;
+    --kb-bottom: -270px;
+  }
+}
+
+@media (max-width: 415px) {
+  .keyboard img {
+    --kb-size: 0.5;
+    --kb-bottom: -220px;
+  }
+}
+
+@media (max-width: 377px) {
+  .keyboard img {
+    --kb-size: 0.5;
+    --kb-bottom: -200px;
+  }
+}
+
+@media (max-width: 300px) {
+  .keyboard img {
+    display: none; /* optional: hide if too tiny */
   }
 }
