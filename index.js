@@ -16,7 +16,6 @@ assetsToPreload.forEach(src => {
       // Hide preloader when everything is loaded
       const preloader = document.getElementById("preloader");
       if (preloader) preloader.style.display = "none";
-      document.body.style.overflow = "auto"; // unlock scroll
     }
   };
 });

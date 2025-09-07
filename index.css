@@ -15,7 +15,7 @@ body {
   --size: 1.8; /* default */
   width: calc(340px * var(--size));
   height: calc(475px * var(--size));
-  margin: 2vh 10vw 40vh 10vw; 
+  margin: 2vh 10vw 10vh 10vw; 
   position: relative;
   box-shadow: 0 calc(80px * var(--size)) calc(60px * var(--size))
     calc(-60px * var(--size)) rgba(0, 0, 0, 0.4);
@@ -173,6 +173,8 @@ body {
     height: 120px;
   }
 }
+
+
 
 .signin-btn:hover {
   color:#ffffff;
@@ -390,4 +392,17 @@ body {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media (max-width: 500px){
+  .keyboard img {
+    width: 140%;
+    height: auto;
+    display: block;
+    overflow-x: hidden;
+  }
+
+  body{
+    overflow-x: hidden; /* Prevent horizontal scrolling as well */
+  }
 }
