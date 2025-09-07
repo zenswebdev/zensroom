@@ -1,6 +1,10 @@
 // === Development Toggle ===
 const devEditMode = false;
+<<<<<<< HEAD
 const devPopupId = "creditsPopup"; // dev-only popup
+=======
+const devPopupId = "catPopup"; // dev-only popup
+>>>>>>> f92f83c622f562d0e8be6e280aee55a0c7daf982
 
 document.addEventListener("DOMContentLoaded", () => {
 
