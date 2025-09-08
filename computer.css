@@ -719,9 +719,161 @@ body {
   margin-bottom: 1rem;
 }
 .intro-img {
-  max-width: 100%;   /* shrink with container */
-  height: auto;      /* keep aspect ratio */
+  display: block;
+  margin: 0 auto 3rem auto; 
+  max-width: 100%;
+  height: auto;
   border-radius: 8px;
+}
+/* ===============================
+   Skills Popup
+   =============================== */
+.popup-skills {
+  width: 90%;
+  max-width: 600px;
+  display: none;
+  flex-direction: column;
+  margin: 0 auto;
+  max-height: calc(100% - 140px);
+  box-shadow: 3px 3px #000;
+  background: #111;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.skills-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+
+.skill-node img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.skill-node p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.skill-node.locked {
+  opacity: 0.4;
+}
+/* Trigger styled like heading */
+.skills-btn {
+  font-size: 1.5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  text-align: center;
+  margin: 0 auto 1rem auto;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+.skills-btn:hover {
+  color: #ffd700;
+}
+.hex-row {
+  display: flex;
+  gap: 5px;
+}
+.hex-row.offset {
+  margin: -20px 0 -20px 0;
+}
+
+/* Hexagon shape */
+.skill-node {
+  position: relative; /* parent for absolute children */
+  width: 90px;
+  height: 100px;
+  background: #333;
+  clip-path: polygon(
+    50% 0%, 100% 25%, 100% 75%, 
+    50% 100%, 0% 75%, 0% 25%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.85em;
+  overflow: hidden; /* ensures image stays inside hexagon */
+}
+#skillsLightbox .skill-node img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  clip-path: polygon(
+    50% 0%, 100% 25%, 100% 75%, 
+    50% 100%, 0% 75%, 0% 25%
+  );
+  z-index: 1;
+}
+.skill-node span {
+  position: relative;
+  z-index: 2; /* above the image */
+  text-align: center;
+}
+.skill-node.main { background: #3967c4; font-weight: bold; }
+.skill-node.locked { opacity: 0.4; }
+.skill-node.blank {
+  background: transparent;  /* no fill */
+  border: none;             /* no border */
+  opacity: 0;               /* fully invisible but still takes space */
+  pointer-events: none;     /* optional: clicks pass through */
+}
+
+/* Skill tree lightbox */
+/* Skill tree lightbox */
+#skillsLightbox {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: none; /* starts hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+  overflow: auto;
+}
+
+#skillsLightbox .lightbox-content {
+  display: flex;
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
+  max-width: 80vh;
+  max-height: 80vh;
+  width: 90%;
+  height: 90%;
+  overflow: auto;            /* allow scroll if tree is larger */
+  cursor: default;
+  background-image: url(assets/space4.gif);
+  background-size: cover;
+  background-position: center;
+}
+
+.skills-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ===============================
@@ -777,7 +929,7 @@ body {
   object-fit: cover;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 2px 2px #000;
+  box-shadow: 2px 2px #1b3ba3;
 }
 .popup-animation .work-item video {
   width: 100%;

@@ -1,6 +1,6 @@
 // === Development Toggle ===
-const devEditMode = false;
-const devPopupId = "creditsPopup"; // dev-only popup
+const devEditMode = true;
+const devPopupId = "skillsLightbox"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -185,19 +185,55 @@ function openLightbox(work, popupId, isVideo = false) {
     }
   });
 }
+// Open Skills Tree Lightbox
+function openSkillsLightbox() {
+  const overlay = document.getElementById('skillsLightbox');
+  if (!overlay) return;
+
+  overlay.style.display = 'flex';
+
+  const content = overlay.querySelector('.lightbox-content');
+  const coreNode = content.querySelector('.skill-node.main');
+
+  // Scroll Core node to center
+  setTimeout(() => {
+    if (coreNode) {
+      content.scrollTop = coreNode.offsetTop - content.clientHeight / 2 + coreNode.clientHeight / 2;
+    }
+  }, 50);
+}
+
+// Close by clicking overlay background
+function closeSkillsLightbox(event) {
+  const overlay = event.currentTarget;
+  overlay.style.display = 'none';
+}
 
 // --- Popup utility functions ---
 function keepPopupOpen(id) {
   const popup = document.getElementById(id);
   if (!popup) return;
 
-  // Only force dev popup if devEditMode
-  if (devEditMode && id === devPopupId) {
-    popup.style.display = 'flex';
-    restoreScrollable(popup);
+  // Force open in dev mode
+  if (devEditMode) {
+    if (id === "skillsLightbox") {
+      popup.style.display = "flex";
+      // Scroll to core hex
+      const content = popup.querySelector(".lightbox-content");
+      const coreNode = content.querySelector(".skill-node.main");
+      if (coreNode) {
+        setTimeout(() => {
+          content.scrollTop = coreNode.offsetTop - content.clientHeight / 2 + coreNode.clientHeight / 2;
+        }, 50);
+      }
+    } else if (id === devPopupId) {
+      popup.style.display = 'flex';
+      restoreScrollable(popup);
+    }
     return;
   }
 
+  // Normal popup behavior
   const useFlex = popup.classList.contains('popup-works') ||
                   popup.classList.contains('popup-profile') ||
                   popup.classList.contains('popup-cat') ||
