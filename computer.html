@@ -264,26 +264,66 @@
         </div>
       </div>
     </div>
-    <!--Works-->
-      <div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
-      <div id="worksPopup" class="popup popup-works">
-        <div class="popup-header">
-          Works
-          <button onclick="closePopup('worksPopup')">X</button>
-        </div>
-        <div class="work-scrollable">
-           <!-- Intro Section -->
-          <div class="works-intro">
-            <h2>My Works</h2>
-            <p>I juggle these Softwares to create. Literally!</p>
-            <img src="assets/juggle-2.gif" class="intro-img">
-          
-          </div>
-          <div class="popup-body">
-            <!-- JS will insert work cards here -->
-          </div>
-       </div>
+<!-- Works  -->
+<div class="icon works" aria-label="works" onclick="togglePopup('worksPopup')"></div>
+<div id="worksPopup" class="popup popup-works">
+  <div class="popup-header">
+    Works
+    <button onclick="closePopup('worksPopup')">X</button>
+  </div>
+  <div class="work-scrollable">
+    <!-- Intro Section -->
+    <div class="works-intro">
+      <h2>My Works</h2>
+      <p>I juggle these Softwares to create. Literally!</p>
+      <img src="assets/juggle-2.gif" class="intro-img">
+    </div>
+      <!-- Skills Tree Button -->
+      <h3 class="skills-btn" onclick="openSkillsLightbox()">Skills Tree</h3>
+
+    <div class="popup-body">
+      <!-- JS will insert work cards here -->
+    </div>
+  </div>
+</div>
+<div id="skillsLightbox" class="lightbox" onclick="closeSkillsLightbox(event)">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <div class="skills-tree">
+      
+      <div class="hex-row">
+        <div class="skill-node locked"><span>Blender</span></div>
+        <div class="skill-node blank"></div>
+        <div class="skill-node"><img src="assets/cube_proc.gif"></div>
       </div>
+
+      <div class="hex-row offset">
+        <div class="skill-node blank"></div>
+        <div class="skill-node"><span>1</span></div>
+        <div class="skill-node"><img src="assets/cube_vsc.gif">></div>
+        <div class="skill-node blank"></div>
+      </div>
+      <!--Stem-->
+      <div class="hex-row">
+        <div class="skill-node"><span>2</span></div>
+        <div class="skill-node"><img src="assets/head_spin_glasses-2.gif" ></div>
+        <div class="skill-node"><span>3</span></div>
+      </div>
+
+      <div class="hex-row offset">
+        <div class="skill-node"><span>4</span></div>
+        <div class="skill-node main"><span>5</span></div>
+      </div>
+
+
+      <div class="hex-row">
+        <div class="skill-node locked"><span>6</span></div>
+        <div class="skill-node locked"><span>7</span></div>
+        <div class="skill-node locked"><span>8</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
     <!--Contact-->
     <div id="contactPopup" class="popup popup-contact">
       <div class="popup-header">
@@ -334,7 +374,6 @@
 
     </div>
     <script src="computer.js"></script>
-    <script src="works.js"></script>
     <div class="copyright">© 2025 Lee Zen</div>
   </div>
   </body>
