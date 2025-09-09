@@ -726,7 +726,7 @@ body {
   border-radius: 8px;
 }
 /* ===============================
-   Skills Popup
+   Skills Popup (overall container)
    =============================== */
 .popup-skills {
   width: 90%;
@@ -742,37 +742,9 @@ body {
   text-align: center;
 }
 
-.skills-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1rem;
-}
-
-.skill-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100px;
-}
-
-.skill-node img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
-}
-
-.skill-node p {
-  margin: 0;
-  font-size: 0.9em;
-}
-
-.skill-node.locked {
-  opacity: 0.4;
-}
-/* Trigger styled like heading */
+/* ===============================
+   Skills Button (trigger)
+   =============================== */
 .skills-btn {
   font-size: 1.5em;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -786,6 +758,10 @@ body {
 .skills-btn:hover {
   color: #ffd700;
 }
+
+/* ===============================
+   Skills Layout
+   =============================== */
 .hex-row {
   display: flex;
   gap: 5px;
@@ -794,7 +770,9 @@ body {
   margin: -20px 0 -20px 0;
 }
 
-/* Hexagon shape */
+/* ===============================
+   Skill Nodes (hexagons)
+   =============================== */
 .skill-node {
   position: relative; /* parent for absolute children */
   width: 90px;
@@ -811,13 +789,15 @@ body {
   font-size: 0.85em;
   overflow: hidden; /* ensures image stays inside hexagon */
 }
-#skillsLightbox .skill-node img {
+
+/* Image inside hexagon */
+ #skillsLightbox .skill-node img {
   position: absolute;
-  top: 50%;
+  top: 50%; 
   left: 50%;
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
   transform: translate(-50%, -50%);
   clip-path: polygon(
     50% 0%, 100% 25%, 100% 75%, 
@@ -825,57 +805,147 @@ body {
   );
   z-index: 1;
 }
+
+/* Text overlay */
 .skill-node span {
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  font-weight: bold;
   position: relative;
   z-index: 2; /* above the image */
   text-align: center;
 }
-.skill-node.main { background: #3967c4; font-weight: bold; }
+
+/* Special states */
+.skill-node.main { background-image: url(assets/space1.gif); font-weight: bold; }
 .skill-node.locked { opacity: 0.4; }
+.skill-node.locked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;   /* adjust size as needed */
+  height: 60%;
+  background-image: url('assets/locked-1.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%);
+  z-index: 3;   /* above hex and span */
+  pointer-events: none; /* allow clicks to pass through if needed */
+}
+.skill-node.grey{ opacity: 0.4; }
 .skill-node.blank {
-  background: transparent;  /* no fill */
-  border: none;             /* no border */
-  opacity: 0;               /* fully invisible but still takes space */
-  pointer-events: none;     /* optional: clicks pass through */
+  background: transparent;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* Skill tree lightbox */
-/* Skill tree lightbox */
+/* Proficiency states */
+.skill-node.love { background: #1b7440; }  
+.skill-node.learn { background: #c07636; }  
+.skill-node.dislike { background: #6b231b; } 
+
+.skills-legend {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap; /* wrap on small screens */
+  justify-content: center;
+  gap: 1rem 1.5rem; /* row gap and column gap */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background: rgba(0,0,0,0.5); /* optional for readability */
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  max-width: 90%;
+}
+
+/* Wrapper for each hex + label */
+.legend-item-wrapper {
+  display: flex;
+  align-items: center; /* keeps hex vertically aligned with text */
+  gap: 0.5rem;
+  flex-wrap: wrap; /* ensures text wraps under hex if needed */
+}
+/* Legend Hex  */
+.legend-item {
+  width: 16px;
+  height: 18px;
+  clip-path: polygon(
+    50% 0%, 100% 25%, 100% 75%, 
+    50% 100%, 0% 75%, 0% 25%
+  );
+  display: inline-block;
+}
+.legend-item.love { background: #2ecc71; }
+.legend-item.learn { background: #e67e22; }
+.legend-item.dislike { background: #e74c3c; }
+
+
+.skills-legend span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.2em; 
+}
+@media (max-width: 500px) {
+  .skills-legend {
+    font-size: 0.75em;
+    gap: 0.5rem 1rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .legend-item {
+    width: 14px;
+    height: 16px;
+  }
+}
+/* Lightbox */
 #skillsLightbox {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.85);
-  display: none; /* starts hidden */
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   cursor: pointer;
-  overflow: auto;
+  overflow: auto; /* allows scrolling if content exceeds viewport */
 }
-
 #skillsLightbox .lightbox-content {
   display: flex;
-  justify-content: center;   /* center vertically */
-  align-items: center;       /* center horizontally */
-  max-width: 80vh;
-  max-height: 80vh;
+  flex-direction: column;
+  align-items: center;       /* center legend and scroll wrapper */
   width: 90%;
-  height: 90%;
-  overflow: auto;            /* allow scroll if tree is larger */
-  cursor: default;
+  height: 60%;
+  max-width: 600px;
+  max-height: 95vh;
+  overflow: hidden;          /* scroll handled by wrapper */
+  box-sizing: border-box;
   background-image: url(assets/space4.gif);
+  border-radius: 30px;
   background-size: cover;
   background-position: center;
+}
+.skills-scroll-wrapper {
+  width: 100%;
+  overflow: auto;           /* scroll horizontally & vertically if needed */
+  display: flex;
+  justify-content: center;   /* center the tree horizontally */
 }
 
 .skills-tree {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;      /* keep hex rows centered */
+  width: max-content;       /* natural width of tree */
 }
-
 /* ===============================
    Work Cards (Images)
    =============================== */

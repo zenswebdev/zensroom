@@ -185,7 +185,6 @@ function openLightbox(work, popupId, isVideo = false) {
     }
   });
 }
-// Open Skills Tree Lightbox
 function openSkillsLightbox() {
   const overlay = document.getElementById('skillsLightbox');
   if (!overlay) return;
@@ -195,12 +194,15 @@ function openSkillsLightbox() {
   const content = overlay.querySelector('.lightbox-content');
   const coreNode = content.querySelector('.skill-node.main');
 
-  // Scroll Core node to center
-  setTimeout(() => {
-    if (coreNode) {
-      content.scrollTop = coreNode.offsetTop - content.clientHeight / 2 + coreNode.clientHeight / 2;
-    }
-  }, 50);
+setTimeout(() => {
+  if (coreNode) {
+    const rect = coreNode.getBoundingClientRect();
+    const contentRect = content.getBoundingClientRect();
+
+    content.scrollTop = coreNode.offsetTop - content.clientHeight / 2 + coreNode.clientHeight / 2;
+    content.scrollLeft = coreNode.offsetLeft - content.clientWidth / 2 + coreNode.clientWidth / 2;
+  }
+}, 50);
 }
 
 // Close by clicking overlay background

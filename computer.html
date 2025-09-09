@@ -288,40 +288,25 @@
 </div>
 <div id="skillsLightbox" class="lightbox" onclick="closeSkillsLightbox(event)">
   <div class="lightbox-content" onclick="event.stopPropagation()">
+<div class="skills-scroll-wrapper">
     <div class="skills-tree">
-      
-      <div class="hex-row">
-        <div class="skill-node locked"><span>Blender</span></div>
-        <div class="skill-node blank"></div>
-        <div class="skill-node"><img src="assets/cube_proc.gif"></div>
-      </div>
-
-      <div class="hex-row offset">
-        <div class="skill-node blank"></div>
-        <div class="skill-node"><span>1</span></div>
-        <div class="skill-node"><img src="assets/cube_vsc.gif">></div>
-        <div class="skill-node blank"></div>
-      </div>
-      <!--Stem-->
-      <div class="hex-row">
-        <div class="skill-node"><span>2</span></div>
-        <div class="skill-node"><img src="assets/head_spin_glasses-2.gif" ></div>
-        <div class="skill-node"><span>3</span></div>
-      </div>
-
-      <div class="hex-row offset">
-        <div class="skill-node"><span>4</span></div>
-        <div class="skill-node main"><span>5</span></div>
-      </div>
-
-
-      <div class="hex-row">
-        <div class="skill-node locked"><span>6</span></div>
-        <div class="skill-node locked"><span>7</span></div>
-        <div class="skill-node locked"><span>8</span></div>
-      </div>
-
+      <!-- Hexagon skill goes here -->
     </div>
+</div>
+<div class="skills-legend">
+  <div class="legend-item-wrapper">
+    <div class="legend-item love"></div>
+    <span>Love</span>
+  </div>
+  <div class="legend-item-wrapper">
+    <div class="legend-item learn"></div>
+    <span>Learning</span>
+  </div>
+  <div class="legend-item-wrapper">
+    <div class="legend-item dislike"></div>
+    <span>Not Fond</span>
+  </div>
+</div>
   </div>
 </div>
     <!--Contact-->
@@ -374,6 +359,7 @@
 
     </div>
     <script src="computer.js"></script>
+    <script src="skills.js"></script>
     <div class="copyright">© 2025 Lee Zen</div>
   </div>
   </body>
