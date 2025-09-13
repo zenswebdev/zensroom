@@ -348,6 +348,7 @@ body {
   min-height: 0;            /* needed for flexbox scroll to work */
   padding: 1rem;
   font-family: sans-serif;
+  font-size: 15px;
 }
 
 /* General Popup Base */
@@ -356,8 +357,6 @@ body {
   max-width: 300px;
   max-height: calc(100% - 140px);
   margin: 0 auto;
-  box-sizing: border-box;
-  overflow-y: auto;
   text-align: center; /* center text */
   display: none; /* keep hidden by default */
 }
@@ -372,7 +371,6 @@ body {
   box-sizing: border-box;
 }
 
-/* Responsive images */
 .popup-general .popup-body img {
   max-width: 100%; 
   height: auto; 
@@ -380,6 +378,7 @@ body {
   display: block;
   margin: 0 auto;
 }
+
 /* === cat popup === */
 .popup-cat {
   width: 90%;
@@ -391,8 +390,14 @@ body {
   background-image: url(assets/space3.gif);
   display: none;  /* keep hidden by default */
 }
-
-/* Make the intro section centered */
+.cat-scrollable{
+  flex: 1;                
+  overflow-y: auto;       
+  min-height: 0;           
+  padding: 1rem;
+  font-family: sans-serif;
+  font-size: large;
+}
 .cat-intro {
   display: flex;
   flex-direction: column;
