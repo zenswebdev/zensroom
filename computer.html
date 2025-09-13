@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <!-- Favicon -->
+    <link rel="icon" type="image/webp" sizes="32x32" href="assets/cat-1.webp">
+    <link rel="shortcut icon" href="assets/cat-1.webp" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer</title>
@@ -279,7 +282,7 @@
       <img src="assets/juggle-2.gif" class="intro-img">
     </div>
       <!-- Skills Tree Button -->
-      <h3 class="skills-btn" onclick="openSkillsLightbox()">Skills Tree</h3>
+      <h3 class="skills-btn" onclick="openSkillsLightbox()">Software Proficiency</h3>
 
     <div class="popup-body">
       <!-- JS will insert work cards here -->
@@ -289,22 +292,34 @@
 <div id="skillsLightbox" class="lightbox" onclick="closeSkillsLightbox(event)">
   <div class="lightbox-content" onclick="event.stopPropagation()">
 <div class="skills-scroll-wrapper">
+
     <div class="skills-tree">
       <!-- Hexagon skill goes here -->
     </div>
 </div>
+<div class="skills-list">
+  <h3>Software Proficiency</h3>
+  <ul>
+    <li><strong>Love To Use:</strong><span>Photoshop, Illustrator, After Effects, Procreate</span></li>
+    <li><strong>Learning:</strong><span>Visual Studio Code, OpenToonz, Openshot Video Editor</span></li>
+    <li><strong>Looking At:</strong><span>TVPaint, Aseprite, Blender</span></li>
+  </ul>
+</div>
+<button id="skillsToggle">Switch to List View</button>
 <div class="skills-legend">
+  
   <div class="legend-item-wrapper">
+
     <div class="legend-item love"></div>
-    <span>Love</span>
+    <span>Lovely</span>
   </div>
   <div class="legend-item-wrapper">
     <div class="legend-item learn"></div>
     <span>Learning</span>
   </div>
   <div class="legend-item-wrapper">
-    <div class="legend-item dislike"></div>
-    <span>Not Fond</span>
+    <div class="legend-item locked"><img src="assets/locked-1.webp"></div>
+    <span>Locked</span>
   </div>
 </div>
   </div>

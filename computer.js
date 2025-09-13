@@ -204,7 +204,46 @@ setTimeout(() => {
   }
 }, 50);
 }
+const toggleBtn = document.getElementById('skillsToggle');
+const treeWrapper = document.querySelector('.skills-scroll-wrapper');
+const listView = document.querySelector('.skills-list');
+const legend = document.querySelector('.skills-legend');
 
+function updateViewOnResize() {
+  if (window.innerWidth <= 600) {
+    treeWrapper.style.display = 'none';
+    listView.style.display = 'block';
+    toggleBtn.style.display = 'none'; // hide toggle button
+    legend.style.display = 'none'; // hide legend
+  } else {
+    treeWrapper.style.display = 'flex';
+    listView.style.display = 'none';
+    toggleBtn.style.display = 'block'; // show toggle button
+    toggleBtn.textContent = 'Switch to List View';
+    legend.style.display = 'flex'; // show legend
+  }
+}
+
+// Initial check
+updateViewOnResize();
+
+// Listen to window resize
+window.addEventListener('resize', updateViewOnResize);
+
+// Manual toggle (for larger screens)
+toggleBtn.addEventListener('click', () => {
+  if (treeWrapper.style.display !== 'none') {
+    treeWrapper.style.display = 'none';
+    listView.style.display = 'block';
+    toggleBtn.textContent = 'Switch to Tree View';
+    legend.style.display = 'none'; // hide legend when in list view
+  } else {
+    treeWrapper.style.display = 'flex';
+    listView.style.display = 'none';
+    toggleBtn.textContent = 'Switch to List View';
+    legend.style.display = 'flex'; // show legend when in tree view
+  }
+});
 // Close by clicking overlay background
 function closeSkillsLightbox(event) {
   const overlay = event.currentTarget;

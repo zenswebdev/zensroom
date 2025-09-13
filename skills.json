@@ -1,55 +1,56 @@
 {
   "skillsTree": [
+    
     {
-      "_comment": "row +2",
+      "_comment": "row 0",
       "rowType": "hex-row",
       "nodes": [
         { "classes": ["skill-node blank"], "content": [] },      
         { "classes": ["skill-node blank"], "content": [] },
-        { "classes": ["skill-node blank"], "content": [] },
+        { "classes": ["skill-node main"],"connectors": [3,4], "content": [{ "tag": "img", "src": "assets/head_scream-1.gif", "alt": "" }] },
         { "classes": ["skill-node blank"], "content":  [] },
-        { "classes": ["skill-node","blank"], "content":[] }  
+        { "classes": ["skill-node blank"], "content":[] }  
       ]
     },
     {
-     "_comment": "row +1",
+     "_comment": "row -1",
       "rowType": "hex-row offset",
       "nodes": [
-        { "classes": ["skill-node love"], "content": [{ "tag": "img", "src": "assets/cube_ai.gif", "alt": "" }] },
-        { "classes": ["skill-node grey"], "content": [] },
-        { "classes": ["skill-node learn"], "content": [{ "tag": "img", "src": "assets/cube_vsc.gif", "alt": "" }] },
-        { "classes": ["skill-node grey"], "content": [] }
+        { "classes": ["skill-node love"],"connectors": [2], "content": [{ "tag": "img", "src": "assets/cube_ae.gif", "alt": "" }] },
+        { "classes": ["skill-node love "],"connectors": [4], "content": [{ "tag": "img", "src": "assets/cube_ps.gif", "alt": ""  }] },
+        { "classes": ["skill-node learn"],"connectors": [3], "content": [{ "tag": "img", "src": "assets/cube_vsc.gif", "alt": "" }] },
+        { "classes": ["skill-node learn"],"connectors": [4],  "content": [{ "tag": "img", "src": "assets/cube_os.gif", "alt": "" }] }
       ]
     },
     {
-      "_comment": "row 0",      
+      "_comment": "row -2",      
       "rowType": "hex-row",
       "nodes": [
-        { "classes": ["skill-node locked"], "content":[{ "tag": "img", "src": "assets/cube_aesprite.gif", "alt": ""  }] },
-        { "classes": ["skill-node love "], "content": [{ "tag": "img", "src": "assets/cube_ps.gif", "alt": ""  }] },
-        { "classes": ["skill-node main"], "content": [{ "tag": "img", "src": "assets/head_scream-1.gif", "alt": "" }] },
-        { "classes": ["skill-node dislike"], "content":[{ "tag": "img", "src": "assets/cube_maya.gif", "alt": "" }] },
-        { "classes": ["skill-node locked"], "content":[{ "tag": "img", "src": "assets/cube_blender.gif", "alt": "" }] }  
+        { "classes": ["skill-node love"], "content": [{ "tag": "img", "src": "assets/cube_proc.gif", "alt": ""  }] },
+        { "classes": ["skill-node love "],"connectors": [5],"content": [{ "tag": "img", "src": "assets/cube_ai.gif", "alt": ""  }] },
+        { "classes": ["skill-node blank"], "content":[] },  
+        { "classes": ["skill-node learn"],  "content": [{ "tag": "img", "src": "assets/cube_ot.gif", "alt": "" }] },
+      { "classes": ["skill-node locked"], "content": [{ "tag": "img", "src": "assets/cube_tvp.gif", "alt": ""  }] }
       ]
     },
     {
-      "_comment": "row -1",      
+      "_comment": "row -3",      
       "rowType": "hex-row offset",
       "nodes": [  
-      { "classes": ["skill-node love"], "content": [{ "tag": "img", "src": "assets/cube_proc.gif", "alt": ""  }] },              
-      { "classes": ["skill-node grey"], "content":[] },
-      { "classes": ["skill-node love"], "content": [{ "tag": "img", "src": "assets/cube_ae.gif", "alt": ""  }] },
-      { "classes": ["skill-node grey"], "content":[] }  
+      { "classes": ["skill-node locked"], "content":[{ "tag": "img", "src": "assets/cube_aesprite.gif", "alt": ""  }] },       
+      { "classes": ["skill-node blank"], "content":[] },
+      { "classes": ["skill-node","blank"], "content":[] },
+      { "classes": ["skill-node locked"], "content": [{ "tag": "img", "src": "assets/cube_blender.gif", "alt": ""  }]  }  
       ]
     },
     {
-     "_comment": "row -2",      
+     "_comment": "row -4",      
       "rowType": "hex-row",
       "nodes": [
       { "classes": ["skill-node","blank"], "content":[] },
       { "classes": ["skill-node","blank"], "content":[] },
-      { "classes": ["skill-node grey"], "content":[] },
-        { "classes": ["skill-node learn"], "content": [{ "tag": "img", "src": "assets/cube_ot.gif", "alt": "" }] },
+      { "classes": ["skill-node","blank"], "content":[] },
+      { "classes": ["skill-node","blank"], "content":[] },
       { "classes": ["skill-node","blank"], "content":[] }  
       ]
     }
