@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (devEditMode && devPopupId !== "contactPopup") {
     keepPopupOpen(devPopupId);
   } else if (!localStorage.getItem("welcomePopupClosed")) {
-    togglePopup("welcomePopup");
+    // Always open welcomePopup on first visit
+    keepPopupOpen("welcomePopup");
   }
 
   // --- Icon tapped state ---
@@ -174,6 +175,7 @@ const listView = document.querySelector('.skills-list');
 const legend = document.querySelector('.skills-legend');
 
 function updateViewOnResize() {
+  if (!toggleBtn || !treeWrapper || !listView || !legend) return;
   if (window.innerWidth <= 600) {
     treeWrapper.style.display = 'none';
     listView.style.display = 'block';
@@ -190,19 +192,23 @@ function updateViewOnResize() {
 updateViewOnResize();
 window.addEventListener('resize', updateViewOnResize);
 
-toggleBtn.addEventListener('click', () => {
-  if (treeWrapper.style.display !== 'none') {
-    treeWrapper.style.display = 'none';
-    listView.style.display = 'block';
-    toggleBtn.textContent = 'Switch to Tree View';
-    legend.style.display = 'none';
-  } else {
-    treeWrapper.style.display = 'flex';
-    listView.style.display = 'none';
-    toggleBtn.textContent = 'Switch to List View';
-    legend.style.display = 'flex';
-  }
-});
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    if (!treeWrapper || !listView || !legend) return;
+    if (treeWrapper.style.display !== 'none') {
+      treeWrapper.style.display = 'none';
+      listView.style.display = 'block';
+      toggleBtn.textContent = 'Switch to Tree View';
+      legend.style.display = 'none';
+    } else {
+      treeWrapper.style.display = 'flex';
+      listView.style.display = 'none';
+      toggleBtn.textContent = 'Switch to List View';
+      legend.style.display = 'flex';
+    }
+  });
+}
+
 function closeSkillsLightbox(event) {
   event.currentTarget.style.display = 'none';
 }
@@ -226,12 +232,10 @@ function togglePopup(id) {
   const popup = document.getElementById(id);
   if (!popup) return;
 
-  const isOpen = getComputedStyle(popup).display !== 'none';
-
   // Hide all other popups
   document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
 
-  if (!isOpen) keepPopupOpen(id);
+  keepPopupOpen(id);
 }
 
 function closePopup(id) {
@@ -333,4 +337,8 @@ scrubber.addEventListener('input', () => {
 
 function highlightActiveTrack() {
   trackItems.forEach((item, index) => item.classList.toggle('active', index === currentTrack));
+}
+
+if (playPauseBtn && volUpBtn && volDownBtn && muteBtn && prevBtn && nextBtn && musicPlayer && musicList && scrubber && songImg) {
+  // ...music player setup code...
 }
