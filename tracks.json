@@ -1,27 +1,32 @@
 [
   {
+    "title": "Aphex Twin - Xtal",
+    "src": "assets/audio/Xtal.mp3",
+    "cover": "assets/covers/cover_at.webp"
+  },
+  {
+    "title": "Gorillaz - DARE",
+    "src": "assets/audio/Dare.mp3",
+    "cover": "assets/covers/cover_gz.webp"
+  },
+  {
     "title": "MF DOOM - Rapp Snitch Knishes",
     "src": "assets/audio/Rapp Snitch Knishes.mp3",
-    "cover": "assets/mf_cover-1.webp"
+    "cover": "assets/covers/cover_MFD.webp"
   },
   {
-    "title": "LCD Soundsystem - All I Want",
-    "src": "assets/audio/All I Want.mp3",
-    "cover": "assets/lcd_cover-1.webp"
-  },
-  {
-    "title": "Beck - Debra",
-    "src": "assets/audio/Debra.mp3",
-    "cover": "assets/beck_cover-1.webp"
+    "title": "Arctic Monkeys - Mardy Bum",
+    "src": "assets/audio/Mardy Bum.mp3",
+    "cover": "assets/covers/cover_am.webp"
   },
   {
     "title": "The Smiths - Frankly, Mr. Shankly",
     "src": "assets/audio/Frankly, Mr. Shankly.mp3",
-    "cover": "assets/smiths_cover-1.webp"
+    "cover": "assets/covers/cover_smt.webp"
   },
   {
-    "title": "Masayoshi Takanaka - Oh! Tengo Suerte",
-    "src": "assets/audio/Oh! Tengo Suerte.mp3",
-    "cover": "assets/takanaka_cover-1.webp"
+    "title": "Crystal Castles - Vanished",
+    "src": "assets/audio/Vanished.mp3",
+    "cover": "assets/covers/cover_cc.webp"
   }
 ]

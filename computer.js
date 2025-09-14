@@ -306,8 +306,14 @@ function loadTrack(index) {
 }
 
 playPauseBtn.addEventListener('click', () => {
-  if (!isPlaying) { musicPlayer.play(); isPlaying = true; }
-  else { musicPlayer.pause(); isPlaying = false; }
+  if (!isPlaying) {
+    musicPlayer.play();
+    isPlaying = true;
+  } else {
+    musicPlayer.pause();  // <- this alone will close the Android audio player
+    isPlaying = false;
+  }
+
   playPauseBtn.textContent = isPlaying ? "⏸️" : "▶️";
   playPauseBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
   playPauseBtn.setAttribute("title", isPlaying ? "Pause" : "Play");
