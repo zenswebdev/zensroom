@@ -291,37 +291,37 @@
 </div>
 <div id="skillsLightbox" class="lightbox" onclick="closeSkillsLightbox(event)">
   <div class="lightbox-content" onclick="event.stopPropagation()">
-<div class="skills-scroll-wrapper">
+    <div class="skills-scroll-wrapper">
 
-    <div class="skills-tree">
-      <!-- Hexagon skill goes here -->
+        <div class="skills-tree">
+          <!-- Hexagon skill goes here -->
+        </div>
     </div>
-</div>
-<div class="skills-list">
-  <h3>Software Proficiency</h3>
-  <ul>
-    <li><strong>Love To Use:</strong><span>Photoshop, Illustrator, After Effects, Procreate</span></li>
-    <li><strong>Learning:</strong><span>Visual Studio Code, OpenToonz, Openshot Video Editor</span></li>
-    <li><strong>Looking At:</strong><span>TVPaint, Aseprite, Blender</span></li>
-  </ul>
-</div>
-<button id="skillsToggle">Switch to List View</button>
-<div class="skills-legend">
-  
-  <div class="legend-item-wrapper">
-
-    <div class="legend-item love"></div>
-    <span>Lovely</span>
-  </div>
-  <div class="legend-item-wrapper">
-    <div class="legend-item learn"></div>
-    <span>Learning</span>
-  </div>
-  <div class="legend-item-wrapper">
-    <div class="legend-item locked"><img src="assets/locked-1.webp"></div>
-    <span>Locked</span>
-  </div>
-</div>
+    <div class="skills-list">
+      <h3>Software Proficiency</h3>
+      <ul>
+        <li><strong>Love To Use:</strong><span>Photoshop, Illustrator, After Effects, Procreate</span></li>
+        <li><strong>Learning:</strong><span>Visual Studio Code, OpenToonz, Openshot Video Editor</span></li>
+        <li><strong>Looking At:</strong><span>TVPaint, Aseprite, Blender</span></li>
+      </ul>
+    </div>
+      <div>
+        <button id="skillsToggle">Switch to List View</button>
+        <div class="skills-legend">
+          <div class="legend-item-wrapper">
+            <div class="legend-item love"></div>
+            <span>Lovely</span>
+          </div>
+          <div class="legend-item-wrapper">
+            <div class="legend-item learn"></div>
+            <span>Learning</span>
+          </div>
+          <div class="legend-item-wrapper">
+            <div class="legend-item locked"><img src="assets/locked-1.webp"></div>
+            <span>Locked</span>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
     <!--Contact-->
@@ -330,24 +330,21 @@
         <span>Contact</span>
         <button onclick="closePopup('contactPopup')">X</button>
       </div>
-      <div class="popup-body">
-        <h1>Mail time</h1>
-        <!-- Formspree setup -->
-        <form action="https://formspree.io/f/xjkevapo" method="POST">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+      <div class="popup-scrollable">
+          <div class="contact-wrapper">
+            <h1>Zen's Postal Service</h1>
+            <h3>
+              Send Postman Zen your lovely email and be sure to receive a reply.
+            </h3>
+            <img src="assets/postman_zen.gif" alt="Postman Zen delivering mail">
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="_replyto" required>
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-
-          <!-- Optional hidden field to prevent spam -->
-          <input type="text" name="_gotcha" style="display:none">
-
-          <button type="submit" class="submit-btn">Send</button>
-        </form>
+            <p class="email-text">
+              Email me at: 
+              <span id="emailLink" class="email-link" title="Copy to clipboard">zenworklee@gmail.com</span>
+            </p>
+          <!-- Mail button -->
+          <a href="mailto:zenworklee@gmail.com" class="mail-btn">Open Mail App</a>
+        </div>
       </div>
     </div>
     <!--taskbar-->
