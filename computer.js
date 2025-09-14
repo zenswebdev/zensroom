@@ -3,105 +3,101 @@ const devEditMode = false;
 const devPopupId = "contactPopup"; // dev-only popup
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  // --- Preload hover images and other assets ---
-  const assetsToPreload = [];
-  assetsToPreload.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-
   // --- Handle initial popup ---
-if (devEditMode && devPopupId !== "contactPopup") {
-  keepPopupOpen(devPopupId);
-} else if (!localStorage.getItem("welcomePopupClosed")) {
-  togglePopup("welcomePopup");
-}
+  if (devEditMode && devPopupId !== "contactPopup") {
+    keepPopupOpen(devPopupId);
+  } else if (!localStorage.getItem("welcomePopupClosed")) {
+    togglePopup("welcomePopup");
+  }
 
   // --- Icon tapped state ---
-  document.querySelectorAll(".icon").forEach(icon => {
+  const icons = document.querySelectorAll(".icon");
+  icons.forEach(icon => {
     icon.addEventListener("click", () => {
-      document.querySelectorAll(".icon").forEach(i => i !== icon && i.classList.remove("tapped"));
+      icons.forEach(i => i !== icon && i.classList.remove("tapped"));
       icon.classList.toggle("tapped");
     });
   });
 
   // --- Analog clock ---
-  function updateClock() {
-    const now = new Date();
-    const secDeg = now.getSeconds() * 6;
-    const minDeg = now.getMinutes() * 6 + now.getSeconds() * 0.1;
-    const hourDeg = (now.getHours() % 12) * 30 + now.getMinutes() * 0.5;
-
-    const secHand = document.querySelector(".hand.second");
-    const minHand = document.querySelector(".hand.minute");
-    const hourHand = document.querySelector(".hand.hour");
-
-    if (secHand) secHand.style.transform = `rotate(${secDeg}deg)`;
-    if (minHand) minHand.style.transform = `rotate(${minDeg}deg)`;
-    if (hourHand) hourHand.style.transform = `rotate(${hourDeg}deg)`;
-  }
   setInterval(updateClock, 1000);
   updateClock();
 
   // --- Works Popup ---
   const worksPopupBody = document.querySelector('#worksPopup .popup-body');
-  if (worksPopupBody) {
-    const animationContainer = document.createElement('div');
-    animationContainer.className = 'popup-animation';
-    worksPopupBody.parentNode.insertBefore(animationContainer, worksPopupBody); 
-
-    fetch('works.json')
-      .then(res => res.json())
-      .then(data => {
-        const categories = ["Animation", ...Object.keys(data).filter(c => c !== "Animation")];
-
-        categories.forEach(category => {
-          const divider = document.createElement('div');
-          divider.className = 'works-divider';
-          divider.textContent = category;
-
-          const container = category === "Animation" ? animationContainer : worksPopupBody;
-          container.appendChild(divider);
-
-          data[category].forEach(work => {
-            const card = document.createElement('div');
-            card.className = 'work-item';
-
-            if (work.image) {
-              const img = document.createElement('img');
-              img.src = work.image;
-              img.alt = work.title || "Untitled";
-              card.appendChild(img);
-              card.addEventListener('click', () => openLightbox(work, 'worksPopup'));
-            } else if (work.video) {
-              const thumb = document.createElement('img');
-              thumb.src = work.thumbnail;
-              thumb.alt = work.title || "Untitled";
-              card.appendChild(thumb);
-              card.addEventListener('click', () => openLightbox(work, 'worksPopup', true));
-            }
-
-            container.appendChild(card);
-          });
-        });
-      })
-      .catch(err => console.error("Failed to load works.json:", err));
-  }
+  if (worksPopupBody) setupWorksPopup(worksPopupBody);
 
   // --- Email copy ---
   const emailElement = document.getElementById("emailLink");
-  if (emailElement) {
-    emailElement.addEventListener("click", () => {
-      const email = emailElement.innerText;
-      navigator.clipboard.writeText(email).then(() => {
-        const originalTitle = emailElement.getAttribute("title");
-        emailElement.setAttribute("title", "Copied!");
-        setTimeout(() => emailElement.setAttribute("title", originalTitle), 1000);
-      });
-    });
-  }
+  if (emailElement) setupEmailCopy(emailElement);
 });
+
+// --- Analog clock ---
+function updateClock() {
+  const now = new Date();
+  const secDeg = now.getSeconds() * 6;
+  const minDeg = now.getMinutes() * 6 + now.getSeconds() * 0.1;
+  const hourDeg = (now.getHours() % 12) * 30 + now.getMinutes() * 0.5;
+
+  const secHand = document.querySelector(".hand.second");
+  const minHand = document.querySelector(".hand.minute");
+  const hourHand = document.querySelector(".hand.hour");
+
+  if (secHand) secHand.style.transform = `rotate(${secDeg}deg)`;
+  if (minHand) minHand.style.transform = `rotate(${minDeg}deg)`;
+  if (hourHand) hourHand.style.transform = `rotate(${hourDeg}deg)`;
+}
+
+// --- Works Popup Helper ---
+function setupWorksPopup(worksPopupBody) {
+  const animationContainer = document.createElement('div');
+  animationContainer.className = 'popup-animation';
+  worksPopupBody.parentNode.insertBefore(animationContainer, worksPopupBody);
+
+  fetch('works.json')
+    .then(res => res.json())
+    .then(data => {
+      const categories = ["Animation", ...Object.keys(data).filter(c => c !== "Animation")];
+      categories.forEach(category => {
+        const divider = document.createElement('div');
+        divider.className = 'works-divider';
+        divider.textContent = category;
+        const container = category === "Animation" ? animationContainer : worksPopupBody;
+        container.appendChild(divider);
+        data[category].forEach(work => {
+          const card = document.createElement('div');
+          card.className = 'work-item';
+          if (work.image) {
+            const img = document.createElement('img');
+            img.src = work.image;
+            img.alt = work.title || "Untitled";
+            card.appendChild(img);
+            card.addEventListener('click', () => openLightbox(work, 'worksPopup'));
+          } else if (work.video) {
+            const thumb = document.createElement('img');
+            thumb.src = work.thumbnail;
+            thumb.alt = work.title || "Untitled";
+            card.appendChild(thumb);
+            card.addEventListener('click', () => openLightbox(work, 'worksPopup', true));
+          }
+          container.appendChild(card);
+        });
+      });
+    })
+    .catch(err => console.error("Failed to load works.json:", err));
+}
+
+// --- Email Copy Helper ---
+function setupEmailCopy(emailElement) {
+  emailElement.addEventListener("click", () => {
+    const email = emailElement.innerText;
+    navigator.clipboard.writeText(email).then(() => {
+      const originalTitle = emailElement.getAttribute("title");
+      emailElement.setAttribute("title", "Copied!");
+      setTimeout(() => emailElement.setAttribute("title", originalTitle), 1000);
+    });
+  });
+}
 
 // --- Lightbox helper ---
 function openLightbox(work, popupId, isVideo = false) {
@@ -211,12 +207,11 @@ function closeSkillsLightbox(event) {
   event.currentTarget.style.display = 'none';
 }
 
-// --- Popup utilities ---
+// --- Popup utilities (amended) ---
 function keepPopupOpen(id) {
   const popup = document.getElementById(id);
   if (!popup) return;
 
-  // Determine layout type
   const useFlex = popup.classList.contains('popup-works') ||
                   popup.classList.contains('popup-profile') ||
                   popup.classList.contains('popup-cat') ||
@@ -248,7 +243,10 @@ function closePopup(id) {
   const scrollable = popup.querySelector('.popup-scrollable');
   if (scrollable) scrollable.scrollTop = 0;
 
-  if (id === 'welcomePopup') localStorage.setItem('welcomePopupClosed', 'true');
+  // Mark welcomePopup as closed in localStorage
+  if (id === 'welcomePopup') {
+    localStorage.setItem('welcomePopupClosed', 'true');
+  }
 }
 
 function restoreScrollable(popup) {
