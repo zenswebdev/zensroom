@@ -232,6 +232,16 @@ function togglePopup(id) {
   const popup = document.getElementById(id);
   if (!popup) return;
 
+  // If the popup is already visible, close it
+  if (popup.style.display === 'flex' || popup.style.display === 'block') {
+    popup.style.display = 'none';
+    // Special case for welcomePopup: mark as closed
+    if (id === 'welcomePopup') {
+      localStorage.setItem('welcomePopupClosed', 'true');
+    }
+    return;
+  }
+
   // Hide all other popups
   document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
 
