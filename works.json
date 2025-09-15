@@ -1,7 +1,7 @@
 {
   "Animation": [
     { "title": "CNY 2023", "description": "CNY Promo for my internship", "video": "assets/videos/CNY_2023.mp4", "thumbnail": "assets/thumbnails/CNY2023_thumbnail.webp" },
-    { "title": "Graduation (Zen's Edition)", "description": "Just scenes I did for this Project", "video": "assets/videos/Graduation_2022.mp4", "thumbnail": "assets/thumbnails/Graduation2022_thumbnail.webp" },
+    { "title": "Graduation (Zen's Edition)", "description": "Some unused scenes I did for a project", "video": "assets/videos/Graduation_Zensedit.webm", "thumbnail": "assets/thumbnails/Graduation2022_thumbnail.webp" },
     { "title": "Cat Jump", "description": "An Exercise", "image": "assets/images/Jump_Cat.gif" },
     { "title": "Clown Turns", "description": "An Exercise", "image": "assets/images/Clown_Turns.gif" }
   ],
