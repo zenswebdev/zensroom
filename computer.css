@@ -487,6 +487,17 @@ body {
   height: 200px;
   object-fit: contain;
 }
+@media (max-width: 460px) {
+.popup-welcome .top-row img.wave {
+  display:none;
+}
+}
+.popup-welcome .top-row img.speech{
+  position:absolute;
+  width: 120px;
+  height: 230px;
+  left: 120px;
+}
 .email {
   font-size: 12px;
   font-weight: bold;
@@ -1032,11 +1043,9 @@ body {
   .skills-scroll-wrapper {
     display: none; /* hide hexagon layout */
   }
-
   .skills-list {
     display: block; /* always visible when switched */
   }
-
   .skills-legend {
     display: none;  /* hide legend on small screens */
   }
