@@ -987,9 +987,9 @@ body {
   width: max-content;
 }
 .skills-list {
-  display: none; /* default hidden */
+  display: none;
   width: 90%;
-  height: 60%;
+  height: auto;
   max-width: 500px;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
